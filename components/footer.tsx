@@ -22,7 +22,7 @@ export default function Footer() {
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 bg-background text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition whitespace-nowrap">
+              <button className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-lg font-medium hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300 whitespace-nowrap">
                 Subscribe
               </button>
             </div>
@@ -34,11 +34,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                <Leaf className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <span className="font-serif text-lg font-semibold">Vaidya</span>
+              <img 
+                src="/logo.webp" 
+                alt="Sapthashwa Logo" 
+                className="w-24 h-24 object-contain mix-blend-screen"
+              />
             </div>
+            <h4 className="font-serif text-xl font-bold text-background mb-2">Sapthashwa</h4>
             <p className="text-background/70 text-sm leading-relaxed">
               Premium wellness blending Ayurveda with modern medicine
             </p>
@@ -83,11 +85,11 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>+1 (234) 567-890</span>
+                <span>+91 97399 91801</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>hello@vaidyahealth.com</span>
+                <span>info@Sapthashwa.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
@@ -99,7 +101,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-background/20 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-background/60">
-          <p>&copy; 2024 Vaidya Health. All rights reserved.</p>
+          <p>&copy; 2026 Sapthashwa. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-background transition">Facebook</Link>
             <Link href="#" className="hover:text-background transition">Instagram</Link>

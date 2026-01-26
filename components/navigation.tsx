@@ -2,52 +2,89 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navItems = [
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'Treatments', href: '/treatments' },
+    { name: 'Products', href: '/products' },
+    { name: 'Blogs', href: '/blogs' },
+    { name: 'Testimonials', href: '/testimonials' },
+    { name: 'About', href: '/about' },
+  ];
+
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-serif text-lg">✦</span>
-            </div>
-            <span className="font-serif text-xl font-semibold text-foreground hidden sm:inline">Vaidya</span>
-          </Link>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="#services" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Services
-            </Link>
-            <Link href="#doctors" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Doctors
-            </Link>
-            <Link href="#telemedicine" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Telemedicine
-            </Link>
-            <Link href="#products" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Products
-            </Link>
+    <>
+      {/* Top Bar */}
+      <div className="bg-primary text-primary-foreground py-2">
+        <div className="container mx-auto px-4 flex justify-between items-center text-sm">
+          <div className="flex items-center space-x-4">
+            <a href="tel:+919739991801" className="flex items-center space-x-1 hover:underline">
+              <Phone size={14} />
+              <span className="hidden sm:inline">+91 97399 91801</span>
+            </a>
+            <a href="mailto:info@Sapthashwa.com" className="flex items-center space-x-1 hover:underline">
+              <Mail size={14} />
+              <span className="hidden sm:inline">info@Sapthashwa.com</span>
+            </a>
           </div>
+          <div className="hidden md:block">
+            Mon - Fri: 9:00 AM - 6:00 PM
+          </div>
+        </div>
+      </div>
 
-          {/* CTA & Cart */}
-          <div className="flex items-center gap-4">
-            <button className="hidden sm:inline-flex px-6 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:opacity-90 transition">
-              Book Appointment
-            </button>
-            <button className="relative p-2 hover:bg-muted rounded-full transition">
-              <ShoppingBag className="w-5 h-5 text-foreground" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full"></span>
-            </button>
+      {/* Main Navigation */}
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3">
+              <img 
+                src="/logo.webp" 
+                alt="Sapthashwa Logo" 
+                className="w-20 h-20 object-contain"
+              />
+              <span className="font-serif text-2xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+                Sapthashwa
+              </span>
+            </Link>
+
+            {/* Desktop Menu - Centered */}
+            <div className="hidden lg:flex items-center gap-6 flex-1 justify-center">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-base font-semibold text-gray-900 hover:text-primary transition-colors duration-200"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Action Buttons */}
+            <div className="hidden lg:flex items-center gap-3">
+              <Link href="/appointment">
+                <Button className="bg-primary hover:opacity-90">
+                  Book Appointment
+                </Button>
+              </Link>
+              <Link href="#enquiry">
+                <Button variant="outline">
+                  Enquiry
+                </Button>
+              </Link>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 hover:bg-muted rounded-full transition"
+              className="lg:hidden p-2 hover:bg-muted rounded-full transition"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -57,25 +94,28 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-3 animate-in fade-in duration-200">
-            <Link href="#services" className="block text-sm text-muted-foreground hover:text-foreground px-2 py-2">
-              Services
-            </Link>
-            <Link href="#doctors" className="block text-sm text-muted-foreground hover:text-foreground px-2 py-2">
-              Doctors
-            </Link>
-            <Link href="#telemedicine" className="block text-sm text-muted-foreground hover:text-foreground px-2 py-2">
-              Telemedicine
-            </Link>
-            <Link href="#products" className="block text-sm text-muted-foreground hover:text-foreground px-2 py-2">
-              Products
-            </Link>
-            <button className="w-full px-6 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:opacity-90 transition">
-              Book Now
-            </button>
+          <div className="lg:hidden pb-4 border-t">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block py-3 px-4 text-base font-semibold text-gray-900 hover:text-primary hover:bg-gray-50 transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <div className="flex flex-col space-y-2 mt-4">
+              <Link href="/appointment">
+                <Button className="w-full">Book Appointment</Button>
+              </Link>
+              <Link href="#enquiry">
+                <Button variant="outline" className="w-full">Enquiry</Button>
+              </Link>
+            </div>
           </div>
         )}
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }

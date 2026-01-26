@@ -1,15 +1,16 @@
 'use client';
 
-import { useState } from 'react';
 import Navigation from '@/components/navigation';
 import Hero from '@/components/hero';
 import Services from '@/components/services';
-import DoctorProfiles from '@/components/doctor-profiles';
-import TelemedicineSection from '@/components/telemedicine';
+import { Treatments } from '@/components/treatments';
 import ProductShowcase from '@/components/product-showcase';
+import { Blogs } from '@/components/blogs';
 import Testimonials from '@/components/testimonials';
-import AppointmentFlow from '@/components/appointment-flow';
+import { About } from '@/components/about';
+import { Enquiry } from '@/components/enquiry';
 import Footer from '@/components/footer';
+import WhatsAppFloat from '@/components/whatsapp-float';
 
 export default function Home() {
   return (
@@ -17,12 +18,14 @@ export default function Home() {
       <Navigation />
       <Hero />
       <Services />
-      <DoctorProfiles />
-      <TelemedicineSection />
+      <Treatments />
       <ProductShowcase />
-      <AppointmentFlow />
+      <Blogs />
       <Testimonials />
+      <About />
+      <Enquiry />
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 }

@@ -1,47 +1,51 @@
 'use client';
 
-import { Leaf, Stethoscope, Zap, Droplet, Brain, Flower2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Leaf, Stethoscope, Zap, Droplet, Brain, Flower2, Heart, Activity } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
-const services = [
-  {
-    icon: Leaf,
-    title: 'Ayurvedic Consultation',
-    description: 'Personalized Ayurvedic diagnosis and treatment plans',
-    color: 'bg-green-50 text-green-600'
-  },
-  {
-    icon: Stethoscope,
-    title: 'Modern Medicine',
-    description: 'Evidence-based medical consultations & diagnostics',
-    color: 'bg-blue-50 text-blue-600'
-  },
-  {
-    icon: Droplet,
-    title: 'Panchakarma Therapy',
-    description: 'Traditional detoxification and rejuvenation treatments',
-    color: 'bg-cyan-50 text-cyan-600'
-  },
-  {
-    icon: Brain,
-    title: 'Stress Management',
-    description: 'Wellness programs combining yoga and meditation',
-    color: 'bg-purple-50 text-purple-600'
-  },
-  {
-    icon: Zap,
-    title: 'Nutrition Counseling',
-    description: 'Customized dietary plans for optimal health',
-    color: 'bg-amber-50 text-amber-600'
-  },
-  {
-    icon: Flower2,
-    title: 'Wellness Spa',
-    description: 'Luxury treatments with natural ingredients',
-    color: 'bg-rose-50 text-rose-600'
-  },
-];
+interface Service {
+  _id: string
+  title: string
+  description: string
+  icon: string
+  image: string
+  features: string[]
+  order: number
+}
+
+const iconMap: any = {
+  'Leaf': Leaf,
+  'Stethoscope': Stethoscope,
+  'Zap': Zap,
+  'Droplet': Droplet,
+  'Brain': Brain,
+  'Flower2': Flower2,
+  'Heart': Heart,
+  'Activity': Activity,
+}
 
 export default function Services() {
+  const [services, setServices] = useState<Service[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchServices()
+  }, [])
+
+  const fetchServices = async () => {
+    try {
+      const response = await fetch('/api/services?isActive=true')
+      const data = await response.json()
+      setServices(data.services || [])
+    } catch (error) {
+      console.error('Failed to fetch services:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <section id="services" className="py-20 lg:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,32 +55,58 @@ export default function Services() {
             Comprehensive wellness solutions
           </h2>
           <p className="text-muted-foreground text-lg">
-            From traditional Ayurveda to modern medicine, we offer integrated care for complete wellness
+            From traditional care to modern medicine, we offer integrated care for complete wellness
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={index}
-                className="group p-8 bg-white rounded-2xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 cursor-pointer"
-              >
-                <div className={`w-12 h-12 rounded-lg ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif text-xl font-semibold mb-2 text-foreground">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service) => {
+              const Icon = iconMap[service.icon] || Heart
+              return (
+                <Link key={service._id} href={`/services/${service._id}`}>
+                  <Card
+                    className="group hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 cursor-pointer h-full"
+                  >
+                    <CardHeader>
+                      <div className="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <CardTitle className="text-xl">
+                        {service.title}
+                      </CardTitle>
+                      <CardDescription className="leading-relaxed">
+                        {service.description}
+                      </CardDescription>
+                    </CardHeader>
+                    {service.features && service.features.length > 0 && (
+                      <CardContent>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                          {service.features.slice(0, 3).map((feature, idx) => (
+                            <li key={idx} className="flex items-start">
+                              <span className="text-primary mr-2">•</span>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    )}
+                  </Card>
+                </Link>
+              )
+            })}
+          </div>
+        )}
+
+        {!loading && services.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">No services available at the moment.</p>
+          </div>
+        )}
       </div>
     </section>
   );

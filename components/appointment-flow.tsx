@@ -83,7 +83,7 @@ export default function AppointmentFlow() {
 
         {/* CTA */}
         <div className="text-center pt-12">
-          <button className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:opacity-90 transition hover:shadow-lg hover:shadow-primary/20">
+          <button className="px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-full font-medium hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300">
             Start Booking Now
           </button>
         </div>
