@@ -35,7 +35,7 @@ async function seedAtlas() {
     console.log('✅ Atlas database seeded successfully!');
     console.log('\n📝 Login Credentials:');
     console.log('Email: admin@medical.com');
-    console.log('Password: admin123');
+    console.log('Password: admin@123');
 
     await mongoose.disconnect();
     process.exit(0);
