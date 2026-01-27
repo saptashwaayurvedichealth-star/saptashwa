@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-// Use Atlas connection string
-const MONGODB_URI = 'mongodb+srv://saptashwaayurvedichealth_db_user:N5JmtX5PMLaqOUTw@cluster0.zsfcj0b.mongodb.net/medical_appointment?retryWrites=true&w=majority';
+// Use Atlas connection string (matching Vercel)
+const MONGODB_URI = 'mongodb+srv://saptashwaayurvedichealth_db_user:N5JmtX5PMLaqOUTw@cluster0.zsfcj0b.mongodb.net/?appName=Cluster0';
 
 const AdminSchema = new mongoose.Schema({
   email: String,
