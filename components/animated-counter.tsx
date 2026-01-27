@@ -68,19 +68,10 @@ export function AnimatedCounter({
   }, [isVisible, end, duration, decimals]);
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="text-center"
-    >
-      <div className="text-4xl md:text-5xl font-bold text-foreground">
-        {prefix}
-        {count.toFixed(decimals)}
-        {suffix}
-      </div>
-    </motion.div>
+    <span className="inline-block">
+      {prefix}
+      {count.toFixed(decimals)}
+      {suffix}
+    </span>
   );
 }
