@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
+import WhatsAppFloat from '@/components/whatsapp-float';
 import { Card } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 
@@ -64,7 +65,7 @@ export default function TestimonialsPage() {
       <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-white to-teal-50/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-4">
+            <h1 className="font-serif text-4xl md:text-5xl font-light bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-4">
               Patient Testimonials
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -149,6 +150,7 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
+      <WhatsAppFloat />
       <Footer />
     </main>
   );

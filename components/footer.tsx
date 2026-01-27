@@ -2,32 +2,56 @@
 
 import Link from 'next/link';
 import { Phone, Mail, MapPin, Leaf } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { staggerContainer, staggerItem } from '@/lib/animations';
 
 export default function Footer() {
   return (
     <footer className="bg-foreground text-background py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Newsletter */}
-        <div className="mb-12 pb-12 border-b border-background/20">
+        <motion.div 
+          className="mb-12 pb-12 border-b border-background/20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
           <div className="max-w-2xl">
-            <h3 className="font-serif text-2xl font-light mb-3">
+            <motion.h3 
+              className="font-serif text-2xl font-light mb-3"
+              variants={staggerItem}
+            >
               Get wellness insights delivered
-            </h3>
-            <p className="text-background/70 mb-6">
+            </motion.h3>
+            <motion.p 
+              className="text-background/70 mb-6"
+              variants={staggerItem}
+            >
               Subscribe to our newsletter for exclusive health tips and product launches
-            </p>
-            <div className="flex gap-3 flex-col sm:flex-row">
+            </motion.p>
+            <motion.div 
+              className="flex gap-3 flex-col sm:flex-row"
+              variants={staggerItem}
+            >
               <input
                 type="email"
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 bg-background text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <button className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-lg font-medium hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300 whitespace-nowrap">
+              <motion.button 
+                className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-lg font-medium whitespace-nowrap"
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 20px 40px rgba(16, 185, 129, 0.3)"
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
                 Subscribe
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Footer Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">

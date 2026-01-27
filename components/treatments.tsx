@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Clock, DollarSign, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { staggerContainer, staggerItem } from '@/lib/animations'
 
 interface Treatment {
   _id: string
@@ -42,26 +44,55 @@ export function Treatments() {
   return (
     <section id="treatments" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <span className="text-blue-600 font-semibold">Our Treatments</span>
-          <h2 className="text-4xl font-bold text-gray-900 mt-2">
+        <motion.div 
+          className="text-center mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          <motion.span 
+            className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent font-semibold"
+            variants={staggerItem}
+          >
+            Our Treatments
+          </motion.span>
+          <motion.h2 
+            className="text-4xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mt-2"
+            variants={staggerItem}
+          >
             Specialized Medical Treatments
-          </h2>
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="text-gray-600 mt-4 max-w-2xl mx-auto"
+            variants={staggerItem}
+          >
             We offer a wide range of specialized treatments using the latest medical technology 
             and techniques to ensure the best outcomes for our patients.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {loading ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
             {treatments.map((treatment) => (
-              <Link key={treatment._id} href={`/treatments/${treatment._id}`}>
-                <Card className="hover:shadow-lg transition-shadow h-full cursor-pointer group">
+              <motion.div
+                key={treatment._id}
+                variants={staggerItem}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Link href={`/treatments/${treatment._id}`}>
+                  <Card className="hover:shadow-lg transition-shadow h-full cursor-pointer group">
                   <CardHeader>
                     {treatment.image ? (
                       <div className="rounded-lg h-48 overflow-hidden mb-4">
@@ -102,8 +133,9 @@ export function Treatments() {
                   </CardFooter>
                 </Card>
               </Link>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
 
         {!loading && treatments.length === 0 && (

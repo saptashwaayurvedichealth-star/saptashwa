@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
+import WhatsAppFloat from '@/components/whatsapp-float';
 import { Card } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 
@@ -52,7 +53,7 @@ export default function BlogsPage() {
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-4">
+            <h1 className="font-serif text-4xl md:text-5xl font-light bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-4">
               Health & Wellness Blog
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -116,6 +117,7 @@ export default function BlogsPage() {
         </div>
       </section>
 
+      <WhatsAppFloat />
       <Footer />
     </main>
   );

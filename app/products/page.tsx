@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
+import WhatsAppFloat from '@/components/whatsapp-float';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -105,7 +106,7 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-4">
-              Our Products
+              <span className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Our Products</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Premium Ayurvedic wellness products for your health and vitality
@@ -339,6 +340,7 @@ export default function ProductsPage() {
         </div>
       )}
 
+      <WhatsAppFloat />
       <Footer />
     </main>
   );

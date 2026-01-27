@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
+import { MarkdownRenderer } from '@/components/markdown-renderer';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
 
 interface Blog {
@@ -127,15 +128,8 @@ export default function BlogDetailPage() {
           </header>
 
           {/* Blog Content */}
-          <div className="prose prose-lg max-w-none">
-            <div className="bg-white rounded-2xl shadow-lg p-5 md:p-8">
-              <div 
-                className="text-gray-700 leading-relaxed whitespace-pre-wrap"
-                style={{ fontSize: '1.125rem', lineHeight: '1.8' }}
-              >
-                {blog.content}
-              </div>
-            </div>
+          <div className="bg-white rounded-2xl shadow-lg p-5 md:p-8 mb-12">
+            <MarkdownRenderer content={blog.content} />
           </div>
 
           {/* Author Info */}

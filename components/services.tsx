@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Leaf, Stethoscope, Zap, Droplet, Brain, Flower2, Heart, Activity } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations';
 
 interface Service {
   _id: string
@@ -47,65 +49,150 @@ export default function Services() {
   }
 
   return (
-    <section id="services" className="py-20 lg:py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-sm font-medium text-primary mb-2 inline-block">Our Specialties</span>
-          <h2 className="font-serif text-4xl lg:text-5xl font-light mb-4 text-pretty">
-            Comprehensive wellness solutions
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            From traditional care to modern medicine, we offer integrated care for complete wellness
-          </p>
-        </div>
+    <section id="services" className="py-20 lg:py-32 bg-gradient-to-b from-white via-emerald-50/30 to-white relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-emerald-200/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-200/20 rounded-full blur-3xl"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div 
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          <motion.div
+            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 border border-emerald-200 rounded-full mb-4"
+            variants={staggerItem}
+          >
+            <Leaf className="w-4 h-4 text-emerald-600" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Our Specialties</span>
+          </motion.div>
+          <motion.h2 
+            className="font-serif text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent"
+            variants={staggerItem}
+          >
+            Comprehensive Wellness Solutions
+          </motion.h2>
+          <motion.p 
+            className="text-gray-600 text-lg leading-relaxed"
+            variants={staggerItem}
+          >
+            From traditional Ayurvedic care to modern integrative medicine, we offer holistic treatments tailored to your unique needs
+          </motion.p>
+        </motion.div>
 
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            <motion.div 
+              className="inline-flex items-center gap-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <motion.div 
+                className="rounded-full h-12 w-12 border-4 border-emerald-200 border-t-emerald-600"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              />
+              <span className="text-gray-600 font-medium">Loading services...</span>
+            </motion.div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => {
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            {services.map((service, index) => {
               const Icon = iconMap[service.icon] || Heart
               return (
-                <Link key={service._id} href={`/services/${service._id}`}>
-                  <Card
-                    className="group hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 cursor-pointer h-full"
-                  >
-                    <CardHeader>
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <CardTitle className="text-xl">
-                        {service.title}
-                      </CardTitle>
-                      <CardDescription className="leading-relaxed">
-                        {service.description}
-                      </CardDescription>
-                    </CardHeader>
-                    {service.features && service.features.length > 0 && (
-                      <CardContent>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                          {service.features.slice(0, 3).map((feature, idx) => (
-                            <li key={idx} className="flex items-start">
-                              <span className="text-primary mr-2">•</span>
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    )}
-                  </Card>
-                </Link>
+                <motion.div
+                  key={service._id}
+                  variants={staggerItem}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Link href={`/services/${service._id}`}>
+                    <Card
+                      className="group relative overflow-hidden hover:border-emerald-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/20 cursor-pointer h-full bg-white"
+                    >
+                      {/* Gradient Overlay on Hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      
+                      <CardHeader className="relative z-10">
+                        <motion.div 
+                          className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 text-white flex items-center justify-center mb-4 shadow-lg"
+                          whileHover={{ 
+                            scale: 1.15,
+                            rotate: [0, -10, 10, 0],
+                            boxShadow: "0 20px 40px rgba(16, 185, 129, 0.4)"
+                          }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          <Icon className="w-8 h-8" />
+                        </motion.div>
+                        <CardTitle className="text-2xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
+                          {service.title}
+                        </CardTitle>
+                        <CardDescription className="leading-relaxed text-gray-600 mt-2">
+                          {service.description}
+                        </CardDescription>
+                      </CardHeader>
+                      {service.features && service.features.length > 0 && (
+                        <CardContent className="relative z-10">
+                          <ul className="space-y-3 text-sm">
+                            {service.features.slice(0, 3).map((feature, idx) => (
+                              <motion.li 
+                                key={idx} 
+                                className="flex items-start text-gray-700"
+                                initial={{ opacity: 0, x: -10 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                              >
+                                <motion.span 
+                                  className="text-emerald-600 mr-3 mt-0.5 text-xl font-bold"
+                                  initial={{ scale: 0 }}
+                                  whileInView={{ scale: 1 }}
+                                  viewport={{ once: true }}
+                                  transition={{ delay: idx * 0.1 + 0.2, type: "spring" }}
+                                >
+                                  ✓
+                                </motion.span>
+                                {feature}
+                              </motion.li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                      )}
+                      
+                      {/* Arrow Icon */}
+                      <motion.div 
+                        className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                        initial={{ x: -10 }}
+                        whileHover={{ x: 0 }}
+                      >
+                        <Activity className="w-5 h-5" />
+                      </motion.div>
+                    </Card>
+                  </Link>
+                </motion.div>
               )
             })}
-          </div>
+          </motion.div>
         )}
 
         {!loading && services.length === 0 && (
-          <div className="text-center py-12">
+          <motion.div 
+            className="text-center py-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
             <p className="text-muted-foreground">No services available at the moment.</p>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>
