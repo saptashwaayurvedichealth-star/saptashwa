@@ -37,6 +37,14 @@ export async function sendEmail({ to, subject, html, text }: EmailOptions) {
   }
 
   try {
+    console.log('Sending email via SMTP:', {
+      to,
+      from: `"${process.env.SMTP_FROM_NAME}" <${process.env.SMTP_FROM}>`,
+      subject,
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+    });
+
     const info = await transporter.sendMail({
       from: `"${process.env.SMTP_FROM_NAME}" <${process.env.SMTP_FROM}>`,
       to,
@@ -45,10 +53,16 @@ export async function sendEmail({ to, subject, html, text }: EmailOptions) {
       html,
     })
 
-    console.log('Email sent:', info.messageId)
+    console.log('Email sent successfully:', info.messageId)
     return { success: true, messageId: info.messageId }
-  } catch (error) {
-    console.error('Failed to send email:', error)
+  } catch (error: any) {
+    console.error('Failed to send email:', {
+      message: error.message,
+      code: error.code,
+      command: error.command,
+      response: error.response,
+      stack: error.stack,
+    })
     return { success: false, error }
   }
 }

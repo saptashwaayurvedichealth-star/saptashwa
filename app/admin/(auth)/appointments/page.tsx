@@ -115,15 +115,31 @@ export default function AppointmentsPage() {
         body: JSON.stringify({ status }),
       })
 
+      let data: any = {}
+      try {
+        data = await res.json()
+      } catch (e) {
+        console.error('Failed to parse response:', e)
+      }
+
       if (!res.ok) {
-        const data = await res.json()
-        throw new Error(data.error || 'Failed to send email')
+        const errorMsg = data?.details || data?.error || 'Failed to send email'
+        console.error('Email API Error:', {
+          status: res.status,
+          error: data?.error,
+          details: data?.details,
+          fullResponse: data,
+        })
+        throw new Error(errorMsg)
       }
 
       alert(`Email sent (${status}) to ${appointment.email}`)
-    } catch (err) {
-      console.error('Send mail error:', err)
-      alert('Failed to send email')
+    } catch (err: any) {
+      console.error('Send mail error:', {
+        message: err.message,
+        stack: err.stack,
+      })
+      alert(`Failed to send email: ${err.message}`)
     } finally {
       setActionMenu(null)
     }
