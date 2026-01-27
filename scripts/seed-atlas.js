@@ -23,7 +23,7 @@ async function seedAtlas() {
     console.log('🗑️  Cleared existing admin data');
 
     // Create admin user
-    const hashedPassword = await bcrypt.hash('admin123', 10);
+    const hashedPassword = await bcrypt.hash('admin@123', 10);
     const admin = await Admin.create({
       email: 'admin@medical.com',
       password: hashedPassword,
