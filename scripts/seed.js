@@ -49,7 +49,7 @@ async function seedDatabase() {
     console.log('🗑️  Cleared existing data');
 
     // Create admin user
-    const hashedPassword = await bcrypt.hash('admin123', 10);
+    const hashedPassword = await bcrypt.hash('admin@123', 10);
     const admin = await Admin.create({
       email: 'admin@medical.com',
       password: hashedPassword,
@@ -128,7 +128,7 @@ async function seedDatabase() {
     console.log('✅ Database seeded successfully!');
     console.log('\n📝 Login Credentials:');
     console.log('Email: admin@medical.com');
-    console.log('Password: admin123');
+    console.log('Password: admin@123');
 
     process.exit(0);
   } catch (error) {
