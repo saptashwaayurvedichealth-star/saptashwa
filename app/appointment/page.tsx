@@ -92,10 +92,10 @@ export default function AppointmentPage() {
     <main className="min-h-screen">
       <Navigation />
 
-      <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-white to-teal-50/30">
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-white to-primary/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="font-serif text-4xl md:text-5xl font-light bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-4">
+            <h1 className="font-serif text-4xl md:text-5xl font-light bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mb-4">
               Book Your Appointment
             </h1>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -108,7 +108,7 @@ export default function AppointmentPage() {
               {/* Personal Information */}
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                  <User className="w-5 h-5 text-emerald-600" />
+                  <User className="w-5 h-5 text-primary" />
                   Personal Information
                 </h3>
                 
@@ -123,7 +123,7 @@ export default function AppointmentPage() {
                       value={formData.patientName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -138,7 +138,7 @@ export default function AppointmentPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                       placeholder="+91 XXXXX XXXXX"
                     />
                   </div>
@@ -154,7 +154,7 @@ export default function AppointmentPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -163,7 +163,7 @@ export default function AppointmentPage() {
               {/* Appointment Details */}
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-emerald-600" />
+                  <Calendar className="w-5 h-5 text-primary" />
                   Appointment Details
                 </h3>
 
@@ -176,7 +176,7 @@ export default function AppointmentPage() {
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                   >
                     <option value="">Select a service</option>
                     {services.map((service) => (
@@ -232,7 +232,7 @@ export default function AppointmentPage() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-6 text-lg font-semibold"
+                  className="w-full py-6 text-lg font-semibold bg-primary text-primary-foreground hover:opacity-90"
                 >
                   {loading ? 'Booking Appointment...' : 'Book Appointment'}
                 </Button>
@@ -243,19 +243,19 @@ export default function AppointmentPage() {
           {/* Info Cards */}
           <div className="grid md:grid-cols-3 gap-6 mt-12">
             <Card className="p-6 text-center">
-              <Calendar className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
+              <Calendar className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
               <h4 className="font-semibold text-gray-900 mb-2">Flexible Scheduling</h4>
               <p className="text-sm text-gray-600">Choose from available time slots that suit your schedule</p>
             </Card>
 
             <Card className="p-6 text-center">
-              <User className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
+              <User className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
               <h4 className="font-semibold text-gray-900 mb-2">Expert Practitioners</h4>
               <p className="text-sm text-gray-600">Consult with experienced Ayurvedic doctors</p>
             </Card>
 
             <Card className="p-6 text-center">
-              <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
+              <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
               <h4 className="font-semibold text-gray-900 mb-2">Quick Confirmation</h4>
               <p className="text-sm text-gray-600">Get instant confirmation via email and SMS</p>
             </Card>
@@ -277,7 +277,7 @@ export default function AppointmentPage() {
             <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50 p-8 text-center">
               <div className="relative inline-block">
                 <div className="absolute inset-0 bg-emerald-400 rounded-full blur-xl opacity-40 animate-pulse"></div>
-                <div className="relative bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full p-6 shadow-xl">
+                <div className="relative bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full p-6 shadow-xl">
                   <CheckCircle2 className="w-16 h-16 text-white" strokeWidth={2.5} />
                 </div>
               </div>
@@ -292,14 +292,14 @@ export default function AppointmentPage() {
               </p>
               
               <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-6">
-                <p className="text-sm text-emerald-800">
+                <p className="text-sm text-emerald-600">
                   📧 A confirmation email will be sent to <span className="font-semibold">{formData.email || 'your email'}</span>
                 </p>
               </div>
 
               <Button
                 onClick={() => setShowSuccessModal(false)}
-                className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-600 text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Got it, Thanks!
               </Button>

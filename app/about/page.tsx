@@ -76,10 +76,10 @@ export default function AboutPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-amber-50 overflow-hidden">
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-amber-50 overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-300/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-300/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/8 rounded-full blur-3xl"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -90,17 +90,17 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 border border-emerald-200 rounded-full mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <Sparkles className="w-4 h-4 text-emerald-600" />
-              <span className="text-sm font-semibold text-emerald-700">About Saptashwa</span>
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-sm font-semibold text-primary">About Saptashwa</span>
             </motion.div>
             
             <h1 className="text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Your Journey to Holistic Wellness</span>
+              <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Your Journey to Holistic Wellness</span>
             </h1>
             
             <p className="text-xl text-gray-700 leading-relaxed mb-8">
@@ -112,7 +112,7 @@ export default function AboutPage() {
                 className="flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md"
                 whileHover={{ scale: 1.05 }}
               >
-                <Users className="w-5 h-5 text-emerald-600" />
+                <Users className="w-5 h-5 text-primary" />
                 <span className="font-semibold text-gray-800">
                   <AnimatedCounter end={5000} duration={2.5} suffix="+ Patients" />
                 </span>
@@ -178,7 +178,7 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="relative h-[500px] bg-gradient-to-br from-emerald-100 via-teal-100 to-amber-100 rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative h-[500px] bg-gradient-to-br from-primary/10 via-primary/8 to-amber-100 rounded-3xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
                     animate={{ 
@@ -207,7 +207,7 @@ export default function AboutPage() {
                 whileHover={{ scale: 1.05 }}
               >
                 <div className="text-center">
-                  <p className="text-4xl font-bold text-emerald-600">
+                  <p className="text-4xl font-bold text-primary">
                     <AnimatedCounter end={100} duration={2.5} suffix="%" />
                   </p>
                   <p className="text-sm text-gray-600">Natural Products</p>
@@ -219,7 +219,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-gradient-to-b from-white to-emerald-50">
+      <section className="py-20 bg-gradient-to-b from-white to-primary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             <motion.div
@@ -230,7 +230,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center">
+                <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center">
                   <Target className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-3xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Our Mission</h3>
@@ -282,7 +282,7 @@ export default function AboutPage() {
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                className="text-center p-8 bg-gradient-to-b from-emerald-50 to-white rounded-2xl shadow-lg hover:shadow-2xl transition-all"
+                className="text-center p-8 bg-gradient-to-b from-primary/5 to-white rounded-2xl shadow-lg hover:shadow-2xl transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -290,7 +290,7 @@ export default function AboutPage() {
                 whileHover={{ y: -10 }}
               >
                 <motion.div
-                  className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl mb-6"
+                  className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-2xl mb-6"
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 >
@@ -333,11 +333,11 @@ export default function AboutPage() {
                   transition={{ duration: 0.3 }}
                 >
                   {/* Gradient Background on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   
                   {/* Year Badge */}
                   <motion.div 
-                    className="relative z-10 inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl mb-4 shadow-lg"
+                    className="relative z-10 inline-flex items-center justify-center w-16 h-16 bg-primary rounded-2xl mb-4 shadow-lg"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
@@ -345,21 +345,21 @@ export default function AboutPage() {
                   </motion.div>
                   
                   {/* Full Year */}
-                  <p className="relative z-10 text-3xl font-bold text-emerald-600 mb-3">{milestone.year}</p>
+                  <p className="relative z-10 text-3xl font-bold text-primary mb-3">{milestone.year}</p>
                   
                   {/* Event Description */}
                   <p className="relative z-10 text-gray-700 font-medium leading-relaxed">{milestone.event}</p>
                   
                   {/* Decorative Element */}
                   <motion.div 
-                    className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-emerald-200/20 to-teal-200/20 rounded-full blur-xl"
+                    className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                   />
                   
                   {/* Number Badge */}
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                    <span className="text-xs font-bold text-emerald-600">{index + 1}</span>
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span className="text-xs font-bold text-primary">{index + 1}</span>
                   </div>
                 </motion.div>
                 
@@ -372,7 +372,7 @@ export default function AboutPage() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.15 + 0.3 }}
                   >
-                    <div className="text-emerald-500 text-2xl">→</div>
+                    <div className="text-primary text-2xl">→</div>
                   </motion.div>
                 )}
               </motion.div>
@@ -409,11 +409,11 @@ export default function AboutPage() {
                   whileHover={{ y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="w-48 h-48 mx-auto bg-gradient-to-br from-emerald-100 to-teal-100 rounded-3xl flex items-center justify-center text-7xl shadow-xl group-hover:shadow-2xl transition-shadow">
+                  <div className="w-48 h-48 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center text-7xl shadow-xl group-hover:shadow-2xl transition-shadow">
                     {member.image}
                   </div>
                   <motion.div 
-                    className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-full text-sm font-semibold shadow-lg whitespace-nowrap"
+                    className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold shadow-lg whitespace-nowrap"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -423,7 +423,7 @@ export default function AboutPage() {
                   </motion.div>
                 </motion.div>
                 <h4 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h4>
-                <p className="text-emerald-600 font-medium">{member.role}</p>
+                <p className="text-emerald-500 font-medium">{member.role}</p>
               </motion.div>
             ))}
           </div>
@@ -462,7 +462,7 @@ export default function AboutPage() {
                 whileHover={{ y: -5 }}
               >
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center">
+                  <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center">
                     <item.icon className="w-7 h-7 text-white" />
                   </div>
                 </div>
@@ -477,7 +477,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-emerald-500 to-emerald-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
@@ -495,7 +495,7 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/appointment">
                 <motion.button
-                  className="px-8 py-4 bg-white text-emerald-600 rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition-shadow"
+                  className="px-8 py-4 bg-white text-emerald-500 rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition-shadow"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -504,7 +504,7 @@ export default function AboutPage() {
               </Link>
               <Link href="/services">
                 <motion.button
-                  className="px-8 py-4 border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white hover:text-emerald-600 transition-colors"
+                  className="px-8 py-4 border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white hover:text-emerald-500 transition-colors"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >

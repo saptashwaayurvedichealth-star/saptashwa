@@ -48,13 +48,13 @@ export default function Testimonials() {
           variants={staggerContainer}
         >
           <motion.span 
-            className="text-sm font-medium bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-2 inline-block"
+            className="text-sm font-medium bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mb-2 inline-block"
             variants={staggerItem}
           >
             Testimonials
           </motion.span>
           <motion.h2 
-            className="font-serif text-4xl lg:text-5xl font-light mb-4 text-pretty"
+            className="font-serif text-4xl lg:text-5xl font-light mb-4 text-pretty bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent"
             variants={staggerItem}
           >
             Trusted by thousands

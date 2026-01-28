@@ -102,11 +102,11 @@ export default function ProductsPage() {
     <main className="min-h-screen">
       <Navigation />
       
-      <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-white to-teal-50/30">
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-white to-primary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-4">
-              <span className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Our Products</span>
+              <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Our Products</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Premium Ayurvedic wellness products for your health and vitality
@@ -115,7 +115,7 @@ export default function ProductsPage() {
 
           {loading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -132,7 +132,7 @@ export default function ProductsPage() {
                   )}
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="mb-2">
-                      <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+                      <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
                         {product.category}
                       </span>
                     </div>
@@ -155,7 +155,7 @@ export default function ProductsPage() {
 
                     <div className="mt-auto pt-4 border-t">
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-2xl font-bold text-emerald-600">₹{product.price}</span>
+                        <span className="text-2xl font-bold text-primary">₹{product.price}</span>
                       </div>
                       <Button 
                         onClick={() => handleEnquiryClick(product)}
@@ -183,9 +183,9 @@ export default function ProductsPage() {
       {showEnquiryModal && selectedProduct && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 overflow-hidden animate-in fade-in zoom-in duration-300">
-            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gradient-to-r from-emerald-50 to-teal-50">
+            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gradient-to-r from-primary/5 to-primary/5">
               <div className="flex items-center gap-3">
-                <ShoppingBag className="w-6 h-6 text-emerald-600" />
+                <ShoppingBag className="w-6 h-6 text-primary" />
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">Product Enquiry</h3>
                   <p className="text-sm text-gray-600">{selectedProduct.name}</p>
@@ -201,7 +201,7 @@ export default function ProductsPage() {
 
             <form onSubmit={handleEnquirySubmit} className="p-6 space-y-5">
               {/* Product Summary */}
-              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 flex gap-4">
+              <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex gap-4">
                 {selectedProduct.image && (
                   <img 
                     src={selectedProduct.image} 
@@ -212,7 +212,7 @@ export default function ProductsPage() {
                 <div className="flex-1">
                   <h4 className="font-semibold text-gray-900">{selectedProduct.name}</h4>
                   <p className="text-sm text-gray-600 mt-1">{selectedProduct.category}</p>
-                  <p className="text-lg font-bold text-emerald-600 mt-2">₹{selectedProduct.price}</p>
+                  <p className="text-lg font-bold text-primary mt-2">₹{selectedProduct.price}</p>
                 </div>
               </div>
 
@@ -225,7 +225,7 @@ export default function ProductsPage() {
                   value={enquiryData.name}
                   onChange={(e) => setEnquiryData({ ...enquiryData, name: e.target.value })}
                   required
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -240,7 +240,7 @@ export default function ProductsPage() {
                     value={enquiryData.email}
                     onChange={(e) => setEnquiryData({ ...enquiryData, email: e.target.value })}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -254,7 +254,7 @@ export default function ProductsPage() {
                     value={enquiryData.phone}
                     onChange={(e) => setEnquiryData({ ...enquiryData, phone: e.target.value })}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
@@ -269,7 +269,7 @@ export default function ProductsPage() {
                   onChange={(e) => setEnquiryData({ ...enquiryData, message: e.target.value })}
                   required
                   rows={5}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 resize-none"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-none"
                   placeholder="Ask about pricing, availability, how to purchase, etc."
                 />
               </div>
@@ -285,7 +285,7 @@ export default function ProductsPage() {
                 <button
                   type="submit"
                   disabled={enquiryLoading}
-                  className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 disabled:opacity-50"
+                  className="flex-1 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 disabled:opacity-50"
                 >
                   {enquiryLoading ? 'Sending...' : 'Send Enquiry'}
                 </button>
@@ -306,10 +306,10 @@ export default function ProductsPage() {
               <X className="w-6 h-6" />
             </button>
 
-            <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50 p-8 text-center">
+            <div className="bg-gradient-to-br from-primary/10 via-primary/8 to-primary/10 p-8 text-center">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-emerald-400 rounded-full blur-xl opacity-40 animate-pulse"></div>
-                <div className="relative bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full p-6 shadow-xl">
+                <div className="absolute inset-0 bg-primary rounded-full blur-xl opacity-40 animate-pulse"></div>
+                <div className="relative bg-primary rounded-full p-6 shadow-xl">
                   <CheckCircle2 className="w-16 h-16 text-white" strokeWidth={2.5} />
                 </div>
               </div>
@@ -320,18 +320,18 @@ export default function ProductsPage() {
                 Enquiry Sent Successfully! 🎉
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Thank you for your interest! Our team will get back to you within <span className="font-semibold text-emerald-600">24 hours</span> with product details, pricing, and purchase information.
+                Thank you for your interest! Our team will get back to you within <span className="font-semibold text-primary">24 hours</span> with product details, pricing, and purchase information.
               </p>
               
-              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-6">
-                <p className="text-sm text-emerald-800">
+              <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-6">
+                <p className="text-sm text-primary/80">
                   📧 Confirmation email sent to <span className="font-semibold">{enquiryData.email}</span>
                 </p>
               </div>
 
               <Button
                 onClick={() => setShowSuccessModal(false)}
-                className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Got it, Thanks!
               </Button>

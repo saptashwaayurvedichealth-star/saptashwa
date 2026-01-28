@@ -62,10 +62,10 @@ export default function TestimonialsPage() {
     <main className="min-h-screen">
       <Navigation />
       
-      <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-white to-teal-50/30">
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-white to-primary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="font-serif text-4xl md:text-5xl font-light bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-4">
+            <h1 className="font-serif text-4xl md:text-5xl font-light bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mb-4">
               Patient Testimonials
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -75,7 +75,7 @@ export default function TestimonialsPage() {
 
           {loading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
           ) : (
             <div className="space-y-8">
@@ -94,7 +94,7 @@ export default function TestimonialsPage() {
                         ></iframe>
                       </div>
                     ) : (
-                      <div className="relative bg-gradient-to-br from-emerald-100 to-teal-100 aspect-video lg:aspect-auto lg:min-h-[400px] flex items-center justify-center">
+                      <div className="relative bg-gradient-to-br from-primary/10 to-primary/8 aspect-video lg:aspect-auto lg:min-h-[400px] flex items-center justify-center">
                         {testimonial.image ? (
                           <img
                             src={testimonial.image}
@@ -103,7 +103,7 @@ export default function TestimonialsPage() {
                           />
                         ) : (
                           <div className="w-32 h-32 rounded-full bg-white/80 flex items-center justify-center">
-                            <span className="text-5xl font-serif text-emerald-600">
+                            <span className="text-5xl font-serif text-primary">
                               {testimonial.patientName.charAt(0)}
                             </span>
                           </div>
@@ -117,13 +117,13 @@ export default function TestimonialsPage() {
                         <h2 className="text-3xl font-serif text-gray-900 mb-2">
                           {testimonial.patientName}
                         </h2>
-                        <p className="text-emerald-600 font-medium mb-4">
+                        <p className="text-primary font-medium mb-4">
                           Treated for {testimonial.treatment}. Complete reversal of condition..
                         </p>
                         <div className="mb-4">{renderStars(testimonial.rating)}</div>
                       </div>
 
-                      <blockquote className="text-gray-700 text-lg leading-relaxed italic border-l-4 border-emerald-500 pl-6 mb-6">
+                      <blockquote className="text-gray-700 text-lg leading-relaxed italic border-l-4 border-primary pl-6 mb-6">
                         "{testimonial.description}"
                       </blockquote>
 

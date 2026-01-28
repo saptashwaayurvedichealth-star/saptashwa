@@ -10,15 +10,15 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300",
+          "bg-primary text-primary-foreground shadow hover:shadow-xl hover:shadow-primary/30 transition-all duration-300",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
-          "border-2 border-emerald-600 text-emerald-700 bg-background shadow-sm hover:bg-emerald-50 transition-all duration-300",
+          "border-2 border-primary text-primary bg-background shadow-sm hover:bg-primary/10 transition-all duration-300",
         secondary:
-          "bg-gradient-to-r from-teal-600 to-emerald-500 text-white shadow-sm hover:shadow-lg hover:shadow-teal-500/30 transition-all duration-300",
-        ghost: "hover:bg-emerald-50 hover:text-emerald-700 transition-all duration-300",
-        link: "text-emerald-600 underline-offset-4 hover:underline hover:text-emerald-700",
+          "bg-primary text-primary-foreground shadow-sm hover:shadow-lg hover:shadow-primary/30 transition-all duration-300",
+        ghost: "hover:bg-primary/10 hover:text-primary transition-all duration-300",
+        link: "text-primary underline-offset-4 hover:underline hover:text-primary/80",
       },
       size: {
         default: "h-9 px-4 py-2",

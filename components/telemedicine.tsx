@@ -95,7 +95,7 @@ export default function TelemedicineSection() {
 
             {/* CTA */}
             <div className="pt-4">
-              <button className="px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-full font-medium hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300">
+              <button className="px-8 py-3 bg-primary text-white rounded-full font-medium hover:shadow-xl hover:shadow-primary/30 transition-all duration-300">
                 Download App
               </button>
             </div>
