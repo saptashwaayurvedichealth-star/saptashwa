@@ -140,14 +140,14 @@ export default function EnquiriesPage() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Enquiries</h1>
-        <p className="text-gray-600">Manage patient enquiries</p>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Enquiries</h1>
+        <p className="text-sm sm:text-base text-gray-600">Manage patient enquiries</p>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4 mb-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="bg-white rounded-lg border border-gray-200 p-3 sm:p-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <div>
             <label className="block text-xs font-medium text-gray-700 mb-1">Status</label>
             <select
@@ -190,89 +190,164 @@ export default function EnquiriesPage() {
         )}
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-        {filteredEnquiries.length === 0 ? (
-          <div className="text-center py-12">
-            <Mail className="mx-auto text-gray-400 mb-4" size={48} />
-            <p className="text-gray-600">No enquiries found</p>
+      {filteredEnquiries.length === 0 ? (
+        <div className="text-center py-12 bg-white rounded-lg border border-gray-200">
+          <Mail className="mx-auto text-gray-400 mb-4" size={48} />
+          <p className="text-gray-600">No enquiries found</p>
+        </div>
+      ) : (
+        <>
+          {/* Mobile Card View */}
+          <div className="block md:hidden divide-y divide-gray-200 bg-white rounded-lg border border-gray-200">
+            {filteredEnquiries.map((enquiry) => (
+              <div key={enquiry._id} className="p-4 hover:bg-gray-50">
+                <div className="flex justify-between items-start mb-3">
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm">{enquiry.name}</p>
+                    <span className={`inline-block px-2 py-1 text-xs font-medium rounded mt-1 ${
+                      enquiry.status === 'new' ? 'bg-blue-100 text-blue-800' :
+                      enquiry.status === 'read' ? 'bg-gray-100 text-gray-800' :
+                      'bg-green-100 text-green-800'
+                    }`}>
+                      {enquiry.status}
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="space-y-2 text-xs text-gray-600">
+                  <div className="flex items-center gap-2">
+                    <Mail size={12} />
+                    <span className="break-all">{enquiry.email}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Phone size={12} />
+                    <span>{enquiry.phone}</span>
+                  </div>
+                  <div>
+                    <span className="px-2 py-1 bg-blue-50 text-blue-600 rounded">{enquiry.subject}</span>
+                  </div>
+                  <div className="text-gray-700 text-sm mt-2">
+                    <p className="line-clamp-3">{enquiry.message}</p>
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    {new Date(enquiry.createdAt).toLocaleString()}
+                  </div>
+                </div>
+
+                <div className="mt-3 flex gap-2">
+                  <select
+                    value={enquiry.status}
+                    onChange={(e) => updateStatus(enquiry._id, e.target.value)}
+                    className="flex-1 px-2 py-1.5 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  >
+                    <option value="new">New</option>
+                    <option value="read">Read</option>
+                    <option value="replied">Replied</option>
+                  </select>
+                </div>
+
+                <div className="mt-3 flex gap-2">
+                  <button
+                    onClick={() => handleView(enquiry)}
+                    className="flex-1 px-3 py-2 text-xs text-gray-700 border border-gray-300 rounded hover:bg-gray-50 flex items-center justify-center gap-1"
+                  >
+                    <Eye size={14} /> View
+                  </button>
+                  <button
+                    onClick={() => openEmailModal(enquiry)}
+                    className="flex-1 px-3 py-2 text-xs text-emerald-600 border border-emerald-300 rounded hover:bg-emerald-50 flex items-center justify-center gap-1"
+                  >
+                    <Send size={14} /> Reply
+                  </button>
+                  <button
+                    onClick={() => handleDelete(enquiry._id)}
+                    className="flex-1 px-3 py-2 text-xs text-red-600 border border-red-300 rounded hover:bg-red-50 flex items-center justify-center gap-1"
+                  >
+                    <Trash2 size={14} /> Delete
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subject</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {filteredEnquiries.map((enquiry) => (
-                  <tr key={enquiry._id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      <div className="flex flex-col">
-                        <span>{enquiry.name}</span>
-                        <span className="text-xs text-gray-500">{new Date(enquiry.createdAt).toLocaleString()}</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      <div className="flex flex-col gap-1">
-                        <span className="flex items-center gap-2"><Mail size={14} />{enquiry.email}</span>
-                        <span className="flex items-center gap-2"><Phone size={14} />{enquiry.phone}</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      <span className="px-2 py-1 text-xs bg-blue-50 text-blue-600 rounded">{enquiry.subject}</span>
-                    </td>
-                    <td className="px-6 py-4 text-sm text-gray-600 max-w-xs">
-                      {enquiry.message}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      <div className="flex items-center gap-2">
-                        <span className={`px-2 py-1 text-xs font-medium rounded ${
-                          enquiry.status === 'new' ? 'bg-blue-100 text-blue-800' :
-                          enquiry.status === 'read' ? 'bg-gray-100 text-gray-800' :
-                          'bg-green-100 text-green-800'
-                        }`}>
-                          {enquiry.status}
-                        </span>
-                        <select
-                          value={enquiry.status}
-                          onChange={(e) => updateStatus(enquiry._id, e.target.value)}
-                          className="px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
-                        >
-                          <option value="new">New</option>
-                          <option value="read">Read</option>
-                          <option value="replied">Replied</option>
-                        </select>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => handleView(enquiry)}
-                          className="p-2 text-gray-600 hover:bg-gray-50 rounded"
-                          title="View"
-                        >
-                          <Eye size={16} />
-                        </button>
-                        <button
-                          onClick={() => openEmailModal(enquiry)}
-                          className="p-2 text-emerald-600 hover:bg-emerald-50 rounded"
-                          title="Send Mail"
-                        >
-                          <Send size={16} />
-                        </button>
-                        <button
-                          onClick={() => handleDelete(enquiry._id)}
-                          className="p-2 text-red-600 hover:bg-red-50 rounded"
-                          title="Delete"
-                        >
-                          <Trash2 size={16} />
-                        </button>
+
+          {/* Desktop Table View */}
+          <div className="hidden md:block bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-50 border-b border-gray-200">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subject</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {filteredEnquiries.map((enquiry) => (
+                    <tr key={enquiry._id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <div className="flex flex-col">
+                          <span>{enquiry.name}</span>
+                          <span className="text-xs text-gray-500">{new Date(enquiry.createdAt).toLocaleString()}</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        <div className="flex flex-col gap-1">
+                          <span className="flex items-center gap-2"><Mail size={14} />{enquiry.email}</span>
+                          <span className="flex items-center gap-2"><Phone size={14} />{enquiry.phone}</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        <span className="px-2 py-1 text-xs bg-blue-50 text-blue-600 rounded">{enquiry.subject}</span>
+                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-600 max-w-xs">
+                        {enquiry.message}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        <div className="flex items-center gap-2">
+                          <span className={`px-2 py-1 text-xs font-medium rounded ${
+                            enquiry.status === 'new' ? 'bg-blue-100 text-blue-800' :
+                            enquiry.status === 'read' ? 'bg-gray-100 text-gray-800' :
+                            'bg-green-100 text-green-800'
+                          }`}>
+                            {enquiry.status}
+                          </span>
+                          <select
+                            value={enquiry.status}
+                            onChange={(e) => updateStatus(enquiry._id, e.target.value)}
+                            className="px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          >
+                            <option value="new">New</option>
+                            <option value="read">Read</option>
+                            <option value="replied">Replied</option>
+                          </select>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm">
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleView(enquiry)}
+                            className="p-2 text-gray-600 hover:bg-gray-50 rounded"
+                            title="View"
+                          >
+                            <Eye size={16} />
+                          </button>
+                          <button
+                            onClick={() => openEmailModal(enquiry)}
+                            className="p-2 text-emerald-600 hover:bg-emerald-50 rounded"
+                            title="Send Mail"
+                          >
+                            <Send size={16} />
+                          </button>
+                          <button
+                            onClick={() => handleDelete(enquiry._id)}
+                            className="p-2 text-red-600 hover:bg-red-50 rounded"
+                            title="Delete"
+                          >
+                            <Trash2 size={16} />
+                          </button>
                       </div>
                     </td>
                   </tr>
@@ -280,8 +355,9 @@ export default function EnquiriesPage() {
               </tbody>
             </table>
           </div>
-        )}
-      </div>
+        </div>
+        </>
+      )}
 
       {/* Email Modal */}
       {showEmailModal && selectedEnquiry && (

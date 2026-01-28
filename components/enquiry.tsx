@@ -62,64 +62,57 @@ export function Enquiry() {
   }
 
   return (
-    <section id="enquiry" className="py-20 bg-gradient-to-br from-blue-50 to-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-primary font-semibold">Get In Touch</span>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mt-2">
+    <>
+    <section id="enquiry" className="py-12 sm:py-20 bg-gradient-to-br from-blue-50 to-white">
+      <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-4xl">
+        <div className="text-center mb-8 sm:mb-12">
+            <span className="text-sm sm:text-base text-primary font-semibold">Get In Touch</span>
+            <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mt-2">
               Have Questions? We're Here to Help
             </h2>
-            <p className="text-gray-600 mt-4">
+            <p className="text-sm sm:text-base text-gray-600 mt-3 sm:mt-4">
               Fill out the form below and our team will get back to you within 24 hours.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {/* Contact Info */}
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-2">
-                    <Phone className="text-primary" />
+            <div className="space-y-4 sm:space-y-6">
+              <Card className="p-4 sm:p-6">
+                <div className="bg-blue-100 w-10 sm:w-12 h-10 sm:h-12 rounded-full flex items-center justify-center mb-2 sm:mb-3 flex-shrink-0">
+                    <Phone className="text-primary w-5 sm:w-6 h-5 sm:h-6" />
                   </div>
-                  <CardTitle className="text-lg">Call Us</CardTitle>
-                  <CardDescription>+91 97399 91801</CardDescription>
-                </CardHeader>
+                  <h3 className="font-semibold text-sm sm:text-lg text-gray-900">Call Us</h3>
+                  <p className="text-xs sm:text-sm text-gray-600">+91 97399 91801</p>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-2">
-                    <Mail className="text-primary" />
+              <Card className="p-4 sm:p-6">
+                <div className="bg-blue-100 w-10 sm:w-12 h-10 sm:h-12 rounded-full flex items-center justify-center mb-2 sm:mb-3 flex-shrink-0">
+                    <Mail className="text-primary w-5 sm:w-6 h-5 sm:h-6" />
                   </div>
-                  <CardTitle className="text-lg">Email Us</CardTitle>
-                  <CardDescription>info@medical.com</CardDescription>
-                </CardHeader>
+                  <h3 className="font-semibold text-sm sm:text-lg text-gray-900">Email Us</h3>
+                  <p className="text-xs sm:text-sm text-gray-600">info@Sapthashwa.com</p>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-2">
-                    <MessageSquare className="text-primary" />
+              <Card className="p-4 sm:p-6">
+                <div className="bg-blue-100 w-10 sm:w-12 h-10 sm:h-12 rounded-full flex items-center justify-center mb-2 sm:mb-3 flex-shrink-0">
+                    <MessageSquare className="text-primary w-5 sm:w-6 h-5 sm:h-6" />
                   </div>
-                  <CardTitle className="text-lg">Live Chat</CardTitle>
-                  <CardDescription>Available 24/7</CardDescription>
-                </CardHeader>
+                  <h3 className="font-semibold text-sm sm:text-lg text-gray-900">Live Chat</h3>
+                  <p className="text-xs sm:text-sm text-gray-600">Available 24/7</p>
               </Card>
             </div>
 
             {/* Enquiry Form */}
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle>Send Us a Message</CardTitle>
-                <CardDescription>Fill in your details and we'll respond shortly</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Full Name *</Label>
+            <Card className="lg:col-span-2 p-4 sm:p-6">
+              <div className="mb-4 sm:mb-6">
+                <h3 className="font-semibold text-lg sm:text-xl text-gray-900">Send us a Message</h3>
+                <p className="text-xs sm:text-sm text-gray-600 mt-1">Fill in your details and we'll respond shortly</p>
+              </div>
+              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="name" className="text-xs sm:text-sm">Full Name *</Label>
                       <Input
                         id="name"
                         name="name"
@@ -127,23 +120,25 @@ export function Enquiry() {
                         value={formData.name}
                         onChange={handleChange}
                         required
+                        className="text-sm"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number *</Label>
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="phone" className="text-xs sm:text-sm">Phone Number *</Label>
                       <Input
                         id="phone"
                         name="phone"
-                        placeholder="+1 234 567 890"
+                        placeholder="+91 XXXXX XXXXX"
                         value={formData.phone}
                         onChange={handleChange}
                         required
+                        className="text-sm"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address *</Label>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="email" className="text-xs sm:text-sm">Email Address *</Label>
                     <Input
                       id="email"
                       name="email"
@@ -152,11 +147,12 @@ export function Enquiry() {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      className="text-sm"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subject *</Label>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="subject" className="text-xs sm:text-sm">Subject *</Label>
                     <Input
                       id="subject"
                       name="subject"
@@ -164,35 +160,36 @@ export function Enquiry() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
+                      className="text-sm"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="message" className="text-xs sm:text-sm">Message *</Label>
                     <Textarea
                       id="message"
                       name="message"
                       placeholder="Tell us more about your enquiry..."
-                      rows={5}
+                      rows={3}
                       value={formData.message}
                       onChange={handleChange}
                       required
+                      className="text-sm"
                     />
                   </div>
 
                   <Button
                     type="submit"
-                    className="w-full"
+                    className="w-full text-sm sm:text-base py-2 sm:py-3"
                     disabled={loading}
                   >
                     {loading ? 'Submitting...' : 'Submit Enquiry'}
                   </Button>
                 </form>
-              </CardContent>
             </Card>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Success Modal */}
       {showSuccessModal && (
@@ -241,6 +238,6 @@ export function Enquiry() {
           </div>
         </div>
       )}
-    </section>
+    </>
   )
 }

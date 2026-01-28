@@ -83,9 +83,9 @@ export default function Navigation() {
                 <img 
                   src="/logo.webp" 
                   alt="Sapthashwa Logo" 
-                  className="w-20 h-20 object-contain"
+                  className="w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 object-contain"
                 />
-                <span className="font-serif text-2xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
+                <span className="font-serif text-lg sm:text-2xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
                   Sapthashwa
                 </span>
               </motion.div>

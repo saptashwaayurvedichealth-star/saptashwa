@@ -49,34 +49,34 @@ export default function Services() {
   }
 
   return (
-    <section id="services" className="py-20 lg:py-32 bg-gradient-to-b from-white via-primary/10 to-white relative overflow-hidden">
+    <section id="services" className="py-12 sm:py-20 lg:py-32 bg-gradient-to-b from-white via-primary/10 to-white relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/8 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-56 sm:w-96 h-56 sm:h-96 bg-primary/8 rounded-full blur-3xl"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl relative z-10">
         <motion.div 
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-4"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 border border-primary/20 rounded-full mb-3 sm:mb-4"
             variants={staggerItem}
           >
-            <Leaf className="w-4 h-4 text-primary" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Our Specialties</span>
+            <Leaf className="w-4 h-4 text-primary flex-shrink-0" />
+            <span className="text-xs sm:text-sm font-semibold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Our Specialties</span>
           </motion.div>
           <motion.h2 
-            className="font-serif text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent"
+            className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent"
             variants={staggerItem}
           >
             Comprehensive Wellness Solutions
           </motion.h2>
           <motion.p 
-            className="text-gray-600 text-lg leading-relaxed"
+            className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed"
             variants={staggerItem}
           >
             From traditional Ayurvedic care to modern integrative medicine, we offer holistic treatments tailored to your unique needs
@@ -91,16 +91,16 @@ export default function Services() {
               animate={{ opacity: 1 }}
             >
               <motion.div 
-                className="rounded-full h-12 w-12 border-4 border-primary/20 border-t-primary"
+                className="rounded-full h-10 sm:h-12 w-10 sm:w-12 border-4 border-primary/20 border-t-primary"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               />
-              <span className="text-gray-600 font-medium">Loading services...</span>
+              <span className="text-sm sm:text-base text-gray-600 font-medium">Loading services...</span>
             </motion.div>
           </div>
         ) : (
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}

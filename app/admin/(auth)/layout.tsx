@@ -73,43 +73,43 @@ export default function AuthAdminLayout({
     <div className="min-h-screen bg-gray-50">
       {/* Top Navigation */}
       <nav className="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-30">
-        <div className="px-4">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-4">
+        <div className="px-3 sm:px-4">
+          <div className="flex justify-between h-14 sm:h-16 items-center">
+            <div className="flex items-center gap-2 sm:gap-4">
               {isMobile && (
                 <button
                   onClick={() => setSidebarOpen(!sidebarOpen)}
                   className="p-2 rounded-lg text-gray-600 hover:bg-gray-100"
                 >
-                  {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+                  {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
               )}
-              <h1 className="text-xl font-bold text-gray-900">Admin Panel</h1>
+              <h1 className="text-lg sm:text-xl font-bold text-gray-900">Admin Panel</h1>
             </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600">{session?.user?.name}</span>
+            <div className="flex items-center gap-2 sm:gap-4">
+              <span className="text-xs sm:text-sm text-gray-600 hidden sm:inline">{session?.user?.name}</span>
               <button
                 onClick={() => signOut({ callbackUrl: '/admin/login' })}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
+                className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
               >
-                <LogOut size={16} />
-                Logout
+                <LogOut size={14} className="sm:size-4" />
+                <span className="hidden sm:inline">Logout</span>
               </button>
             </div>
           </div>
         </div>
       </nav>
 
-      <div className="flex pt-16">
+      <div className="flex pt-14 sm:pt-16">
         {/* Sidebar */}
         <aside
           className={`${
             isMobile ? 'fixed' : 'sticky'
-          } top-16 left-0 h-[calc(100vh-4rem)] w-64 bg-white border-r border-gray-200 transition-transform duration-300 z-20 ${
+          } top-14 sm:top-16 left-0 h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] w-56 sm:w-64 bg-white border-r border-gray-200 transition-transform duration-300 z-20 ${
             isMobile && !sidebarOpen ? '-translate-x-full' : 'translate-x-0'
           }`}
         >
-          <nav className="p-4 space-y-1">
+          <nav className="p-3 sm:p-4 space-y-1 overflow-y-auto h-full">
             {menuItems.map((item) => {
               const isActive = pathname === item.href
               return (
@@ -117,14 +117,15 @@ export default function AuthAdminLayout({
                   key={item.href}
                   href={item.href}
                   onClick={() => isMobile && setSidebarOpen(false)}
-                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                     isActive
                       ? 'bg-blue-50 text-blue-700'
                       : 'text-gray-700 hover:bg-gray-100'
                   }`}
                 >
-                  <item.icon size={20} />
-                  {item.label}
+                  <item.icon size={18} className="sm:size-5 flex-shrink-0" />
+                  <span className="hidden sm:inline">{item.label}</span>
+                  <span className="sm:hidden text-xs">{item.label.slice(0, 1)}</span>
                 </Link>
               )
             })}
@@ -140,7 +141,7 @@ export default function AuthAdminLayout({
         )}
 
         {/* Main Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-3 sm:p-6 overflow-auto">
           <div className="max-w-7xl mx-auto">{children}</div>
         </main>
       </div>
