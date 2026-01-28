@@ -210,29 +210,29 @@ export default function AppointmentsPage() {
 
   return (
     <div>
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Appointments</h1>
-          <p className="text-gray-600">Manage patient appointments</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Appointments</h1>
+          <p className="text-sm sm:text-base text-gray-600">Manage patient appointments</p>
         </div>
         <button
           onClick={handleAdd}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2"
+          className="w-full sm:w-auto px-3 sm:px-4 py-2 text-sm sm:text-base bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2"
         >
-          <Calendar size={18} />
-          Add Appointment
+          <Calendar size={16} className="sm:w-[18px] sm:h-[18px]" />
+          <span>Add Appointment</span>
         </button>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4 mb-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="bg-white rounded-lg border border-gray-200 p-3 sm:p-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <div>
             <label className="block text-xs font-medium text-gray-700 mb-1">Status</label>
             <select
               value={filters.status}
               onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-2 sm:px-3 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="all">All Status</option>
               <option value="pending">Pending</option>
@@ -246,7 +246,7 @@ export default function AppointmentsPage() {
             <select
               value={filters.service}
               onChange={(e) => setFilters({ ...filters, service: e.target.value })}
-              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-2 sm:px-3 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="all">All Services</option>
               {uniqueServices.map(service => (
@@ -260,7 +260,7 @@ export default function AppointmentsPage() {
               type="date"
               value={filters.dateFrom}
               onChange={(e) => setFilters({ ...filters, dateFrom: e.target.value })}
-              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-2 sm:px-3 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           <div>
@@ -269,14 +269,14 @@ export default function AppointmentsPage() {
               type="date"
               value={filters.dateTo}
               onChange={(e) => setFilters({ ...filters, dateTo: e.target.value })}
-              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-2 sm:px-3 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
         </div>
         {(filters.status !== 'all' || filters.service !== 'all' || filters.dateFrom || filters.dateTo) && (
           <button
             onClick={() => setFilters({ status: 'all', service: 'all', dateFrom: '', dateTo: '' })}
-            className="mt-3 text-xs text-blue-600 hover:text-blue-700 font-medium"
+            className="mt-3 text-xs sm:text-sm text-blue-600 hover:text-blue-700 font-medium"
           >
             Clear Filters
           </button>
@@ -290,7 +290,99 @@ export default function AppointmentsPage() {
             <p className="text-gray-600">No appointments found</p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
+          <>
+            {/* Mobile Card View */}
+            <div className="block md:hidden divide-y divide-gray-200">
+              {filteredAppointments.map((appointment) => (
+                <div key={appointment._id} className="p-4 hover:bg-gray-50">
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <p className="font-semibold text-gray-900 text-sm">{appointment.patientName}</p>
+                      <span className={`inline-block px-2 py-1 text-xs font-medium rounded mt-1 ${getStatusColor(appointment.status)}`}>
+                        {appointment.status}
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => setActionMenu(actionMenu === appointment._id ? null : appointment._id)}
+                      className="p-2 text-gray-600 hover:bg-gray-100 rounded"
+                    >
+                      <MoreVertical size={16} />
+                    </button>
+                  </div>
+                  
+                  <div className="space-y-2 text-xs text-gray-600">
+                    <div className="flex items-center gap-2">
+                      <Mail size={12} />
+                      <span className="break-all">{appointment.email}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Phone size={12} />
+                      <span>{appointment.phone}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar size={12} />
+                      <span>{new Date(appointment.date).toLocaleDateString()}</span>
+                      <Clock size={12} className="ml-2" />
+                      <span>{appointment.time}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="px-2 py-1 text-xs bg-blue-50 text-blue-600 rounded">{appointment.service}</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 flex gap-2">
+                    <select
+                      value={appointment.status}
+                      onChange={(e) => updateStatus(appointment._id, e.target.value)}
+                      className="flex-1 px-2 py-1.5 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    >
+                      <option value="pending">Pending</option>
+                      <option value="confirmed">Confirmed</option>
+                      <option value="completed">Completed</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </div>
+
+                  {actionMenu === appointment._id && (
+                    <div className="mt-3 border-t pt-3 space-y-2">
+                      <button
+                        onClick={() => handleView(appointment)}
+                        className="w-full px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2 rounded"
+                      >
+                        <Eye size={14} /> View Details
+                      </button>
+                      <button
+                        onClick={() => handleEdit(appointment)}
+                        className="w-full px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2 rounded"
+                      >
+                        <Edit2 size={14} /> Edit
+                      </button>
+                      <button
+                        onClick={() => sendStatusMail(appointment, 'confirmed')}
+                        className="w-full px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2 rounded"
+                      >
+                        <Send size={14} /> Send Confirmation
+                      </button>
+                      <button
+                        onClick={() => sendStatusMail(appointment, 'cancelled')}
+                        className="w-full px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2 rounded"
+                      >
+                        <Send size={14} /> Send Cancellation
+                      </button>
+                      <button
+                        onClick={() => handleDelete(appointment._id)}
+                        className="w-full px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50 flex items-center gap-2 rounded"
+                      >
+                        <Trash2 size={14} /> Delete
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Table View */}
+            <div className="hidden md:block overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
@@ -393,16 +485,17 @@ export default function AppointmentsPage() {
               </tbody>
             </table>
           </div>
+          </>
         )}
       </div>
 
       {showDetail && selectedAppointment && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-xl w-full mx-4 overflow-hidden">
-            <div className="p-6 border-b border-gray-200 flex items-center justify-between">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-3 sm:p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-4 sm:p-6 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white">
               <div>
-                <h3 className="text-xl font-bold text-gray-900">Appointment Detail</h3>
-                <p className="text-sm text-gray-500">{new Date(selectedAppointment.createdAt).toLocaleString()}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">Appointment Detail</h3>
+                <p className="text-xs sm:text-sm text-gray-500">{new Date(selectedAppointment.createdAt).toLocaleString()}</p>
               </div>
               <button
                 onClick={() => {
@@ -415,8 +508,8 @@ export default function AppointmentsPage() {
               </button>
             </div>
 
-            <div className="p-6 space-y-4 text-sm text-gray-700">
-              <div className="grid grid-cols-2 gap-4">
+            <div className="p-4 sm:p-6 space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-700">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <p className="text-xs text-gray-500">Patient</p>
                   <p className="font-medium text-gray-900">{selectedAppointment.patientName}</p>
@@ -429,7 +522,7 @@ export default function AppointmentsPage() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500">Email</p>
-                  <p>{selectedAppointment.email}</p>
+                  <p className="break-all">{selectedAppointment.email}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500">Phone</p>
@@ -443,7 +536,7 @@ export default function AppointmentsPage() {
                   <p className="text-xs text-gray-500">Time</p>
                   <p>{selectedAppointment.time}</p>
                 </div>
-                <div className="col-span-2">
+                <div className="col-span-1 sm:col-span-2">
                   <p className="text-xs text-gray-500">Service</p>
                   <p>{selectedAppointment.service}</p>
                 </div>
@@ -463,10 +556,10 @@ export default function AppointmentsPage() {
       )}
 
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 overflow-hidden">
-            <div className="p-6 border-b border-gray-200 flex items-center justify-between">
-              <h3 className="text-xl font-bold text-gray-900">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-3 sm:p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-4 sm:p-6 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900">
                 {editingId ? 'Edit Appointment' : 'Add Appointment'}
               </h3>
               <button
@@ -480,74 +573,74 @@ export default function AppointmentsPage() {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3 sm:space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Patient Name *</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Patient Name *</label>
                   <input
                     type="text"
                     required
                     value={formData.patientName}
                     onChange={(e) => setFormData({ ...formData, patientName: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Email *</label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Phone *</label>
                   <input
                     type="tel"
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Service *</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Service *</label>
                   <input
                     type="text"
                     required
                     value={formData.service}
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Date *</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Date *</label>
                   <input
                     type="date"
                     required
                     value={formData.date}
                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Time *</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Time *</label>
                   <input
                     type="time"
                     required
                     value={formData.time}
                     onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Status *</label>
+                <div className="col-span-1 sm:col-span-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Status *</label>
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
                     <option value="pending">Pending</option>
                     <option value="confirmed">Confirmed</option>
@@ -555,31 +648,31 @@ export default function AppointmentsPage() {
                     <option value="cancelled">Cancelled</option>
                   </select>
                 </div>
-                <div className="col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <div className="col-span-1 sm:col-span-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Message</label>
                   <textarea
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-4">
+              <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 sm:gap-3 pt-4">
                 <button
                   type="button"
                   onClick={() => {
                     setShowForm(false)
                     setEditingId(null)
                   }}
-                  className="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200"
+                  className="w-full sm:w-auto px-4 py-2 text-sm sm:text-base text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  className="w-full sm:w-auto px-4 py-2 text-sm sm:text-base bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                 >
                   {editingId ? 'Update' : 'Create'}
                 </button>

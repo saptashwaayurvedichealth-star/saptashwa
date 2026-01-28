@@ -131,18 +131,18 @@ export default function TreatmentsPage() {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-8">
+      <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Treatments</h1>
-          <p className="text-gray-600">Manage treatment options</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Treatments</h1>
+          <p className="text-sm sm:text-base text-gray-600">Manage treatment procedures</p>
         </div>
-        {/* <button
+        <button
           onClick={() => setShowForm(true)}
-          className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base bg-blue-600 text-white rounded-lg hover:bg-blue-700"
         >
-          <Plus size={20} />
-          Add Treatment
-        </button> */}
+          <Plus size={18} className="sm:w-5 sm:h-5" />
+          <span>Add Treatment</span>
+        </button>
       </div>
 
       {showForm && (
@@ -280,77 +280,136 @@ export default function TreatmentsPage() {
           <p className="text-gray-600">No treatments found. Add your first treatment!</p>
         </div>
       ) : (
-        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {treatments.map((treatment) => (
-                  <tr key={treatment._id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <img src={treatment.image} alt={treatment.title} className="h-12 w-12 rounded object-cover" />
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="text-sm font-medium text-gray-900">{treatment.title}</div>
-                      <div className="text-sm text-gray-500 line-clamp-1">{treatment.shortDescription}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded">{treatment.category}</span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">₹{treatment.price}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{treatment.duration}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {treatment.isActive ? (
-                        <span className="px-2 py-1 text-xs bg-green-100 text-green-800 rounded flex items-center gap-1 w-fit">
-                          <Eye size={12} /> Active
-                        </span>
-                      ) : (
-                        <span className="px-2 py-1 text-xs bg-gray-100 text-gray-500 rounded flex items-center gap-1 w-fit">
-                          <EyeOff size={12} /> Inactive
-                        </span>
-                      )}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => handleView(treatment)}
-                          className="p-2 text-gray-600 hover:bg-gray-50 rounded"
-                          title="View"
-                        >
-                          <Eye size={16} />
-                        </button>
-                        <button
-                          onClick={() => handleEdit(treatment)}
-                          className="p-2 text-blue-600 hover:bg-blue-50 rounded"
-                          title="Edit"
-                        >
-                          <Edit2 size={16} />
-                        </button>
-                        <button
-                          onClick={() => handleDelete(treatment._id)}
-                          className="p-2 text-red-600 hover:bg-red-50 rounded"
-                          title="Delete"
-                        >
-                          <Trash2 size={16} />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <>
+          {/* Mobile Card View */}
+          <div className="block md:hidden divide-y divide-gray-200 bg-white rounded-lg border border-gray-200">
+            {treatments.map((treatment) => (
+              <div key={treatment._id} className="p-4 hover:bg-gray-50">
+                <div className="flex gap-3 mb-3">
+                  <img src={treatment.image} alt={treatment.title} className="h-16 w-16 rounded object-cover" />
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-gray-900 text-sm truncate">{treatment.title}</p>
+                    <p className="text-xs text-gray-500 line-clamp-2 mt-1">{treatment.shortDescription}</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-2 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded">{treatment.category}</span>
+                    {treatment.isActive ? (
+                      <span className="px-2 py-1 bg-green-100 text-green-800 rounded inline-flex items-center gap-1">
+                        <Eye size={12} /> Active
+                      </span>
+                    ) : (
+                      <span className="px-2 py-1 bg-gray-100 text-gray-500 rounded inline-flex items-center gap-1">
+                        <EyeOff size={12} /> Inactive
+                      </span>
+                    )}
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold text-gray-900 text-sm">₹{treatment.price}</span>
+                    <span className="text-gray-600">{treatment.duration}</span>
+                  </div>
+                </div>
+
+                <div className="mt-3 flex gap-2">
+                  <button
+                    onClick={() => handleView(treatment)}
+                    className="flex-1 px-3 py-2 text-xs text-gray-700 border border-gray-300 rounded hover:bg-gray-50 flex items-center justify-center gap-1"
+                  >
+                    <Eye size={14} /> View
+                  </button>
+                  <button
+                    onClick={() => handleEdit(treatment)}
+                    className="flex-1 px-3 py-2 text-xs text-blue-600 border border-blue-300 rounded hover:bg-blue-50 flex items-center justify-center gap-1"
+                  >
+                    <Edit2 size={14} /> Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(treatment._id)}
+                    className="flex-1 px-3 py-2 text-xs text-red-600 border border-red-300 rounded hover:bg-red-50 flex items-center justify-center gap-1"
+                  >
+                    <Trash2 size={14} /> Delete
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
+
+          {/* Desktop Table View */}
+          <div className="hidden md:block bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-50 border-b border-gray-200">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {treatments.map((treatment) => (
+                    <tr key={treatment._id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <img src={treatment.image} alt={treatment.title} className="h-12 w-12 rounded object-cover" />
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="text-sm font-medium text-gray-900">{treatment.title}</div>
+                        <div className="text-sm text-gray-500 line-clamp-1">{treatment.shortDescription}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span className="px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded">{treatment.category}</span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">₹{treatment.price}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{treatment.duration}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {treatment.isActive ? (
+                          <span className="px-2 py-1 text-xs bg-green-100 text-green-800 rounded flex items-center gap-1 w-fit">
+                            <Eye size={12} /> Active
+                          </span>
+                        ) : (
+                          <span className="px-2 py-1 text-xs bg-gray-100 text-gray-500 rounded flex items-center gap-1 w-fit">
+                            <EyeOff size={12} /> Inactive
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm">
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleView(treatment)}
+                            className="p-2 text-gray-600 hover:bg-gray-50 rounded"
+                            title="View"
+                          >
+                            <Eye size={16} />
+                          </button>
+                          <button
+                            onClick={() => handleEdit(treatment)}
+                            className="p-2 text-blue-600 hover:bg-blue-50 rounded"
+                            title="Edit"
+                          >
+                            <Edit2 size={16} />
+                          </button>
+                          <button
+                            onClick={() => handleDelete(treatment._id)}
+                            className="p-2 text-red-600 hover:bg-red-50 rounded"
+                            title="Delete"
+                          >
+                            <Trash2 size={16} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </>
       )}
 
       {showDetail && selectedTreatment && (

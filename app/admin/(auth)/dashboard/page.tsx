@@ -106,47 +106,47 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-        <p className="text-gray-600">Welcome to Saptashwa Ayurvedic Health Admin Panel</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Dashboard</h1>
+        <p className="text-sm sm:text-base text-gray-600">Welcome to Saptashwa Ayurvedic Health Admin Panel</p>
       </div>
 
       {/* Main Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Link href="/admin/appointments" className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white hover:shadow-xl transition-all transform hover:-translate-y-1">
-          <div className="flex items-center justify-between mb-4">
-            <Calendar size={32} className="opacity-80" />
-            <span className="text-4xl font-bold">{stats.appointments.total}</span>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+        <Link href="/admin/appointments" className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-4 sm:p-6 text-white hover:shadow-xl transition-all transform hover:-translate-y-1">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <Calendar size={24} className="sm:size-8 opacity-80" />
+            <span className="text-3xl sm:text-4xl font-bold">{stats.appointments.total}</span>
           </div>
-          <h3 className="text-lg font-semibold mb-1">Appointments</h3>
-          <div className="flex gap-2 text-xs opacity-90">
+          <h3 className="text-base sm:text-lg font-semibold mb-1">Appointments</h3>
+          <div className="flex gap-2 text-xs opacity-90 flex-wrap">
             <span>Pending: {stats.appointments.pending}</span>
-            <span>•</span>
-            <span>Confirmed: {stats.appointments.confirmed}</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="hidden sm:inline">Confirmed: {stats.appointments.confirmed}</span>
           </div>
         </Link>
 
-        <Link href="/admin/enquiries" className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl p-6 text-white hover:shadow-xl transition-all transform hover:-translate-y-1">
-          <div className="flex items-center justify-between mb-4">
-            <Mail size={32} className="opacity-80" />
-            <span className="text-4xl font-bold">{stats.enquiries.total}</span>
+        <Link href="/admin/enquiries" className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl p-4 sm:p-6 text-white hover:shadow-xl transition-all transform hover:-translate-y-1">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <Mail size={24} className="sm:size-8 opacity-80" />
+            <span className="text-3xl sm:text-4xl font-bold">{stats.enquiries.total}</span>
           </div>
-          <h3 className="text-lg font-semibold mb-1">Enquiries</h3>
-          <div className="flex gap-2 text-xs opacity-90">
+          <h3 className="text-base sm:text-lg font-semibold mb-1">Enquiries</h3>
+          <div className="flex gap-2 text-xs opacity-90 flex-wrap">
             <span>New: {stats.enquiries.new}</span>
-            <span>•</span>
-            <span>Replied: {stats.enquiries.replied}</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="hidden sm:inline">Replied: {stats.enquiries.replied}</span>
           </div>
         </Link>
 
-        <Link href="/admin/treatments" className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-6 text-white hover:shadow-xl transition-all transform hover:-translate-y-1">
-          <div className="flex items-center justify-between mb-4">
-            <Briefcase size={32} className="opacity-80" />
-            <span className="text-4xl font-bold">{stats.treatments}</span>
+        <Link href="/admin/treatments" className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-4 sm:p-6 text-white hover:shadow-xl transition-all transform hover:-translate-y-1">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <Briefcase size={24} className="sm:size-8 opacity-80" />
+            <span className="text-3xl sm:text-4xl font-bold">{stats.treatments}</span>
           </div>
-          <h3 className="text-lg font-semibold mb-1">Treatments</h3>
+          <h3 className="text-base sm:text-lg font-semibold mb-1">Treatments</h3>
           <p className="text-xs opacity-90">Ayurvedic treatments</p>
         </Link>
 

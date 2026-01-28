@@ -22,10 +22,10 @@ export default function Home() {
       <Hero />
       
       {/* Stats Section */}
-      <section className="py-16 bg-primary relative overflow-hidden">
+      <section className="py-10 sm:py-16 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl relative z-10">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             <motion.div 
               className="text-center text-white"
               initial={{ opacity: 0, y: 20 }}
@@ -34,16 +34,16 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <motion.div
-                className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4"
+                className="inline-flex items-center justify-center w-12 sm:w-16 h-12 sm:h-16 bg-white/20 rounded-full mb-2 sm:mb-4"
                 whileHover={{ scale: 1.1, rotate: 360 }}
                 transition={{ duration: 0.5 }}
               >
-                <Users className="w-8 h-8" />
+                <Users className="w-6 sm:w-8 h-6 sm:h-8" />
               </motion.div>
-              <h3 className="text-4xl font-bold mb-2">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">
                 <AnimatedCounter end={5000} duration={2.5} suffix="+" />
               </h3>
-              <p className="text-white/90">Happy Patients</p>
+              <p className="text-xs sm:text-base text-white/90">Happy Patients</p>
             </motion.div>
             <motion.div 
               className="text-center text-white"
@@ -53,16 +53,16 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <motion.div
-                className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4"
+                className="inline-flex items-center justify-center w-12 sm:w-16 h-12 sm:h-16 bg-white/20 rounded-full mb-2 sm:mb-4"
                 whileHover={{ scale: 1.1, rotate: 360 }}
                 transition={{ duration: 0.5 }}
               >
-                <Award className="w-8 h-8" />
+                <Award className="w-6 sm:w-8 h-6 sm:h-8" />
               </motion.div>
-              <h3 className="text-4xl font-bold mb-2">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">
                 <AnimatedCounter end={15} duration={2.5} suffix="+" />
               </h3>
-              <p className="text-white/90">Years Experience</p>
+              <p className="text-xs sm:text-base text-white/90">Years Experience</p>
             </motion.div>
             <motion.div 
               className="text-center text-white"
@@ -72,11 +72,11 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <motion.div
-                className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4"
+                className="inline-flex items-center justify-center w-12 sm:w-16 h-12 sm:h-16 bg-white/20 rounded-full mb-2 sm:mb-4"
                 whileHover={{ scale: 1.1, rotate: 360 }}
                 transition={{ duration: 0.5 }}
               >
-                <Star className="w-8 h-8" />
+                <Star className="w-6 sm:w-8 h-6 sm:h-8" />
               </motion.div>
               <h3 className="text-4xl font-bold mb-2">
                 <AnimatedCounter end={4.9} decimals={1} duration={2.5} suffix="/5" />

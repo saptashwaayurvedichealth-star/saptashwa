@@ -242,43 +242,43 @@ export default function ProductShowcase() {
 
       {/* Enquiry Modal */}
       {showEnquiryModal && selectedProduct && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 overflow-hidden animate-in fade-in zoom-in duration-300">
-            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gradient-to-r from-primary/5 to-primary/5">
-              <div className="flex items-center gap-3">
-                <ShoppingBag className="w-6 h-6 text-primary" />
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900">Product Enquiry</h3>
-                  <p className="text-sm text-gray-600">{selectedProduct.name}</p>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-3 sm:p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-auto overflow-hidden animate-in fade-in zoom-in duration-300 max-h-[90vh] overflow-y-auto">
+            <div className="p-4 sm:p-6 border-b border-gray-200 flex justify-between items-center bg-gradient-to-r from-primary/5 to-primary/5 sticky top-0">
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                <ShoppingBag className="w-5 sm:w-6 h-5 sm:h-6 text-primary flex-shrink-0" />
+                <div className="min-w-0">
+                  <h3 className="text-base sm:text-xl font-bold text-gray-900 truncate">Product Enquiry</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 truncate">{selectedProduct.name}</p>
                 </div>
               </div>
               <button
                 onClick={() => setShowEnquiryModal(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-1"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 sm:w-6 h-5 sm:h-6" />
               </button>
             </div>
 
-            <form onSubmit={handleEnquirySubmit} className="p-6 space-y-5">
+            <form onSubmit={handleEnquirySubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-5">
               {/* Product Summary */}
-              <div className="bg-gray-50 border border-primary/10 rounded-lg p-4 flex gap-4">
+              <div className="bg-gray-50 border border-primary/10 rounded-lg p-3 sm:p-4 flex gap-3 sm:gap-4">
                 {selectedProduct.image && (
                   <img 
                     src={selectedProduct.image} 
                     alt={selectedProduct.name}
-                    className="w-20 h-20 object-cover rounded-lg"
+                    className="w-16 sm:w-20 h-16 sm:h-20 object-cover rounded-lg flex-shrink-0"
                   />
                 )}
-                <div className="flex-1">
-                  <h4 className="font-semibold text-gray-900">{selectedProduct.name}</h4>
-                  <p className="text-sm text-gray-600 mt-1">{selectedProduct.category}</p>
-                  <p className="text-lg font-bold text-primary mt-2">${selectedProduct.price}</p>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-semibold text-sm sm:text-base text-gray-900 truncate">{selectedProduct.name}</h4>
+                  <p className="text-xs sm:text-sm text-gray-600 mt-1 truncate">{selectedProduct.category}</p>
+                  <p className="text-base sm:text-lg font-bold text-primary mt-2">₹{selectedProduct.price}</p>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                   Your Name *
                 </label>
                 <input
@@ -286,14 +286,14 @@ export default function ProductShowcase() {
                   value={enquiryData.name}
                   onChange={(e) => setEnquiryData({ ...enquiryData, name: e.target.value })}
                   required
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                   placeholder="Enter your full name"
                 />
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     Email Address *
                   </label>
                   <input
@@ -301,13 +301,13 @@ export default function ProductShowcase() {
                     value={enquiryData.email}
                     onChange={(e) => setEnquiryData({ ...enquiryData, email: e.target.value })}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                     placeholder="your.email@example.com"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     Phone Number *
                   </label>
                   <input
@@ -315,38 +315,38 @@ export default function ProductShowcase() {
                     value={enquiryData.phone}
                     onChange={(e) => setEnquiryData({ ...enquiryData, phone: e.target.value })}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                   Your Message *
                 </label>
                 <textarea
                   value={enquiryData.message}
                   onChange={(e) => setEnquiryData({ ...enquiryData, message: e.target.value })}
                   required
-                  rows={5}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-none"
+                  rows={3}
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-none"
                   placeholder="Ask about pricing, availability, how to purchase, etc."
                 />
               </div>
 
-              <div className="flex gap-3 pt-2">
+              <div className="flex gap-2 sm:gap-3 pt-2">
                 <button
                   type="button"
                   onClick={() => setShowEnquiryModal(false)}
-                  className="flex-1 px-6 py-3 border-2 border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-100 transition"
+                  className="flex-1 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base border-2 border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-100 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={enquiryLoading}
-                  className="flex-1 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 disabled:opacity-50"
+                  className="flex-1 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-primary text-white rounded-lg font-medium hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 disabled:opacity-50"
                 >
                   {enquiryLoading ? 'Sending...' : 'Send Enquiry'}
                 </button>

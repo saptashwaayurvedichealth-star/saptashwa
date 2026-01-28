@@ -48,8 +48,8 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 py-12 lg:py-20">
+      <div className="relative w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12 py-8 sm:py-12 lg:py-20">
           {/* Left Content */}
           <motion.div 
             className="flex-1 space-y-8 max-w-2xl"
@@ -71,7 +71,7 @@ export default function Hero() {
 
             {/* Main Heading */}
             <motion.h1 
-              className="font-serif text-4xl lg:text-5xl font-bold leading-tight"
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -84,7 +84,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.p 
-              className="text-lg lg:text-xl text-gray-600 leading-relaxed"
+              className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -122,7 +122,7 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 w-full sm:w-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
@@ -197,7 +197,7 @@ export default function Hero() {
 
           {/* Right Side - Modern Card Design */}
           <motion.div 
-            className="flex-1 relative w-full max-w-2xl"
+            className="flex-1 relative w-full max-w-2xl hidden lg:block"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -217,7 +217,7 @@ export default function Hero() {
                 }}
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="bg-gradient-to-br from-primary/5 to-primary/5 backdrop-blur-sm rounded-[2.4rem] p-12 h-[550px] flex flex-col items-center justify-center relative overflow-hidden">
+                <div className="bg-gradient-to-br from-primary/5 to-primary/5 backdrop-blur-sm rounded-[2.4rem] p-8 sm:p-12 h-[350px] sm:h-[450px] lg:h-[550px] flex flex-col items-center justify-center relative overflow-hidden">
                   {/* Decorative Elements */}
                   <motion.div
                     className="absolute top-10 right-10 w-32 h-32 bg-primary/15 rounded-full blur-2xl"
