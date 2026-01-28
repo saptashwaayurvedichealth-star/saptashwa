@@ -45,7 +45,7 @@ export default function TreatmentsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-4">
-              <span className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Our Treatments</span>
+              <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Our Treatments</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Comprehensive wellness treatments combining traditional wisdom with modern science

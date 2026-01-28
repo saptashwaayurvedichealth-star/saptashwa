@@ -5,10 +5,10 @@ import { motion } from 'framer-motion'
 
 export function About() {
   return (
-    <section id="about" className="py-20 lg:py-32 bg-gradient-to-b from-white to-emerald-50/50 relative overflow-hidden">
+    <section id="about" className="py-20 lg:py-32 bg-gradient-to-b from-white to-primary/5 relative overflow-hidden">
       {/* Background Decorations */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-emerald-200/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-200/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/8 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -23,7 +23,7 @@ export function About() {
             <div className="relative">
               {/* Main Card */}
               <motion.div 
-                className="bg-gradient-to-br from-emerald-100 via-teal-100 to-amber-100 rounded-3xl h-[500px] flex items-center justify-center shadow-2xl overflow-hidden"
+                className="bg-gradient-to-br from-primary/10 via-primary/8 to-amber-100 rounded-3xl h-[500px] flex items-center justify-center shadow-2xl overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >

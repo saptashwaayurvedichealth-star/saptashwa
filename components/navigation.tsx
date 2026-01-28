@@ -85,7 +85,7 @@ export default function Navigation() {
                   alt="Sapthashwa Logo" 
                   className="w-20 h-20 object-contain"
                 />
-                <span className="font-serif text-2xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+                <span className="font-serif text-2xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
                   Sapthashwa
                 </span>
               </motion.div>

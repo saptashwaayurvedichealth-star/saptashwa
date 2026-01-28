@@ -22,7 +22,7 @@ export default function Home() {
       <Hero />
       
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 relative overflow-hidden">
+      <section className="py-16 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -109,7 +109,7 @@ export default function Home() {
       <Services />
       
       {/* Feature Highlight Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-emerald-50">
+      <section className="py-20 bg-gradient-to-b from-white to-primary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <motion.div
@@ -121,7 +121,7 @@ export default function Home() {
               whileHover={{ y: -5 }}
             >
               <motion.div
-                className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full mb-6"
+                className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-6"
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
               >

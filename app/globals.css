@@ -219,3 +219,18 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.45 0.15 160);
 }
+
+/* Map emerald and teal colors to primary */
+:root {
+  /* Emerald color overrides */
+  --emerald-400: var(--primary);
+  --emerald-500: var(--primary);
+  --emerald-600: var(--primary);
+  --emerald-700: var(--primary);
+  --emerald-800: var(--primary);
+  /* Teal color overrides */
+  --teal-400: var(--primary);
+  --teal-500: var(--primary);
+  --teal-600: var(--primary);
+  --teal-700: var(--primary);
+}

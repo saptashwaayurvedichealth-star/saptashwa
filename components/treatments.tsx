@@ -52,13 +52,13 @@ export function Treatments() {
           variants={staggerContainer}
         >
           <motion.span 
-            className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent font-semibold"
+            className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent font-semibold"
             variants={staggerItem}
           >
             Our Treatments
           </motion.span>
           <motion.h2 
-            className="text-4xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mt-2"
+            className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent mt-2"
             variants={staggerItem}
           >
             Specialized Medical Treatments

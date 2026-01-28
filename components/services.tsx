@@ -49,10 +49,10 @@ export default function Services() {
   }
 
   return (
-    <section id="services" className="py-20 lg:py-32 bg-gradient-to-b from-white via-emerald-50/30 to-white relative overflow-hidden">
+    <section id="services" className="py-20 lg:py-32 bg-gradient-to-b from-white via-primary/10 to-white relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-emerald-200/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-200/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/8 rounded-full blur-3xl"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
@@ -63,14 +63,14 @@ export default function Services() {
           variants={staggerContainer}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 border border-emerald-200 rounded-full mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-4"
             variants={staggerItem}
           >
-            <Leaf className="w-4 h-4 text-emerald-600" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Our Specialties</span>
+            <Leaf className="w-4 h-4 text-primary" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Our Specialties</span>
           </motion.div>
           <motion.h2 
-            className="font-serif text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent"
+            className="font-serif text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent"
             variants={staggerItem}
           >
             Comprehensive Wellness Solutions
@@ -91,7 +91,7 @@ export default function Services() {
               animate={{ opacity: 1 }}
             >
               <motion.div 
-                className="rounded-full h-12 w-12 border-4 border-emerald-200 border-t-emerald-600"
+                className="rounded-full h-12 w-12 border-4 border-primary/20 border-t-primary"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               />
@@ -117,24 +117,24 @@ export default function Services() {
                 >
                   <Link href={`/services/${service._id}`}>
                     <Card
-                      className="group relative overflow-hidden hover:border-emerald-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/20 cursor-pointer h-full bg-white"
+                      className="group relative overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer h-full bg-white"
                     >
                       {/* Gradient Overlay on Hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       
                       <CardHeader className="relative z-10">
                         <motion.div 
-                          className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 text-white flex items-center justify-center mb-4 shadow-lg"
+                          className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-white flex items-center justify-center mb-4 shadow-lg"
                           whileHover={{ 
                             scale: 1.15,
                             rotate: [0, -10, 10, 0],
-                            boxShadow: "0 20px 40px rgba(16, 185, 129, 0.4)"
+                            boxShadow: "0 20px 40px rgba(var(--primary-rgb), 0.4)"
                           }}
                           transition={{ duration: 0.4 }}
                         >
                           <Icon className="w-8 h-8" />
                         </motion.div>
-                        <CardTitle className="text-2xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
+                        <CardTitle className="text-2xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
                           {service.title}
                         </CardTitle>
                         <CardDescription className="leading-relaxed text-gray-600 mt-2">
@@ -154,7 +154,7 @@ export default function Services() {
                                 transition={{ delay: idx * 0.1 }}
                               >
                                 <motion.span 
-                                  className="text-emerald-600 mr-3 mt-0.5 text-xl font-bold"
+                                  className="text-primary mr-3 mt-0.5 text-xl font-bold"
                                   initial={{ scale: 0 }}
                                   whileInView={{ scale: 1 }}
                                   viewport={{ once: true }}
@@ -171,7 +171,7 @@ export default function Services() {
                       
                       {/* Arrow Icon */}
                       <motion.div 
-                        className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
                         initial={{ x: -10 }}
                         whileHover={{ x: 0 }}
                       >

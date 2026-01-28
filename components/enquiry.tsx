@@ -67,7 +67,7 @@ export function Enquiry() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-primary font-semibold">Get In Touch</span>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mt-2">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mt-2">
               Have Questions? We're Here to Help
             </h2>
             <p className="text-gray-600 mt-4">
@@ -207,10 +207,10 @@ export function Enquiry() {
             </button>
 
             {/* Success Animation */}
-            <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50 p-8 text-center">
+            <div className="bg-gradient-to-br from-primary/10 via-primary/8 to-primary/10 p-8 text-center">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-emerald-400 rounded-full blur-xl opacity-40 animate-pulse"></div>
-                <div className="relative bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full p-6 shadow-xl">
+                <div className="absolute inset-0 bg-primary rounded-full blur-xl opacity-40 animate-pulse"></div>
+                <div className="relative bg-primary rounded-full p-6 shadow-xl">
                   <CheckCircle2 className="w-16 h-16 text-white" strokeWidth={2.5} />
                 </div>
               </div>
@@ -222,18 +222,18 @@ export function Enquiry() {
                 Enquiry Submitted Successfully! 🎉
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Thank you for reaching out to us. Our team will review your message and get back to you within <span className="font-semibold text-emerald-600">24-48 hours</span>.
+                Thank you for reaching out to us. Our team will review your message and get back to you within <span className="font-semibold text-primary">24-48 hours</span>.
               </p>
               
-              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-6">
-                <p className="text-sm text-emerald-800">
+              <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-6">
+                <p className="text-sm text-primary/80">
                   📧 A confirmation email will be sent to <span className="font-semibold">{formData.email || 'your email'}</span>
                 </p>
               </div>
 
               <Button
                 onClick={() => setShowSuccessModal(false)}
-                className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Got it, Thanks!
               </Button>

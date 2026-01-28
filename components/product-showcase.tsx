@@ -127,7 +127,7 @@ export default function ProductShowcase() {
             Premium Wellness
           </motion.span>
           <motion.h2 
-            className="font-serif text-4xl lg:text-5xl font-light mb-4 text-pretty"
+            className="font-serif text-4xl lg:text-5xl font-light mb-4 text-pretty bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent"
             variants={staggerItem}
           >
             Curated wellness products
@@ -244,9 +244,9 @@ export default function ProductShowcase() {
       {showEnquiryModal && selectedProduct && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 overflow-hidden animate-in fade-in zoom-in duration-300">
-            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gradient-to-r from-emerald-50 to-teal-50">
+            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gradient-to-r from-primary/5 to-primary/5">
               <div className="flex items-center gap-3">
-                <ShoppingBag className="w-6 h-6 text-emerald-600" />
+                <ShoppingBag className="w-6 h-6 text-primary" />
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">Product Enquiry</h3>
                   <p className="text-sm text-gray-600">{selectedProduct.name}</p>
@@ -262,7 +262,7 @@ export default function ProductShowcase() {
 
             <form onSubmit={handleEnquirySubmit} className="p-6 space-y-5">
               {/* Product Summary */}
-              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 flex gap-4">
+              <div className="bg-gray-50 border border-primary/10 rounded-lg p-4 flex gap-4">
                 {selectedProduct.image && (
                   <img 
                     src={selectedProduct.image} 
@@ -273,7 +273,7 @@ export default function ProductShowcase() {
                 <div className="flex-1">
                   <h4 className="font-semibold text-gray-900">{selectedProduct.name}</h4>
                   <p className="text-sm text-gray-600 mt-1">{selectedProduct.category}</p>
-                  <p className="text-lg font-bold text-emerald-600 mt-2">${selectedProduct.price}</p>
+                  <p className="text-lg font-bold text-primary mt-2">${selectedProduct.price}</p>
                 </div>
               </div>
 
@@ -286,7 +286,7 @@ export default function ProductShowcase() {
                   value={enquiryData.name}
                   onChange={(e) => setEnquiryData({ ...enquiryData, name: e.target.value })}
                   required
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -301,7 +301,7 @@ export default function ProductShowcase() {
                     value={enquiryData.email}
                     onChange={(e) => setEnquiryData({ ...enquiryData, email: e.target.value })}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -315,7 +315,7 @@ export default function ProductShowcase() {
                     value={enquiryData.phone}
                     onChange={(e) => setEnquiryData({ ...enquiryData, phone: e.target.value })}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
@@ -330,7 +330,7 @@ export default function ProductShowcase() {
                   onChange={(e) => setEnquiryData({ ...enquiryData, message: e.target.value })}
                   required
                   rows={5}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 resize-none"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-none"
                   placeholder="Ask about pricing, availability, how to purchase, etc."
                 />
               </div>
@@ -346,7 +346,7 @@ export default function ProductShowcase() {
                 <button
                   type="submit"
                   disabled={enquiryLoading}
-                  className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 disabled:opacity-50"
+                  className="flex-1 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 disabled:opacity-50"
                 >
                   {enquiryLoading ? 'Sending...' : 'Send Enquiry'}
                 </button>
@@ -370,7 +370,7 @@ export default function ProductShowcase() {
               </p>
               <button
                 onClick={() => setShowSuccessModal(false)}
-                className="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-lg font-medium hover:shadow-lg transition"
+                className="w-full px-6 py-3 bg-primary text-white rounded-lg font-medium hover:shadow-lg transition"
               >
                 Close
               </button>

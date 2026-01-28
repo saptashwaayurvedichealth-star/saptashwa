@@ -8,7 +8,7 @@ import { AnimatedCounter } from '@/components/animated-counter';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-50 via-emerald-50/30 to-teal-50/30 overflow-hidden pt-20">
+    <section className="relative min-h-screen bg-gradient-to-br from-gray-50 via-primary/10 to-primary/5 overflow-hidden pt-20">
       {/* Background Image with Opacity */}
       <div className="absolute inset-0">
         <div 
@@ -22,7 +22,7 @@ export default function Hero() {
       {/* Subtle Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden opacity-40">
         <motion.div 
-          className="absolute top-20 right-10 w-[500px] h-[500px] bg-emerald-200/20 rounded-full blur-3xl"
+          className="absolute top-20 right-10 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.15, 1],
             opacity: [0.2, 0.3, 0.2]
@@ -34,7 +34,7 @@ export default function Hero() {
           }}
         />
         <motion.div 
-          className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-200/15 rounded-full blur-3xl"
+          className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/8 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.2, 1],
             opacity: [0.15, 0.25, 0.15]
@@ -59,14 +59,14 @@ export default function Hero() {
           >
             {/* Premium Badge */}
             <motion.div 
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-emerald-500/20 rounded-full shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-primary/20 rounded-full shadow-sm"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(16, 185, 129, 0.2)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(var(--primary-rgb), 0.2)" }}
             >
-              <Sparkles className="w-4 h-4 text-emerald-600" />
-              <span className="text-sm font-semibold text-emerald-700">Premium Ayurvedic Wellness Platform</span>
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-sm font-semibold text-primary">Premium Ayurvedic Wellness Platform</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -76,9 +76,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <span className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Ancient Wisdom,</span>
+              <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Ancient Wisdom,</span>
               <br />
-              <span className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
                 Modern Healing
               </span>
             </motion.h1>
@@ -112,8 +112,8 @@ export default function Hero() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 + index * 0.1 }}
                 >
-                  <div className="flex-shrink-0 w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center">
-                    <item.icon className="w-4 h-4 text-emerald-600" />
+                  <div className="flex-shrink-0 w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center">
+                    <item.icon className="w-4 h-4 text-primary" />
                   </div>
                   <span className="text-base font-medium text-gray-700">{item.text}</span>
                 </motion.div>
@@ -129,11 +129,11 @@ export default function Hero() {
             >
               <Link href="/appointment" className="w-full sm:w-auto">
                 <motion.button 
-                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-2xl font-semibold shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2 group"
+                  className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold shadow-lg shadow-primary/30 flex items-center justify-center gap-2 group hover:opacity-90 transition-opacity"
                   whileHover={{ 
                     scale: 1.03,
                     y: -2,
-                    boxShadow: "0 25px 50px -12px rgba(16, 185, 129, 0.5)"
+                    boxShadow: "0 25px 50px -12px rgba(var(--primary-rgb), 0.5)"
                   }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.2 }}
@@ -144,7 +144,7 @@ export default function Hero() {
               </Link>
               <Link href="/services" className="w-full sm:w-auto">
                 <motion.button 
-                  className="w-full sm:w-auto px-8 py-4 border-2 border-emerald-600 text-emerald-700 bg-white rounded-2xl font-semibold hover:bg-emerald-50 transition-colors"
+                  className="w-full sm:w-auto px-8 py-4 border-2 border-primary text-primary bg-white rounded-2xl font-semibold hover:bg-primary/5 transition-colors"
                   whileHover={{ 
                     scale: 1.03,
                     y: -2
@@ -169,8 +169,8 @@ export default function Hero() {
                 className="flex items-center gap-3 group"
                 whileHover={{ x: 3 }}
               >
-                <div className="p-3 bg-white border border-gray-200 rounded-xl group-hover:border-emerald-500 group-hover:bg-emerald-50 transition-all shadow-sm">
-                  <Phone className="w-5 h-5 text-emerald-600" />
+                <div className="p-3 bg-white border border-gray-200 rounded-xl group-hover:border-primary group-hover:bg-primary/5 transition-all shadow-sm">
+                  <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 font-medium">Call Us</p>
@@ -184,8 +184,8 @@ export default function Hero() {
                 className="flex items-center gap-3 group"
                 whileHover={{ x: 3 }}
               >
-                <div className="p-3 bg-white border border-gray-200 rounded-xl group-hover:border-emerald-500 group-hover:bg-emerald-50 transition-all shadow-sm">
-                  <MessageCircle className="w-5 h-5 text-emerald-600" />
+                <div className="p-3 bg-white border border-gray-200 rounded-xl group-hover:border-primary group-hover:bg-primary/5 transition-all shadow-sm">
+                  <MessageCircle className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 font-medium">WhatsApp</p>
@@ -205,7 +205,7 @@ export default function Hero() {
             <div className="relative">
               {/* Main Card - Holistic Wellness */}
               <motion.div 
-                className="relative bg-gradient-to-br from-emerald-400 via-teal-400 to-emerald-500 rounded-[2.5rem] shadow-2xl overflow-hidden p-1"
+                className="relative rounded-[2.5rem] shadow-2xl overflow-hidden p-1"
                 initial={{ rotate: 2 }}
                 animate={{ 
                   rotate: [2, 3, 2],
@@ -217,15 +217,15 @@ export default function Hero() {
                 }}
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="bg-gradient-to-br from-emerald-50/95 to-teal-50/95 backdrop-blur-sm rounded-[2.4rem] p-12 h-[550px] flex flex-col items-center justify-center relative overflow-hidden">
+                <div className="bg-gradient-to-br from-primary/5 to-primary/5 backdrop-blur-sm rounded-[2.4rem] p-12 h-[550px] flex flex-col items-center justify-center relative overflow-hidden">
                   {/* Decorative Elements */}
                   <motion.div
-                    className="absolute top-10 right-10 w-32 h-32 bg-emerald-200/30 rounded-full blur-2xl"
+                    className="absolute top-10 right-10 w-32 h-32 bg-primary/15 rounded-full blur-2xl"
                     animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
                     transition={{ duration: 4, repeat: Infinity }}
                   />
                   <motion.div
-                    className="absolute bottom-10 left-10 w-40 h-40 bg-teal-200/30 rounded-full blur-2xl"
+                    className="absolute bottom-10 left-10 w-40 h-40 bg-primary/10 rounded-full blur-2xl"
                     animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
                     transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
                   />
@@ -244,12 +244,12 @@ export default function Hero() {
                     }}
                   >
                     <div className="relative">
-                      <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-xl"></div>
+                      <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl"></div>
                       <div className="relative text-8xl">🌿</div>
                     </div>
                   </motion.div>
                   
-                  <h3 className="text-3xl lg:text-4xl font-serif font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-4 text-center">
+                  <h3 className="text-3xl lg:text-4xl font-serif font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mb-4 text-center">
                     Holistic Wellness
                   </h3>
                   <p className="text-lg text-gray-600 text-center max-w-sm">
@@ -305,7 +305,7 @@ export default function Hero() {
                       animate={{ rotate: [0, 5, -5, 0] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      <Leaf className="w-8 h-8 text-emerald-600" />
+                      <Leaf className="w-8 h-8 text-primary" />
                     </motion.div>
                     <div>
                       <p className="text-3xl font-bold text-gray-800">
@@ -331,7 +331,7 @@ export default function Hero() {
                 }}
               />
               <motion.div
-                className="absolute bottom-1/4 -right-6 w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-400 rounded-full shadow-lg opacity-70"
+                className="absolute bottom-1/4 -right-6 w-12 h-12 bg-primary rounded-full shadow-lg opacity-70"
                 animate={{ 
                   y: [0, 20, 0],
                   scale: [1, 1.2, 1]

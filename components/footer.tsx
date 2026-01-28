@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="bg-foreground text-background py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Newsletter */}
-        <motion.div 
+        {/* <motion.div 
           className="mb-12 pb-12 border-b border-background/20"
           initial="hidden"
           whileInView="visible"
@@ -40,10 +40,10 @@ export default function Footer() {
                 className="flex-1 px-4 py-3 bg-background text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <motion.button 
-                className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-lg font-medium whitespace-nowrap"
+                className=\"px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium whitespace-nowrap hover:opacity-90\"
                 whileHover={{ 
                   scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(16, 185, 129, 0.3)"
+                  boxShadow: \"0 20px 40px rgba(var(--primary-rgb), 0.3)\"
                 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -51,7 +51,7 @@ export default function Footer() {
               </motion.button>
             </motion.div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Footer Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
