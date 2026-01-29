@@ -48,12 +48,12 @@ export default function Navigation() {
               <span className="hidden sm:inline">+91 97399 91801</span>
             </motion.a>
             <motion.a 
-              href="mailto:info@Sapthashwa.com" 
+              href="mailto:Saptashwaayurvedichealth@gmail.com" 
               className="flex items-center space-x-1 hover:underline"
               whileHover={{ scale: 1.05 }}
             >
               <Mail size={14} />
-              <span className="hidden sm:inline">info@Sapthashwa.com</span>
+              <span className="hidden sm:inline">Saptashwaayurvedichealth@gmail.com</span>
             </motion.a>
           </div>
           <div className="hidden md:block">
@@ -72,7 +72,7 @@ export default function Navigation() {
         transition={{ duration: 0.5, delay: 0.1 }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-24">
             {/* Logo */}
             <Link href="/">
               <motion.div 
@@ -81,9 +81,9 @@ export default function Navigation() {
                 transition={{ duration: 0.2 }}
               >
                 <img 
-                  src="/logo.webp" 
+                  src="/logo.png" 
                   alt="Sapthashwa Logo" 
-                  className="w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 object-contain"
+                  className="w-20 sm:w-24 lg:w-32 h-20 sm:h-24 lg:h-32 object-contain"
                 />
                 <span className="font-serif text-lg sm:text-2xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
                   Sapthashwa

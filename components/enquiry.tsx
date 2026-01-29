@@ -91,7 +91,7 @@ export function Enquiry() {
                     <Mail className="text-primary w-5 sm:w-6 h-5 sm:h-6" />
                   </div>
                   <h3 className="font-semibold text-sm sm:text-lg text-gray-900">Email Us</h3>
-                  <p className="text-xs sm:text-sm text-gray-600">info@Sapthashwa.com</p>
+                  <p className="text-xs sm:text-sm text-gray-600">Saptashwaayurvedichealth@gmail.com</p>
               </Card>
 
               <Card className="p-4 sm:p-6">
