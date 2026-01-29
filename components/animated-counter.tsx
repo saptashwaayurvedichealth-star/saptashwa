@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 
 interface AnimatedCounterProps {
   end: number;
@@ -13,20 +12,22 @@ interface AnimatedCounterProps {
 
 export function AnimatedCounter({
   end,
-  duration = 2,
+  duration = 2.5,
   decimals = 0,
   suffix = '',
   prefix = '',
 }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [count, setCount] = useState(end);
+  const ref = useRef<HTMLSpanElement>(null);
+  const [hasStarted, setHasStarted] = useState(false);
+  const animationRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
+        if (entry.isIntersecting && !hasStarted) {
+          setHasStarted(true);
+          setCount(0); // Reset to 0 when animation starts
         }
       },
       { threshold: 0.1 }
@@ -41,10 +42,13 @@ export function AnimatedCounter({
         observer.unobserve(ref.current);
       }
     };
-  }, [isVisible]);
+  }, [hasStarted]);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!hasStarted) {
+      setCount(end);
+      return;
+    }
 
     const steps = 60;
     const stepDuration = (duration * 1000) / steps;
@@ -52,23 +56,29 @@ export function AnimatedCounter({
     let current = 0;
     let stepCount = 0;
 
-    const timer = setInterval(() => {
+    animationRef.current = setInterval(() => {
       stepCount++;
       current += increment;
       
       if (stepCount >= steps) {
         setCount(end);
-        clearInterval(timer);
+        if (animationRef.current) {
+          clearInterval(animationRef.current);
+        }
       } else {
         setCount(parseFloat(current.toFixed(decimals)));
       }
     }, stepDuration);
 
-    return () => clearInterval(timer);
-  }, [isVisible, end, duration, decimals]);
+    return () => {
+      if (animationRef.current) {
+        clearInterval(animationRef.current);
+      }
+    };
+  }, [hasStarted, end, duration, decimals]);
 
   return (
-    <span className="inline-block">
+    <span ref={ref} className="inline-block">
       {prefix}
       {count.toFixed(decimals)}
       {suffix}

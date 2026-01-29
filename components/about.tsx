@@ -2,6 +2,7 @@
 
 import { Award, Users, Heart, TrendingUp, Leaf, Sparkles, CheckCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { AnimatedCounter } from '@/components/animated-counter'
 
 export function About() {
   return (
@@ -80,41 +81,63 @@ export function About() {
               
               {/* Stats Cards */}
               <motion.div 
-                className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6"
+                className="grid grid-cols-2 gap-4 mt-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                whileHover={{ y: -5 }}
               >
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-emerald-100 rounded-xl">
-                    <Award className="w-8 h-8 text-emerald-600" />
+                <motion.div 
+                  className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="p-3 bg-emerald-100 rounded-xl mb-3 w-fit mx-auto">
+                    <Users className="w-8 h-8 text-emerald-600" />
                   </div>
-                  <div>
-                    <p className="text-3xl font-bold text-gray-800">15+</p>
-                    <p className="text-sm text-gray-600">Years Experience</p>
+                  <p className="text-3xl font-bold text-gray-800">
+                    <AnimatedCounter end={5000} duration={2.5} suffix="+" />
+                  </p>
+                  <p className="text-sm text-gray-600">Happy Patients</p>
+                </motion.div>
+                
+                <motion.div 
+                  className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="p-3 bg-teal-100 rounded-xl mb-3 w-fit mx-auto">
+                    <Award className="w-8 h-8 text-teal-600" />
                   </div>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-2xl p-6"
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-teal-100 rounded-xl">
-                    <Users className="w-8 h-8 text-teal-600" />
+                  <p className="text-3xl font-bold text-gray-800">
+                    <AnimatedCounter end={10} duration={2.5} suffix="+" />
+                  </p>
+                  <p className="text-sm text-gray-600">Years Experience</p>
+                </motion.div>
+
+                <motion.div 
+                  className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="p-3 bg-amber-100 rounded-xl mb-3 w-fit mx-auto">
+                    <Sparkles className="w-8 h-8 text-amber-600" />
                   </div>
-                  <div>
-                    <p className="text-3xl font-bold text-gray-800">5000+</p>
-                    <p className="text-sm text-gray-600">Happy Patients</p>
+                  <p className="text-3xl font-bold text-gray-800">
+                    <AnimatedCounter end={4.5} decimals={1} duration={2.5} suffix="/5" />
+                  </p>
+                  <p className="text-sm text-gray-600">Rating</p>
+                </motion.div>
+
+                <motion.div 
+                  className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="p-3 bg-green-100 rounded-xl mb-3 w-fit mx-auto">
+                    <Leaf className="w-8 h-8 text-green-600" />
                   </div>
-                </div>
+                  <p className="text-3xl font-bold text-gray-800">
+                    <AnimatedCounter end={100} duration={2.5} suffix="%" />
+                  </p>
+                  <p className="text-sm text-gray-600">Natural Care</p>
+                </motion.div>
               </motion.div>
             </div>
           </motion.div>
@@ -156,7 +179,7 @@ export function About() {
               transition={{ delay: 0.2 }}
             >
               We are a leading Ayurvedic healthcare provider dedicated to delivering exceptional holistic medical services. 
-              With over 15 years of experience, our team of expert practitioners and healthcare professionals 
+              With over 10 years of experience, our team of expert practitioners and healthcare professionals 
               are committed to providing personalized care to each patient.
             </motion.p>
 

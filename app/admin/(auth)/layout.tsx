@@ -124,8 +124,7 @@ export default function AuthAdminLayout({
                   }`}
                 >
                   <item.icon size={18} className="sm:size-5 flex-shrink-0" />
-                  <span className="hidden sm:inline">{item.label}</span>
-                  <span className="sm:hidden text-xs">{item.label.slice(0, 1)}</span>
+                  <span>{item.label}</span>
                 </Link>
               )
             })}

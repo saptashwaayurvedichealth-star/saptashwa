@@ -8,7 +8,7 @@ import { AnimatedCounter } from '@/components/animated-counter';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-50 via-primary/10 to-primary/5 overflow-hidden pt-20">
+    <section className="relative min-h-screen bg-gradient-to-br from-gray-50 via-primary/10 to-primary/5 overflow-hidden pt-6 sm:pt-12 lg:pt-20">
       {/* Background Image with Opacity */}
       <div className="absolute inset-0">
         <div 
@@ -49,29 +49,29 @@ export default function Hero() {
       </div>
 
       <div className="relative w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12 py-8 sm:py-12 lg:py-20">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-8 lg:gap-12 py-6 sm:py-8 md:py-12 lg:py-20">
           {/* Left Content */}
           <motion.div 
-            className="flex-1 space-y-8 max-w-2xl"
+            className="flex-1 space-y-4 sm:space-y-6 md:space-y-8 max-w-2xl"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
             {/* Premium Badge */}
             <motion.div 
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-primary/20 rounded-full shadow-sm"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 bg-white border-2 border-primary/20 rounded-full shadow-sm text-xs sm:text-sm"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(var(--primary-rgb), 0.2)" }}
             >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold text-primary">Premium Ayurvedic Wellness Platform</span>
+              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
+              <span className="font-semibold text-primary">Premium Ayurvedic Wellness Platform</span>
             </motion.div>
 
             {/* Main Heading */}
             <motion.h1 
-              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight"
+              className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -84,7 +84,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.p 
-              className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed"
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -94,7 +94,7 @@ export default function Hero() {
 
             {/* Features Grid */}
             <motion.div 
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -107,29 +107,29 @@ export default function Hero() {
               ].map((item, index) => (
                 <motion.div 
                   key={index}
-                  className="flex items-center gap-2.5"
+                  className="flex items-center gap-2"
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 + index * 0.1 }}
                 >
-                  <div className="flex-shrink-0 w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center">
-                    <item.icon className="w-4 h-4 text-primary" />
+                  <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 bg-primary/10 rounded-full flex items-center justify-center">
+                    <item.icon className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
                   </div>
-                  <span className="text-base font-medium text-gray-700">{item.text}</span>
+                  <span className="text-xs sm:text-sm md:text-base font-medium text-gray-700">{item.text}</span>
                 </motion.div>
               ))}
             </motion.div>
 
             {/* CTA Buttons */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 pt-2 sm:pt-4 w-full sm:w-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
             >
               <Link href="/appointment" className="w-full sm:w-auto">
                 <motion.button 
-                  className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold shadow-lg shadow-primary/30 flex items-center justify-center gap-2 group hover:opacity-90 transition-opacity"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-primary text-primary-foreground rounded-2xl text-sm sm:text-base font-semibold shadow-lg shadow-primary/30 flex items-center justify-center gap-2 group hover:opacity-90 transition-opacity"
                   whileHover={{ 
                     scale: 1.03,
                     y: -2,
@@ -139,12 +139,12 @@ export default function Hero() {
                   transition={{ duration: 0.2 }}
                 >
                   Book Appointment Now
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </Link>
               <Link href="/services" className="w-full sm:w-auto">
                 <motion.button 
-                  className="w-full sm:w-auto px-8 py-4 border-2 border-primary text-primary bg-white rounded-2xl font-semibold hover:bg-primary/5 transition-colors"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary text-primary bg-white rounded-2xl text-sm sm:text-base font-semibold hover:bg-primary/5 transition-colors"
                   whileHover={{ 
                     scale: 1.03,
                     y: -2
@@ -159,37 +159,37 @@ export default function Hero() {
 
             {/* Contact Section */}
             <motion.div 
-              className="flex flex-wrap gap-6 pt-6"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 md:gap-6 pt-3 sm:pt-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
             >
               <motion.a 
                 href="tel:+919739991801" 
-                className="flex items-center gap-3 group"
+                className="flex items-center gap-2 sm:gap-3 group"
                 whileHover={{ x: 3 }}
               >
-                <div className="p-3 bg-white border border-gray-200 rounded-xl group-hover:border-primary group-hover:bg-primary/5 transition-all shadow-sm">
-                  <Phone className="w-5 h-5 text-primary" />
+                <div className="p-2 sm:p-3 bg-white border border-gray-200 rounded-xl group-hover:border-primary group-hover:bg-primary/5 transition-all shadow-sm">
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 font-medium">Call Us</p>
-                  <span className="text-sm font-bold text-gray-800">+91 97399 91801</span>
+                  <span className="text-xs sm:text-sm font-bold text-gray-800">+91 97399 91801</span>
                 </div>
               </motion.a>
               <motion.a 
                 href="https://wa.me/919739991801" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 group"
+                className="flex items-center gap-2 sm:gap-3 group"
                 whileHover={{ x: 3 }}
               >
-                <div className="p-3 bg-white border border-gray-200 rounded-xl group-hover:border-primary group-hover:bg-primary/5 transition-all shadow-sm">
-                  <MessageCircle className="w-5 h-5 text-primary" />
+                <div className="p-2 sm:p-3 bg-white border border-gray-200 rounded-xl group-hover:border-primary group-hover:bg-primary/5 transition-all shadow-sm">
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 font-medium">WhatsApp</p>
-                  <span className="text-sm font-bold text-gray-800">Chat Now</span>
+                  <span className="text-xs sm:text-sm font-bold text-gray-800">Chat Now</span>
                 </div>
               </motion.a>
             </motion.div>

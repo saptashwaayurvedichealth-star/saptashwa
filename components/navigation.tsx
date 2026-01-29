@@ -37,26 +37,28 @@ export default function Navigation() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="container mx-auto px-4 flex justify-between items-center text-sm">
-          <div className="flex items-center space-x-4">
+        <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm gap-2 sm:gap-0">
+          <div className="flex items-center space-x-2 sm:space-x-4 flex-wrap justify-center sm:justify-start">
             <motion.a 
               href="tel:+919739991801" 
-              className="flex items-center space-x-1 hover:underline"
+              className="flex items-center space-x-1 hover:underline whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
             >
-              <Phone size={14} />
+              <Phone size={12} className="sm:size-3.5" />
               <span className="hidden sm:inline">+91 97399 91801</span>
+              <span className="sm:hidden">Call</span>
             </motion.a>
             <motion.a 
-              href="mailto:info@Sapthashwa.com" 
-              className="flex items-center space-x-1 hover:underline"
+              href="mailto:Saptashwaayurvedichealth@gmail.com" 
+              className="flex items-center space-x-1 hover:underline whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
             >
-              <Mail size={14} />
-              <span className="hidden sm:inline">info@Sapthashwa.com</span>
+              <Mail size={12} className="sm:size-3.5" />
+              <span className="hidden sm:inline">Saptashwaayurvedichealth@gmail.com</span>
+              <span className="sm:hidden">Email</span>
             </motion.a>
           </div>
-          <div className="hidden md:block">
+          <div className="text-xs sm:text-sm whitespace-nowrap">
             Mon - Fri: 9:00 AM - 6:00 PM
           </div>
         </div>
@@ -72,7 +74,7 @@ export default function Navigation() {
         transition={{ duration: 0.5, delay: 0.1 }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-24">
             {/* Logo */}
             <Link href="/">
               <motion.div 
@@ -81,9 +83,9 @@ export default function Navigation() {
                 transition={{ duration: 0.2 }}
               >
                 <img 
-                  src="/logo.webp" 
+                  src="/logo.png" 
                   alt="Sapthashwa Logo" 
-                  className="w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 object-contain"
+                  className="w-20 sm:w-24 lg:w-32 h-20 sm:h-24 lg:h-32 object-contain"
                 />
                 <span className="font-serif text-lg sm:text-2xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
                   Sapthashwa

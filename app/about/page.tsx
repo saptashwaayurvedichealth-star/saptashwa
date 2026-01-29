@@ -381,55 +381,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Team */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl lg:text-5xl font-serif font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-4">Meet Our Team</h2>
-            <p className="text-xl text-gray-600">Expert practitioners dedicated to your wellness</p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                className="text-center group"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <motion.div
-                  className="relative mb-6"
-                  whileHover={{ y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="w-48 h-48 mx-auto bg-primary/10 rounded-3xl flex items-center justify-center text-7xl shadow-xl group-hover:shadow-2xl transition-shadow">
-                    {member.image}
-                  </div>
-                  <motion.div 
-                    className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold shadow-lg whitespace-nowrap"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.3 }}
-                  >
-                    {member.experience}
-                  </motion.div>
-                </motion.div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h4>
-                <p className="text-emerald-500 font-medium">{member.role}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose Us */}
       <section className="py-20 bg-gradient-to-b from-emerald-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

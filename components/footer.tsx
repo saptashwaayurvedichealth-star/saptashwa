@@ -59,9 +59,9 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img 
-                src="/logo.webp" 
+                src="/logo.png" 
                 alt="Sapthashwa Logo" 
-                className="w-24 h-24 object-contain mix-blend-screen"
+                className="w-32 sm:w-32 lg:w-48 h-32 sm:h-32 lg:h-48 object-contain mix-blend-screen"
               />
             </div>
             <h4 className="font-serif text-xl font-bold text-background mb-2">Sapthashwa</h4>
@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          {/* <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-3 text-sm text-background/70">
               <li><Link href="#" className="hover:text-background transition">Ayurvedic Care</Link></li>
@@ -79,7 +79,7 @@ export default function Footer() {
               <li><Link href="#" className="hover:text-background transition">Telemedicine</Link></li>
               <li><Link href="#" className="hover:text-background transition">Wellness Products</Link></li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Company */}
           <div>
@@ -113,7 +113,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>info@Sapthashwa.com</span>
+                <span>Saptashwaayurvedichealth@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
