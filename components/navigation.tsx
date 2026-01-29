@@ -37,26 +37,28 @@ export default function Navigation() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="container mx-auto px-4 flex justify-between items-center text-sm">
-          <div className="flex items-center space-x-4">
+        <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm gap-2 sm:gap-0">
+          <div className="flex items-center space-x-2 sm:space-x-4 flex-wrap justify-center sm:justify-start">
             <motion.a 
               href="tel:+919739991801" 
-              className="flex items-center space-x-1 hover:underline"
+              className="flex items-center space-x-1 hover:underline whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
             >
-              <Phone size={14} />
+              <Phone size={12} className="sm:size-3.5" />
               <span className="hidden sm:inline">+91 97399 91801</span>
+              <span className="sm:hidden">Call</span>
             </motion.a>
             <motion.a 
               href="mailto:Saptashwaayurvedichealth@gmail.com" 
-              className="flex items-center space-x-1 hover:underline"
+              className="flex items-center space-x-1 hover:underline whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
             >
-              <Mail size={14} />
+              <Mail size={12} className="sm:size-3.5" />
               <span className="hidden sm:inline">Saptashwaayurvedichealth@gmail.com</span>
+              <span className="sm:hidden">Email</span>
             </motion.a>
           </div>
-          <div className="hidden md:block">
+          <div className="text-xs sm:text-sm whitespace-nowrap">
             Mon - Fri: 9:00 AM - 6:00 PM
           </div>
         </div>
