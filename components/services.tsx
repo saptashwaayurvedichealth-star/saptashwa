@@ -1,9 +1,13 @@
-import { useState, useEffect } from 'react';
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { Leaf, Heart, Activity } from 'lucide-react';
+import { Leaf, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 interface Service {
   _id: string
@@ -16,6 +20,26 @@ interface Service {
 export default function Services() {
   const [services, setServices] = useState<Service[]>([])
   const [loading, setLoading] = useState(true)
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { 
+      loop: true, 
+      align: 'start',
+      slidesToScroll: 1,
+      breakpoints: {
+        '(min-width: 640px)': { slidesToScroll: 1 },
+        '(min-width: 1024px)': { slidesToScroll: 1 }
+      }
+    },
+    [Autoplay({ delay: 4000, stopOnInteraction: false })]
+  )
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
 
   useEffect(() => {
     fetchServices()
@@ -83,93 +107,7 @@ export default function Services() {
               <span className="text-sm sm:text-base text-gray-600 font-medium">Loading services...</span>
             </motion.div>
           </div>
-        ) : (
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {services.map((service, index) => {
-              return (
-                <motion.div
-                  key={service._id}
-                  variants={staggerItem}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Link href={`/services/${service._id}`}>
-                    <Card
-                      className="group relative overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer h-full bg-white"
-                    >
-                      {/* Gradient Overlay on Hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      
-                      <CardHeader className="relative z-10">
-                        <motion.div 
-                          className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-white flex items-center justify-center mb-4 shadow-lg"
-                          whileHover={{ 
-                            scale: 1.15,
-                            rotate: [0, -10, 10, 0],
-                            boxShadow: "0 20px 40px rgba(var(--primary-rgb), 0.4)"
-                          }}
-                          transition={{ duration: 0.4 }}
-                        >
-                          <Heart className="w-8 h-8" />
-                        </motion.div>
-                        <CardTitle className="text-2xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
-                          {service.title}
-                        </CardTitle>
-                        <CardDescription className="leading-relaxed text-gray-600 mt-2">
-                          {service.description}
-                        </CardDescription>
-                      </CardHeader>
-                      {service.features && service.features.length > 0 && (
-                        <CardContent className="relative z-10">
-                          <ul className="space-y-3 text-sm">
-                            {service.features.slice(0, 3).map((feature, idx) => (
-                              <motion.li 
-                                key={idx} 
-                                className="flex items-start text-gray-700"
-                                initial={{ opacity: 0, x: -10 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                              >
-                                <motion.span 
-                                  className="text-primary mr-3 mt-0.5 text-xl font-bold"
-                                  initial={{ scale: 0 }}
-                                  whileInView={{ scale: 1 }}
-                                  viewport={{ once: true }}
-                                  transition={{ delay: idx * 0.1 + 0.2, type: "spring" }}
-                                >
-                                  ✓
-                                </motion.span>
-                                {feature}
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      )}
-                      
-                      {/* Arrow Icon */}
-                      <motion.div 
-                        className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                        initial={{ x: -10 }}
-                        whileHover={{ x: 0 }}
-                      >
-                        <Activity className="w-5 h-5" />
-                      </motion.div>
-                    </Card>
-                  </Link>
-                </motion.div>
-              )
-            })}
-          </motion.div>
-        )}
-
-        {!loading && services.length === 0 && (
+        ) : services.length === 0 ? (
           <motion.div 
             className="text-center py-12"
             initial={{ opacity: 0 }}
@@ -177,6 +115,96 @@ export default function Services() {
           >
             <p className="text-muted-foreground">No services available at the moment.</p>
           </motion.div>
+        ) : (
+          <div className="relative">
+            {/* Carousel Container */}
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex gap-4 sm:gap-6">
+                {services.map((service, index) => (
+                  <div
+                    key={service._id}
+                    className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0"
+                  >
+                    <Link href={`/services/${service._id}`}>
+                      <Card
+                        className="group relative overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer h-full bg-white"
+                      >
+                        {/* Service Image */}
+                        <div className="relative h-48 sm:h-56 overflow-hidden">
+                          <img 
+                            src={service.image} 
+                            alt={service.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                          
+                          {/* Title Overlay on Image */}
+                          <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                            <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow-lg">
+                              {service.title}
+                            </h3>
+                          </div>
+                        </div>
+
+                        {/* Card Content */}
+                        <CardHeader className="relative z-10 pb-3">
+                          <CardDescription className="leading-relaxed text-gray-600 mt-2 line-clamp-2">
+                            {service.description}
+                          </CardDescription>
+                        </CardHeader>
+                        
+                        {service.features && service.features.length > 0 && (
+                          <CardContent className="relative z-10 pt-0">
+                            <ul className="space-y-2 text-sm">
+                              {service.features.slice(0, 3).map((feature, idx) => (
+                                <li 
+                                  key={idx} 
+                                  className="flex items-start text-gray-700"
+                                >
+                                  <span className="text-primary mr-2 mt-0.5 text-lg font-bold flex-shrink-0">
+                                    ✓
+                                  </span>
+                                  <span className="line-clamp-1">{feature}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </CardContent>
+                        )}
+                        
+                        {/* Arrow Icon */}
+                        <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+                          <Activity className="w-5 h-5" />
+                        </div>
+
+                        {/* Gradient Overlay on Hover */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                      </Card>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation Buttons */}
+            {services.length > 1 && (
+              <>
+                <button
+                  onClick={scrollPrev}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+                <button
+                  onClick={scrollNext}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </>
+            )}
+          </div>
         )}
       </div>
     </section>

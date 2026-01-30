@@ -1,10 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Star, Play } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
+import { Star, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { staggerContainer, staggerItem } from '@/lib/animations';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 interface Testimonial {
   _id: string
@@ -20,6 +22,22 @@ interface Testimonial {
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [loading, setLoading] = useState(true)
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { 
+      loop: true, 
+      align: 'start',
+      slidesToScroll: 1,
+    },
+    [Autoplay({ delay: 5000, stopOnInteraction: false })]
+  )
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
 
   useEffect(() => {
     fetchTestimonials()
@@ -75,140 +93,7 @@ export default function Testimonials() {
               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
             />
           </div>
-        ) : (
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial._id}
-                variants={staggerItem}
-              >
-                <motion.div
-                  whileHover={{ 
-                    y: -5,
-                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Card className="hover:shadow-lg transition-all duration-300 h-full">
-                    <CardContent className="p-8">
-                      {/* Stars */}
-                      <motion.div 
-                        className="flex gap-1 mb-4"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={staggerContainer}
-                      >
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            variants={{
-                              hidden: { opacity: 0, scale: 0 },
-                              visible: { 
-                                opacity: 1, 
-                                scale: 1,
-                                transition: { delay: i * 0.1 }
-                              }
-                            }}
-                            whileHover={{ 
-                              scale: 1.2,
-                              rotate: 360,
-                              transition: { duration: 0.3 }
-                            }}
-                          >
-                            <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
-                          </motion.div>
-                        ))}
-                      </motion.div>
-
-                      {/* YouTube Video if available */}
-                      {testimonial.youtubeUrl && (
-                        <motion.div 
-                          className="mb-4 relative bg-gray-100 rounded-lg h-48 flex items-center justify-center overflow-hidden"
-                          whileHover={{ scale: 1.02 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <a 
-                            href={testimonial.youtubeUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-primary hover:text-primary/80 transition"
-                          >
-                            <motion.div
-                              whileHover={{ scale: 1.2 }}
-                              transition={{ duration: 0.2 }}
-                            >
-                              <Play className="w-12 h-12" />
-                            </motion.div>
-                            <span className="text-sm font-medium">Watch Video Testimonial</span>
-                          </a>
-                        </motion.div>
-                      )}
-
-                      {/* Text */}
-                      <motion.p 
-                        className="text-foreground leading-relaxed mb-6"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        "{testimonial.description}"
-                      </motion.p>
-
-                      {/* Author */}
-                      <motion.div 
-                        className="flex items-center gap-4"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        {testimonial.image ? (
-                          <motion.div 
-                            className="w-12 h-12 rounded-full overflow-hidden"
-                            whileHover={{ scale: 1.1 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <img 
-                              src={testimonial.image} 
-                              alt={testimonial.patientName}
-                              className="w-full h-full object-cover"
-                            />
-                          </motion.div>
-                        ) : (
-                          <motion.div 
-                            className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-2xl"
-                            whileHover={{ scale: 1.1, rotate: 10 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            😊
-                          </motion.div>
-                        )}
-                        <div>
-                          <p className="font-semibold text-foreground">
-                            {testimonial.patientName}
-                          </p>
-                          <p className="text-sm text-muted-foreground">
-                            {testimonial.treatment}
-                          </p>
-                        </div>
-                      </motion.div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-
-        {!loading && testimonials.length === 0 && (
+        ) : testimonials.length === 0 ? (
           <motion.div 
             className="text-center py-12"
             initial={{ opacity: 0 }}
@@ -216,6 +101,148 @@ export default function Testimonials() {
           >
             <p className="text-muted-foreground">No testimonials available at the moment.</p>
           </motion.div>
+        ) : (
+          <div className="relative">
+            {/* Carousel Container */}
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex gap-6 sm:gap-8">
+                {testimonials.map((testimonial) => (
+                  <div
+                    key={testimonial._id}
+                    className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-16px)] min-w-0"
+                  >
+                    <Card className="group hover:shadow-lg transition-all duration-300 h-full">
+                      <CardContent className="p-6 sm:p-8">
+                        {/* Stars */}
+                        <motion.div 
+                          className="flex gap-1 mb-4"
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true }}
+                          variants={staggerContainer}
+                        >
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <motion.div
+                              key={i}
+                              variants={{
+                                hidden: { opacity: 0, scale: 0 },
+                                visible: { 
+                                  opacity: 1, 
+                                  scale: 1,
+                                  transition: { delay: i * 0.1 }
+                                }
+                              }}
+                              whileHover={{ 
+                                scale: 1.2,
+                                rotate: 360,
+                                transition: { duration: 0.3 }
+                              }}
+                            >
+                              <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
+                            </motion.div>
+                          ))}
+                        </motion.div>
+
+                        {/* YouTube Video if available */}
+                        {testimonial.youtubeUrl && (
+                          <motion.div 
+                            className="mb-4 relative bg-gray-100 rounded-lg h-48 flex items-center justify-center overflow-hidden"
+                            whileHover={{ scale: 1.02 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <a 
+                              href={testimonial.youtubeUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-primary hover:text-primary/80 transition"
+                            >
+                              <motion.div
+                                whileHover={{ scale: 1.2 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <Play className="w-12 h-12" />
+                              </motion.div>
+                              <span className="text-sm font-medium">Watch Video Testimonial</span>
+                            </a>
+                          </motion.div>
+                        )}
+
+                        {/* Text */}
+                        <motion.p 
+                          className="text-foreground leading-relaxed mb-6"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          "{testimonial.description}"
+                        </motion.p>
+
+                        {/* Author */}
+                        <motion.div 
+                          className="flex items-center gap-4"
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          {testimonial.image ? (
+                            <motion.div 
+                              className="w-12 h-12 rounded-full overflow-hidden"
+                              whileHover={{ scale: 1.1 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <img 
+                                src={testimonial.image} 
+                                alt={testimonial.patientName}
+                                className="w-full h-full object-cover"
+                              />
+                            </motion.div>
+                          ) : (
+                            <motion.div 
+                              className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-2xl"
+                              whileHover={{ scale: 1.1, rotate: 10 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              😊
+                            </motion.div>
+                          )}
+                          <div>
+                            <p className="font-semibold text-foreground">
+                              {testimonial.patientName}
+                            </p>
+                            <p className="text-sm text-muted-foreground">
+                              {testimonial.treatment}
+                            </p>
+                          </div>
+                        </motion.div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation Buttons */}
+            {testimonials.length > 1 && (
+              <>
+                <button
+                  onClick={scrollPrev}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+                <button
+                  onClick={scrollNext}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </>
+            )}
+          </div>
         )}
       </div>
     </section>
