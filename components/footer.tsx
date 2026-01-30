@@ -83,7 +83,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="font-semibold mb-4">Quick links</h4>
             <ul className="space-y-3 text-sm text-background/70">
               <li><Link href="#" className="hover:text-background transition">About Us</Link></li>
               <li><Link href="#" className="hover:text-background transition">Doctors</Link></li>
@@ -97,7 +97,7 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-3 text-sm text-background/70">
               <li><Link href="#" className="hover:text-background transition">Contact</Link></li>
-              <li><Link href="#" className="hover:text-background transition">FAQ</Link></li>
+              {/* <li><Link href="#" className="hover:text-background transition">FAQ</Link></li> */}
               <li><Link href="#" className="hover:text-background transition">Privacy</Link></li>
               <li><Link href="#" className="hover:text-background transition">Terms</Link></li>
             </ul>

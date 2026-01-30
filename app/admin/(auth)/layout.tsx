@@ -61,8 +61,8 @@ export default function AuthAdminLayout({
   const menuItems = [
     { icon: LayoutDashboard, label: 'Dashboard', href: '/admin/dashboard' },
     { icon: Calendar, label: 'Appointments', href: '/admin/appointments' },
-    // { icon: Stethoscope, label: 'Treatments', href: '/admin/treatments' },
-    // { icon: Briefcase, label: 'Services', href: '/admin/services' },
+    { icon: Stethoscope, label: 'Treatments', href: '/admin/treatments' },
+    { icon: Briefcase, label: 'Services', href: '/admin/services' },
     { icon: Package, label: 'Products', href: '/admin/products' },
     { icon: FileText, label: 'Blogs', href: '/admin/blogs' },
     { icon: MessageSquare, label: 'Testimonials', href: '/admin/testimonials' },
