@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     const query: any = {};
     if (isActive) query.isActive = isActive === 'true';
 
-    const services = await Service.find(query).sort({ order: 1, createdAt: -1 });
+    const services = await Service.find(query).sort({ createdAt: -1 });
 
     return NextResponse.json({ services });
   } catch (error: any) {
@@ -28,6 +28,16 @@ export async function POST(request: NextRequest) {
     await connectDB();
     const body = await request.json();
 
+    console.log('Received service data:', body);
+
+    // Validate required fields
+    if (!body.title || !body.description || !body.image) {
+      return NextResponse.json(
+        { error: 'Missing required fields', details: 'Title, description, and image are required' },
+        { status: 400 }
+      );
+    }
+
     const service = await Service.create(body);
 
     return NextResponse.json(
@@ -35,6 +45,7 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error: any) {
+    console.error('Service creation error:', error);
     return NextResponse.json(
       { error: 'Failed to create service', details: error.message },
       { status: 500 }

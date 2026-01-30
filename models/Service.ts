@@ -10,10 +10,6 @@ const ServiceSchema = new Schema({
     type: String,
     required: true,
   },
-  icon: {
-    type: String,
-    required: true,
-  },
   image: {
     type: String,
     required: true,
@@ -24,10 +20,6 @@ const ServiceSchema = new Schema({
   isActive: {
     type: Boolean,
     default: true,
-  },
-  order: {
-    type: Number,
-    default: 0,
   },
   createdAt: {
     type: Date,
@@ -44,4 +36,9 @@ ServiceSchema.pre('save', function(next) {
   next();
 });
 
-export default models.Service || model('Service', ServiceSchema);
+// Clear the cached model to ensure schema changes are applied
+if (models.Service) {
+  delete models.Service;
+}
+
+export default model('Service', ServiceSchema);

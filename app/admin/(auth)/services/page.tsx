@@ -71,6 +71,20 @@ export default function ServicesPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
+    // Validation
+    if (!formData.title.trim()) {
+      alert('Please enter a title')
+      return
+    }
+    if (!formData.description.trim()) {
+      alert('Please enter a description')
+      return
+    }
+    if (!formData.image) {
+      alert('Please upload an image')
+      return
+    }
+
     try {
       const url = editingId ? `/api/services/${editingId}` : '/api/services'
       const method = editingId ? 'PUT' : 'POST'
@@ -87,9 +101,13 @@ export default function ServicesPage() {
       if (res.ok) {
         fetchServices()
         resetForm()
+      } else {
+        const error = await res.json()
+        alert(`Failed to save service: ${error.details || error.error}`)
       }
     } catch (error) {
       console.error('Failed to save service:', error)
+      alert('Failed to save service. Please try again.')
     }
   }
 
@@ -181,8 +199,6 @@ export default function ServicesPage() {
                 />
               </div>
 
-
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
                 <CloudinaryUpload
@@ -268,9 +284,7 @@ export default function ServicesPage() {
                 <div className="flex gap-3 mb-3">
                   <img src={service.image} alt={service.title} className="h-16 w-16 rounded object-cover" />
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <p className="font-semibold text-gray-900 text-sm truncate">{service.title}</p>
-                    </div>
+                    <p className="font-semibold text-gray-900 text-sm truncate">{service.title}</p>
                     <p className="text-xs text-gray-500 line-clamp-2 mt-1">{service.description}</p>
                   </div>
                 </div>
@@ -413,12 +427,11 @@ export default function ServicesPage() {
                 <img src={selectedService.image} alt={selectedService.title} className="w-full h-48 object-cover rounded-lg" />
               )}
               <div className="grid grid-cols-2 gap-4 text-sm">
-                <div>
+                <div className="col-span-2">
                   <p className="text-xs text-gray-500">Title</p>
                   <p className="font-medium text-gray-900">{selectedService.title}</p>
                 </div>
-
-                <div>
+                <div className="col-span-2">
                   <p className="text-xs text-gray-500">Status</p>
                   <p className="text-gray-700">{selectedService.isActive ? 'Active' : 'Inactive'}</p>
                 </div>
