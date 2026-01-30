@@ -1,8 +1,6 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Leaf, Stethoscope, Zap, Droplet, Brain, Flower2, Heart, Activity } from 'lucide-react';
+import { Leaf, Heart, Activity } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations';
@@ -11,21 +9,8 @@ interface Service {
   _id: string
   title: string
   description: string
-  icon: string
   image: string
   features: string[]
-  order: number
-}
-
-const iconMap: any = {
-  'Leaf': Leaf,
-  'Stethoscope': Stethoscope,
-  'Zap': Zap,
-  'Droplet': Droplet,
-  'Brain': Brain,
-  'Flower2': Flower2,
-  'Heart': Heart,
-  'Activity': Activity,
 }
 
 export default function Services() {
@@ -107,7 +92,6 @@ export default function Services() {
             variants={staggerContainer}
           >
             {services.map((service, index) => {
-              const Icon = iconMap[service.icon] || Heart
               return (
                 <motion.div
                   key={service._id}
@@ -132,7 +116,7 @@ export default function Services() {
                           }}
                           transition={{ duration: 0.4 }}
                         >
-                          <Icon className="w-8 h-8" />
+                          <Heart className="w-8 h-8" />
                         </motion.div>
                         <CardTitle className="text-2xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
                           {service.title}
