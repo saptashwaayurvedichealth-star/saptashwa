@@ -20,11 +20,11 @@ const TreatmentSchema = new Schema({
   },
   price: {
     type: Number,
-    required: true,
+    required: false,
   },
   duration: {
     type: String,
-    required: true,
+    required: false,
   },
   category: {
     type: String,

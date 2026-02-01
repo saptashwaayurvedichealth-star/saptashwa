@@ -92,7 +92,7 @@ export default function TreatmentsPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          price: parseFloat(formData.price),
+          price: formData.price ? parseFloat(formData.price) : undefined,
         }),
       })
 
@@ -231,14 +231,6 @@ export default function TreatmentsPage() {
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                   required
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
-                <CloudinaryUpload
-                  value={formData.image}
-                  onChange={(url) => setFormData({ ...formData, image: url })}
                 />
               </div>
 
