@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { Leaf, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Leaf, Activity, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -154,8 +155,8 @@ export default function Services() {
                         </CardHeader>
                         
                         {service.features && service.features.length > 0 && (
-                          <CardContent className="relative z-10 pt-0">
-                            <ul className="space-y-2 text-sm">
+                          <CardContent className="relative z-10 pt-0 pb-3">
+                            <ul className="space-y-2 text-sm mb-4">
                               {service.features.slice(0, 3).map((feature, idx) => (
                                 <li 
                                   key={idx} 
@@ -168,14 +169,13 @@ export default function Services() {
                                 </li>
                               ))}
                             </ul>
+                            <Button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white border-0">
+                              Explore
+                              <ArrowRight size={16} className="ml-2" />
+                            </Button>
                           </CardContent>
                         )}
                         
-                        {/* Arrow Icon */}
-                        <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
-                          <Activity className="w-5 h-5" />
-                        </div>
-
                         {/* Gradient Overlay on Hover */}
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                       </Card>
