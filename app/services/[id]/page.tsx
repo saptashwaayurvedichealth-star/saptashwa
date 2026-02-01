@@ -105,8 +105,8 @@ export default function ServiceDetailPage() {
             Back to Services
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+            <div className="lg:col-span-2">
               <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6">
                 <Icon className="w-8 h-8" />
               </div>
@@ -125,7 +125,7 @@ export default function ServiceDetailPage() {
             </div>
 
             {service.image && (
-              <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="lg:col-span-3 relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src={service.image}
                   alt={service.title}

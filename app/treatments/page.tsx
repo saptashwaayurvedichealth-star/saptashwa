@@ -6,6 +6,8 @@ import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import WhatsAppFloat from '@/components/whatsapp-float';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 interface Treatment {
   _id: string;
@@ -84,7 +86,7 @@ export default function TreatmentsPage() {
                       </div>
 
                       {treatment.benefits && treatment.benefits.length > 0 && (
-                        <div>
+                        <div className="mb-4">
                           <h4 className="font-semibold mb-2">Benefits:</h4>
                           <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                             {treatment.benefits.slice(0, 3).map((benefit, idx) => (
@@ -96,6 +98,11 @@ export default function TreatmentsPage() {
                           )}
                         </div>
                       )}
+                      
+                      <Button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white border-0 mt-auto">
+                        Explore
+                        <ArrowRight size={16} className="ml-2" />
+                      </Button>
                     </div>
                   </Card>
                 </Link>

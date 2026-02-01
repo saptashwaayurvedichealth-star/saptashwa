@@ -152,8 +152,8 @@ export function Treatments() {
                           </span>
                         </CardContent>
                         <CardFooter>
-                          <Button className="w-full" variant="outline">
-                            Learn More
+                          <Button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white border-0">
+                            Explore
                             <ArrowRight size={16} className="ml-2" />
                           </Button>
                         </CardFooter>

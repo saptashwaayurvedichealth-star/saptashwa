@@ -6,6 +6,8 @@ import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import WhatsAppFloat from '@/components/whatsapp-float';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 interface Service {
   _id: string;
@@ -74,7 +76,7 @@ export default function ServicesPage() {
                       <p className="text-muted-foreground mb-4">{service.description}</p>
 
                       {service.features && service.features.length > 0 && (
-                        <div>
+                        <div className="mb-4">
                           <h4 className="font-semibold mb-2">Features:</h4>
                           <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                             {service.features.slice(0, 3).map((feature, idx) => (
@@ -86,6 +88,11 @@ export default function ServicesPage() {
                           )}
                         </div>
                       )}
+                      
+                      <Button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white border-0 mt-auto">
+                        Explore
+                        <ArrowRight size={16} className="ml-2" />
+                      </Button>
                     </div>
                   </Card>
                 </Link>

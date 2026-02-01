@@ -96,8 +96,8 @@ export default function TreatmentDetailPage() {
             Back to Treatments
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+            <div className="lg:col-span-2">
               <span className="inline-block px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-4">
                 {treatment.category}
               </span>
@@ -134,7 +134,7 @@ export default function TreatmentDetailPage() {
             </div>
 
             {treatment.image && (
-              <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="lg:col-span-3 relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src={treatment.image}
                   alt={treatment.title}
@@ -228,7 +228,7 @@ export default function TreatmentDetailPage() {
             <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-12 text-center">
               Other Treatments
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedTreatments.map((relatedTreatment) => (
                 <Link
                   key={relatedTreatment._id}
