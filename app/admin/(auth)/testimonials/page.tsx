@@ -18,6 +18,8 @@ interface Testimonial {
 
 export default function TestimonialsPage() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+  const [pendingTestimonials, setPendingTestimonials] = useState<Testimonial[]>([])
+  const [activeTab, setActiveTab] = useState<'all' | 'pending'>('all')
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [editingId, setEditingId] = useState<string | null>(null)
@@ -42,11 +44,29 @@ export default function TestimonialsPage() {
     try {
       const res = await fetch('/api/testimonials')
       const data = await res.json()
-      setTestimonials(data.testimonials || [])
+      const all = data.testimonials || []
+      setTestimonials(all)
+      setPendingTestimonials(all.filter((t: Testimonial) => !t.isActive))
     } catch (error) {
       console.error('Failed to fetch testimonials:', error)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const handleApprove = async (id: string) => {
+    try {
+      const res = await fetch(`/api/testimonials/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isActive: true }),
+      })
+
+      if (res.ok) {
+        fetchTestimonials()
+      }
+    } catch (error) {
+      console.error('Failed to approve testimonial:', error)
     }
   }
 
@@ -142,6 +162,33 @@ export default function TestimonialsPage() {
         >
           <Plus size={18} className="sm:w-5 sm:h-5" />
           <span>Add Testimonial</span>
+        </button>
+      </div>
+
+      {/* Tabs */}
+      <div className="mb-6 flex gap-2 border-b border-gray-200">
+        <button
+          onClick={() => setActiveTab('all')}
+          className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+            activeTab === 'all'
+              ? 'border-blue-600 text-blue-600'
+              : 'border-transparent text-gray-500 hover:text-gray-700'
+          }`}
+        >
+          All Testimonials ({testimonials.length})
+        </button>
+        <button
+          onClick={() => setActiveTab('pending')}
+          className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors relative ${
+            activeTab === 'pending'
+              ? 'border-orange-600 text-orange-600'
+              : 'border-transparent text-gray-500 hover:text-gray-700'
+          }`}
+        >
+          Pending Approval ({pendingTestimonials.length})
+          {pendingTestimonials.length > 0 && (
+            <span className="absolute -top-1 -right-1 w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+          )}
         </button>
       </div>
 
@@ -281,7 +328,7 @@ export default function TestimonialsPage() {
         <>
           {/* Mobile Card View */}
           <div className="block md:hidden divide-y divide-gray-200 bg-white rounded-lg border border-gray-200">
-            {testimonials.map((testimonial) => (
+            {(activeTab === 'all' ? testimonials : pendingTestimonials).map((testimonial) => (
               <div key={testimonial._id} className="p-4 hover:bg-gray-50">
                 <div className="flex gap-3 mb-3">
                   {testimonial.image ? (
@@ -327,8 +374,8 @@ export default function TestimonialsPage() {
                         <Eye size={12} /> Active
                       </span>
                     ) : (
-                      <span className="px-2 py-1 bg-gray-100 text-gray-500 rounded inline-flex items-center gap-1">
-                        <EyeOff size={12} /> Inactive
+                      <span className="px-2 py-1 bg-orange-100 text-orange-600 rounded inline-flex items-center gap-1">
+                        <EyeOff size={12} /> Pending
                       </span>
                     )}
                     {testimonial.isFeatured && (
@@ -340,6 +387,14 @@ export default function TestimonialsPage() {
                 </div>
 
                 <div className="mt-3 flex gap-2">
+                  {!testimonial.isActive && (
+                    <button
+                      onClick={() => handleApprove(testimonial._id)}
+                      className="flex-1 px-3 py-2 text-xs text-white bg-green-600 rounded hover:bg-green-700 flex items-center justify-center gap-1"
+                    >
+                      ✓ Approve
+                    </button>
+                  )}
                   <button
                     onClick={() => handleView(testimonial)}
                     className="flex-1 px-3 py-2 text-xs text-gray-700 border border-gray-300 rounded hover:bg-gray-50 flex items-center justify-center gap-1"
@@ -379,7 +434,7 @@ export default function TestimonialsPage() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {testimonials.map((testimonial) => (
+                  {(activeTab === 'all' ? testimonials : pendingTestimonials).map((testimonial) => (
                     <tr key={testimonial._id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center gap-3">
@@ -428,8 +483,8 @@ export default function TestimonialsPage() {
                               <Eye size={12} /> Active
                             </span>
                           ) : (
-                            <span className="px-2 py-1 text-xs bg-gray-100 text-gray-500 rounded flex items-center gap-1 w-fit">
-                              <EyeOff size={12} /> Inactive
+                            <span className="px-2 py-1 text-xs bg-orange-100 text-orange-600 rounded flex items-center gap-1 w-fit">
+                              <EyeOff size={12} /> Pending
                             </span>
                           )}
                           {testimonial.isFeatured && (
@@ -441,6 +496,15 @@ export default function TestimonialsPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <div className="flex gap-2">
+                        {!testimonial.isActive && (
+                          <button
+                            onClick={() => handleApprove(testimonial._id)}
+                            className="p-2 text-white bg-green-600 hover:bg-green-700 rounded"
+                            title="Approve"
+                          >
+                            ✓
+                          </button>
+                        )}
                         <button
                           onClick={() => handleView(testimonial)}
                           className="p-2 text-gray-600 hover:bg-gray-50 rounded"

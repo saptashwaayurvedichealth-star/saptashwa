@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Star, Play, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Play, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { staggerContainer, staggerItem } from '@/lib/animations';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+import { useToast } from '@/hooks/use-toast';
 
 interface Testimonial {
   _id: string
@@ -22,6 +23,15 @@ interface Testimonial {
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [loading, setLoading] = useState(true)
+  const [showForm, setShowForm] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const { toast } = useToast()
+  const [formData, setFormData] = useState({
+    patientName: '',
+    description: '',
+    rating: 5,
+    treatment: '',
+  })
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
       loop: true, 
@@ -55,6 +65,47 @@ export default function Testimonials() {
     }
   }
 
+  const handleSubmitTestimonial = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitting(true)
+
+    try {
+      const res = await fetch('/api/testimonials', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          isActive: false, // Pending approval
+          isFeatured: false,
+        }),
+      })
+
+      if (res.ok) {
+        toast({
+          title: 'Thank you!',
+          description: 'Your testimonial has been submitted for review.',
+        })
+        setFormData({
+          patientName: '',
+          description: '',
+          rating: 5,
+          treatment: '',
+        })
+        setShowForm(false)
+      } else {
+        throw new Error('Failed to submit')
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to submit testimonial. Please try again.',
+        variant: 'destructive',
+      })
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   return (
     <section id="testimonials" className="py-20 lg:py-32 bg-muted/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,6 +135,117 @@ export default function Testimonials() {
             Real stories from our patients and wellness community
           </motion.p>
         </motion.div>
+
+        {/* Submit Testimonial Button */}
+        <motion.div 
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <motion.button
+            onClick={() => setShowForm(!showForm)}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-yellow-300 to-yellow-400 text-foreground rounded-lg font-medium hover:shadow-lg transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <MessageSquare className="w-5 h-5" />
+            {showForm ? 'Close Form' : 'Share Your Experience'}
+          </motion.button>
+        </motion.div>
+
+        {/* Testimonial Submission Form */}
+        {showForm && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="max-w-2xl mx-auto mb-12"
+          >
+            <Card className="border-2 border-yellow-400/30">
+              <CardContent className="p-6">
+                <h3 className="font-serif text-2xl mb-4 bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
+                  Share Your Experience
+                </h3>
+                <form onSubmit={handleSubmitTestimonial} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Your Name *</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.patientName}
+                      onChange={(e) => setFormData({ ...formData, patientName: e.target.value })}
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Treatment/Service *</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.treatment}
+                      onChange={(e) => setFormData({ ...formData, treatment: e.target.value })}
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+                      placeholder="e.g., Ayurvedic Treatment"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Your Experience *</label>
+                    <textarea
+                      required
+                      value={formData.description}
+                      onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none min-h-[120px]"
+                      placeholder="Share your experience with us..."
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Rating *</label>
+                    <div className="flex gap-2">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          onClick={() => setFormData({ ...formData, rating: star })}
+                          className="focus:outline-none"
+                        >
+                          <Star
+                            className={`w-8 h-8 ${
+                              star <= formData.rating
+                                ? 'fill-amber-400 text-amber-400'
+                                : 'text-gray-300'
+                            }`}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3">
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="flex-1 px-6 py-3 bg-gradient-to-r from-yellow-300 to-yellow-400 text-foreground rounded-lg font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50"
+                    >
+                      {submitting ? 'Submitting...' : 'Submit Testimonial'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setShowForm(false)}
+                      className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
 
         {loading ? (
           <div className="text-center py-12">

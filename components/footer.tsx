@@ -81,14 +81,15 @@ export default function Footer() {
             </ul>
           </div> */}
 
-          {/* Company */}
+          {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-4">Quick links</h4>
             <ul className="space-y-3 text-sm text-background/70">
-              <li><Link href="#" className="hover:text-background transition">About Us</Link></li>
-              <li><Link href="#" className="hover:text-background transition">Doctors</Link></li>
-              <li><Link href="#" className="hover:text-background transition">Careers</Link></li>
-              <li><Link href="#" className="hover:text-background transition">Blog</Link></li>
+              <li><Link href="/about" className="hover:text-background transition">About Us</Link></li>
+              <li><Link href="/services" className="hover:text-background transition">Services</Link></li>
+              <li><Link href="/treatments" className="hover:text-background transition">Treatments</Link></li>
+              <li><Link href="/appointment" className="hover:text-background transition">Book Appointment</Link></li>
+              <li><Link href="/blogs" className="hover:text-background transition">Blog</Link></li>
             </ul>
           </div>
 
@@ -96,10 +97,10 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-3 text-sm text-background/70">
-              <li><Link href="#" className="hover:text-background transition">Contact</Link></li>
-              {/* <li><Link href="#" className="hover:text-background transition">FAQ</Link></li> */}
-              <li><Link href="#" className="hover:text-background transition">Privacy</Link></li>
-              <li><Link href="#" className="hover:text-background transition">Terms</Link></li>
+              <li><Link href="/appointment" className="hover:text-background transition">Contact Us</Link></li>
+              <li><Link href="/testimonials" className="hover:text-background transition">Testimonials</Link></li>
+              <li><Link href="#" className="hover:text-background transition">Privacy Policy</Link></li>
+              <li><Link href="#" className="hover:text-background transition">Terms & Conditions</Link></li>
             </ul>
           </div>
 
@@ -125,7 +126,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-background/20 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-background/60">
-          <p>&copy; 2026 Sapthashwa. All rights reserved.</p>
+          <p>&copy; 2026 Saptashwa Ayurveda. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-background transition">Facebook</Link>
             <Link href="#" className="hover:text-background transition">Instagram</Link>
