@@ -146,24 +146,22 @@ export default function Testimonials() {
                         {/* YouTube Video if available */}
                         {testimonial.youtubeUrl && (
                           <motion.div 
-                            className="mb-4 relative bg-gray-100 rounded-lg h-48 flex items-center justify-center overflow-hidden"
+                            className="mb-4 relative bg-gray-100 rounded-lg overflow-hidden"
                             whileHover={{ scale: 1.02 }}
                             transition={{ duration: 0.3 }}
                           >
-                            <a 
-                              href={testimonial.youtubeUrl} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2 text-primary hover:text-primary/80 transition"
-                            >
-                              <motion.div
-                                whileHover={{ scale: 1.2 }}
-                                transition={{ duration: 0.2 }}
-                              >
-                                <Play className="w-12 h-12" />
-                              </motion.div>
-                              <span className="text-sm font-medium">Watch Video Testimonial</span>
-                            </a>
+                            <div className="relative pt-[56.25%]">
+                              <iframe
+                                className="absolute inset-0 w-full h-full"
+                                src={`https://www.youtube.com/embed/${testimonial.youtubeUrl.includes('youtu.be') 
+                                  ? testimonial.youtubeUrl.split('youtu.be/')[1]?.split('?')[0] 
+                                  : testimonial.youtubeUrl.split('v=')[1]?.split('&')[0]}?autoplay=1&mute=1&loop=1&controls=1&modestbranding=1&playsinline=1&rel=0`}
+                                title={`Video testimonial by ${testimonial.patientName}`}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                              />
+                            </div>
                           </motion.div>
                         )}
 
