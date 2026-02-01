@@ -173,8 +173,8 @@ export default function Home() {
       <Treatments />
       <ProductShowcase />
       <Blogs />
-      <Testimonials />
       <About />
+      <Testimonials />
       <Enquiry />
       <Footer />
       <WhatsAppFloat />
