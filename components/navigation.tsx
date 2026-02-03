@@ -49,6 +49,15 @@ export default function Navigation() {
               <span className="sm:hidden">Call</span>
             </motion.a>
             <motion.a 
+              href="tel:+916360935065" 
+              className="flex items-center space-x-1 hover:underline whitespace-nowrap"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Phone size={12} className="sm:size-3.5" />
+              <span className="hidden sm:inline">+91 6360935065</span>
+              <span className="sm:hidden">Call</span>
+            </motion.a>
+            <motion.a 
               href="mailto:Saptashwaayurvedichealth@gmail.com" 
               className="flex items-center space-x-1 hover:underline whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
@@ -85,11 +94,11 @@ export default function Navigation() {
                 <img 
                   src="/logo.png" 
                   alt="Sapthashwa Logo" 
-                  className="w-20 sm:w-24 lg:w-32 h-20 sm:h-24 lg:h-32 object-contain"
+                  className="w-28 sm:w-24 lg:w-32 h-28 sm:h-24 lg:h-32 object-contain"
                 />
-                <span className="font-serif text-lg sm:text-2xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
+                {/* <span className="font-serif text-lg sm:text-2xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
                   Sapthashwa
-                </span>
+                </span> */}
               </motion.div>
             </Link>
 

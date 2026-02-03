@@ -11,34 +11,9 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { AnimatedCounter } from '@/components/animated-counter';
+import Image from 'next/image';
 
 export default function AboutPage() {
-  const teamMembers = [
-    {
-      name: "Dr. Rajesh Kumar",
-      role: "Chief Ayurvedic Physician",
-      experience: "15+ Years",
-      image: "👨‍⚕️"
-    },
-    {
-      name: "Dr. Priya Sharma",
-      role: "Senior Ayurvedic Consultant",
-      experience: "12+ Years",
-      image: "👩‍⚕️"
-    },
-    {
-      name: "Dr. Amit Patel",
-      role: "Panchakarma Specialist",
-      experience: "10+ Years",
-      image: "👨‍⚕️"
-    },
-    {
-      name: "Dr. Anjali Reddy",
-      role: "Wellness Coach",
-      experience: "8+ Years",
-      image: "👩‍⚕️"
-    }
-  ];
 
   const values = [
     {
@@ -64,11 +39,11 @@ export default function AboutPage() {
   ];
 
   const milestones = [
-    { year: "2010", event: "Founded Saptashwa Ayurvedic Health Center" },
-    { year: "2014", event: "Expanded to 3 treatment centers" },
-    { year: "2017", event: "Launched online consultation services" },
-    { year: "2020", event: "Treated 5000+ patients successfully" },
-    { year: "2024", event: "Recognized as Top Ayurvedic Center" }
+    { year: "2016", event: "Founded Saptashwa Ayurvedic Health Center in Rajarajeshwari Nagar, Bengaluru" },
+    { year: "2018", event: "Established Specialized Panchakarma Therapy Department" },
+    { year: "2020", event: "Achieved milestone of 3000+ successful patient treatments" },
+    { year: "2023", event: "Crossed 5000+ patients treated with holistic Ayurvedic care" },
+    { year: "2026", event: "Recognized as Leading Ayurvedic Health Center with 13+ years expertise" }
   ];
 
   return (
@@ -140,81 +115,219 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-4xl font-serif font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-6">Our Story</h2>
-              <div className="space-y-4 text-gray-700 leading-relaxed text-lg">
-                <p>
-                  Founded in 2010, Saptashwa Ayurvedic Health Center was born from a vision to make authentic 
-                  Ayurvedic healthcare accessible to everyone. Our founder, Dr. Rajesh Kumar, with over 15 years 
-                  of experience in traditional Ayurveda, recognized the need for a holistic healthcare approach 
-                  that treats the root cause, not just symptoms.
-                </p>
-                <p>
-                  What started as a small clinic has grown into a trusted name in Ayurvedic wellness, serving 
-                  thousands of patients who have found relief from chronic ailments and improved their overall 
-                  quality of life. Our success lies in our commitment to authentic treatments, natural remedies, 
-                  and personalized care plans.
-                </p>
-                <p>
-                  Today, we continue our mission to bridge ancient Ayurvedic wisdom with modern healthcare needs, 
-                  helping people achieve optimal health through natural, sustainable methods.
-                </p>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="relative h-[500px] bg-gradient-to-br from-primary/10 via-primary/8 to-amber-100 rounded-3xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    animate={{ 
-                      y: [0, -20, 0],
-                      rotate: [0, 5, -5, 0]
-                    }}
-                    transition={{ 
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="text-9xl"
-                  >
-                    🌿
-                  </motion.div>
-                </div>
-              </div>
-              
-              {/* Floating Stats */}
+      {/* Founder Section */}
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white via-primary/5 to-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-8 sm:mb-12 md:mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-3 sm:mb-4">Meet Our Founder</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">Pioneering holistic wellness with ancient wisdom</p>
+          </motion.div>
+
+          {/* Founder Card */}
+          <motion.div
+            className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Image Section */}
+            <div className="relative h-[300px] sm:h-[400px] md:h-[500px] bg-gradient-to-br from-primary/10 to-amber-50">
+              <Image 
+                src="https://res.cloudinary.com/dshqxriwz/image/upload/v1769323171/samples/imagecon-group.jpg"
+                alt="Dr. Sudha - Founder & Managing Director"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+
+            {/* Content Section */}
+            <div className="p-5 sm:p-6 md:p-8 lg:p-12">
+              {/* Header with Name and Social Links */}
               <motion.div 
-                className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-2xl p-6"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                className="mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-gray-200"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                whileHover={{ scale: 1.05 }}
+                transition={{ delay: 0.1 }}
               >
-                <div className="text-center">
-                  <p className="text-4xl font-bold text-primary">
-                    <AnimatedCounter end={100} duration={2.5} suffix="%" />
-                  </p>
-                  <p className="text-sm text-gray-600">Natural Products</p>
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-2">Dr. Sudha</h3>
+                    <p className="text-lg sm:text-xl text-primary font-semibold mb-1">Managing Director</p>
+                    <p className="text-base sm:text-lg text-gray-600">Saptashwa Ayurvedic Health Center, Bengaluru</p>
+                  </div>
+                  
+                  {/* Social Links */}
+                  <div className="flex gap-3">
+                    <motion.a 
+                      href="https://www.facebook.com/share/18GhJLy6KE/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 bg-blue-600 rounded-full text-white hover:bg-blue-700 transition-colors shadow-lg"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                    </motion.a>
+                    <motion.a 
+                      href="https://www.instagram.com/dr.sudha5724?utm_source=qr&igsh=MWN0amozMGF1NXl0ZQ=="
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-600 to-pink-500 rounded-full text-white hover:from-purple-700 hover:to-pink-600 transition-colors shadow-lg"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                      </svg>
+                    </motion.a>
+                  </div>
                 </div>
               </motion.div>
-            </motion.div>
-          </div>
+              {/* Intro */}
+              <motion.div 
+                className="mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-gray-200"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <div className="bg-gradient-to-r from-primary/5 via-amber-50/50 to-primary/5 rounded-xl sm:rounded-2xl p-5 sm:p-6 border-l-4 border-primary shadow-sm">
+                  <p className="text-base sm:text-lg text-gray-800 leading-relaxed font-medium">
+                    A visionary leader in Ayurvedic healthcare, Dr. Sudha has been transforming lives through holistic healing since 2016. 
+                    As the Managing Director of Saptashwa Ayurvedic Health Center in Rajarajeshwari Nagar, Bengaluru, she brings over 
+                    <span className="font-bold text-primary bg-primary/10 px-2 py-1 rounded-md mx-1"> 13 years of dedicated expertise</span> to guide more than 
+                    <span className="font-bold text-primary bg-primary/10 px-2 py-1 rounded-md mx-1"> 5,000 patients</span> toward complete wellness.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Expertise Cards */}
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                <motion.div 
+                  className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl sm:rounded-2xl p-4 sm:p-6"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center">
+                      <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">Specialized Education</h4>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        Postgraduate in <span className="font-semibold">Shalakya Tantra</span> — the specialized Ayurvedic branch treating 
+                        eyes, ears, nose, throat, head, and neck disorders with precision and care.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl sm:rounded-2xl p-4 sm:p-6"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-amber-600 rounded-lg sm:rounded-xl flex items-center justify-center">
+                      <Leaf className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">Panchakarma Mastery</h4>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        Expert in authentic <span className="font-semibold">Panchakarma therapies</span> — delivering comprehensive detoxification 
+                        and rejuvenation treatments rooted in classical Ayurvedic principles.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl sm:rounded-2xl p-4 sm:p-6"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center">
+                      <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">Holistic Approach</h4>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        Specializes in managing <span className="font-semibold">chronic illnesses, musculoskeletal disorders, lifestyle diseases</span>, 
+                        and ENT/ophthalmic conditions through personalized treatment protocols.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl sm:rounded-2xl p-4 sm:p-6"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center">
+                      <Target className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">Root Cause Treatment</h4>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        Believes in <span className="font-semibold">treating the root cause</span> rather than suppressing symptoms, integrating 
+                        diet, lifestyle modifications, herbal medicines, and detoxification.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Vision Statement */}
+              <motion.div 
+                className="bg-gradient-to-r from-primary/10 via-amber-50 to-primary/10 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 }}
+              >
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary rounded-full flex items-center justify-center">
+                      <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Her Vision & Leadership</h4>
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3 sm:mb-4">
+                      Under Dr. Sudha's compassionate leadership, Saptashwa Ayurvedic Health Center has blossomed into a sanctuary 
+                      of natural healing. The center offers a complete spectrum of holistic services including Ayurvedic consultations, 
+                      Panchakarma therapies, preventive healthcare, and wellness programs.
+                    </p>
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                      Her patient-centered approach, deep understanding of classical Ayurveda, and unwavering dedication have made her 
+                      a beacon of hope and healing for thousands seeking authentic, effective, and compassionate healthcare.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

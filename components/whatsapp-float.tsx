@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 
 export default function WhatsAppFloat() {
-  const phoneNumber = '919739991801'; // +91 97399 91801
+  const phoneNumber = '918722920862'; // +91 87229 20862
 
   return (
     <motion.a

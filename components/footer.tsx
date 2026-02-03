@@ -113,25 +113,31 @@ export default function Footer() {
                 <span>+91 97399 91801</span>
               </li>
               <li className="flex items-start gap-3">
+                <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>+91 6360935065</span>
+              </li>
+              <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <span>Saptashwaayurvedichealth@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Bengaluru Karnataka India</span>
+                <span>Rajarajeshwari Nagar, Bengaluru, Karnataka India</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-background/20 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-background/60">
-          <p>&copy; 2026 Saptashwa Ayurveda. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="#" className="hover:text-background transition">Facebook</Link>
-            <Link href="#" className="hover:text-background transition">Instagram</Link>
-            <Link href="#" className="hover:text-background transition">LinkedIn</Link>
+        <div className="border-t border-background/20 pt-8 text-sm text-background/60">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-3">
+            <p>&copy; 2026 Saptashwa Ayurveda. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link href="https://www.facebook.com/share/18GhJLy6KE/" target="_blank" rel="noopener noreferrer" className="hover:text-background transition">Facebook</Link>
+              <Link href="https://www.instagram.com/dr.sudha5724?utm_source=qr&igsh=MWN0amozMGF1NXl0ZQ==" target="_blank" rel="noopener noreferrer" className="hover:text-background transition">Instagram</Link>
+            </div>
           </div>
+          <p className="text-xs text-center">Powered by Techserve Nexus</p>
         </div>
       </div>
     </footer>
