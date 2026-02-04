@@ -11,7 +11,7 @@ interface PageHeaderProps {
 
 export default function PageHeader({ title, subtitle, badge }: PageHeaderProps) {
   return (
-    <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary via-teal-600 to-teal-700 overflow-hidden">
+    <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 overflow-hidden">
       {/* Geometric Pattern Background */}
       <div className="absolute inset-0">
         {/* Diagonal Lines */}
@@ -84,7 +84,7 @@ export default function PageHeader({ title, subtitle, badge }: PageHeaderProps) 
         </div>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-teal-800/30 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-800/30 via-transparent to-transparent"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

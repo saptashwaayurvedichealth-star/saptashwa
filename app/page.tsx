@@ -22,7 +22,7 @@ export default function Home() {
       <Hero />
       
       {/* Stats Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-primary relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 bg-blue-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
         <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
