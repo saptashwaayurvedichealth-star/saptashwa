@@ -88,11 +88,11 @@ export default function DashboardPage() {
     const colors = {
       pending: 'bg-yellow-100 text-yellow-800',
       confirmed: 'bg-blue-100 text-blue-800',
-      completed: 'bg-green-100 text-green-800',
+      completed: 'bg-teal-100 text-teal-800',
       cancelled: 'bg-red-100 text-red-800',
       new: 'bg-blue-100 text-blue-800',
       read: 'bg-gray-100 text-gray-800',
-      replied: 'bg-green-100 text-green-800',
+      replied: 'bg-teal-100 text-teal-800',
     }
     return colors[status as keyof typeof colors] || 'bg-gray-100 text-gray-800'
   }
@@ -304,12 +304,12 @@ export default function DashboardPage() {
             </div>
             <div className="text-2xl font-bold text-blue-900">{stats.appointments.confirmed}</div>
           </div>
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+          <div className="p-4 bg-teal-50 rounded-lg border border-teal-200">
             <div className="flex items-center gap-2 mb-2">
-              <CheckCircle size={20} className="text-green-600" />
-              <span className="text-sm font-medium text-green-800">Completed</span>
+              <CheckCircle size={20} className="text-teal-600" />
+              <span className="text-sm font-medium text-teal-800">Completed</span>
             </div>
-            <div className="text-2xl font-bold text-green-900">{stats.appointments.completed}</div>
+            <div className="text-2xl font-bold text-teal-900">{stats.appointments.completed}</div>
           </div>
           <div className="p-4 bg-red-50 rounded-lg border border-red-200">
             <div className="flex items-center gap-2 mb-2">

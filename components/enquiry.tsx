@@ -67,7 +67,7 @@ export function Enquiry() {
       <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-4xl">
         <div className="text-center mb-8 sm:mb-12">
             <span className="text-sm sm:text-base text-primary font-semibold">Get In Touch</span>
-            <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mt-2">
+            <h2 className="text-3xl sm:text-4xl font-bold heading-gradient mt-2">
               Have Questions? We're Here to Help
             </h2>
             <p className="text-sm sm:text-base text-gray-600 mt-3 sm:mt-4">

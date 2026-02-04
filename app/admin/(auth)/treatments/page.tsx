@@ -287,7 +287,7 @@ export default function TreatmentsPage() {
                   <div className="flex items-center justify-between">
                     <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded">{treatment.category}</span>
                     {treatment.isActive ? (
-                      <span className="px-2 py-1 bg-green-100 text-green-800 rounded inline-flex items-center gap-1">
+                      <span className="px-2 py-1 bg-teal-100 text-teal-800 rounded inline-flex items-center gap-1">
                         <Eye size={12} /> Active
                       </span>
                     ) : (
@@ -359,7 +359,7 @@ export default function TreatmentsPage() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{treatment.duration}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {treatment.isActive ? (
-                          <span className="px-2 py-1 text-xs bg-green-100 text-green-800 rounded flex items-center gap-1 w-fit">
+                          <span className="px-2 py-1 text-xs bg-teal-100 text-teal-800 rounded flex items-center gap-1 w-fit">
                             <Eye size={12} /> Active
                           </span>
                         ) : (

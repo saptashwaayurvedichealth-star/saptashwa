@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import WhatsAppFloat from '@/components/whatsapp-float';
+import PageHeader from '@/components/page-header';
 import { Card } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 
@@ -61,17 +62,14 @@ export default function TestimonialsPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageHeader 
+        title="Patient Testimonials"
+        subtitle="Real stories from real people who have experienced our care"
+        badge="Success Stories"
+      />
       
-      <section className="py-20 bg-gradient-to-br from-primary/5 via-white to-primary/5">
+      <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="font-serif text-4xl md:text-5xl font-light bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mb-4">
-              Patient Testimonials
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Real stories from real people who have experienced our care
-            </p>
-          </div>
 
           {loading ? (
             <div className="text-center py-12">

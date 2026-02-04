@@ -76,9 +76,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Ancient Wisdom,</span>
+              <span className="heading-gradient">Ancient Wisdom,</span>
               <br />
-              <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
+              <span className="heading-gradient">
                 Modern Healing
               </span>
             </motion.h1>
@@ -177,8 +177,8 @@ export default function Hero() {
                   <span className="text-xs sm:text-sm font-bold text-gray-800">+91 97399 91801</span>
                 </div>
               </motion.a>
-              <motion.a 
-                href="https://wa.me/919739991801" 
+              <motion.a
+                href="https://wa.me/918722920862" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 sm:gap-3 group"
@@ -249,7 +249,7 @@ export default function Hero() {
                     </div>
                   </motion.div>
                   
-                  <h3 className="text-3xl lg:text-4xl font-serif font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mb-4 text-center">
+                  <h3 className="text-3xl lg:text-4xl font-serif font-bold heading-gradient mb-4 text-center">
                     Holistic Wellness
                   </h3>
                   <p className="text-lg text-gray-600 text-center max-w-sm">

@@ -70,13 +70,13 @@ export function Treatments() {
           variants={staggerContainer}
         >
           <motion.span 
-            className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent font-semibold"
+            className="heading-gradient font-semibold"
             variants={staggerItem}
           >
             Our Treatments
           </motion.span>
           <motion.h2 
-            className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent mt-2"
+            className="text-4xl font-bold heading-gradient mt-2"
             variants={staggerItem}
           >
             Specialized Medical Treatments
@@ -152,7 +152,7 @@ export function Treatments() {
                           </span>
                         </CardContent>
                         <CardFooter>
-                          <Button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white border-0">
+                          <Button className="w-full bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white border-0">
                             Explore
                             <ArrowRight size={16} className="ml-2" />
                           </Button>

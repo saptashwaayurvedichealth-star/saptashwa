@@ -143,7 +143,7 @@ export default function BlogsPage() {
   const getStatusColor = (status: string) => {
     const colors = {
       draft: 'bg-gray-100 text-gray-800',
-      published: 'bg-green-100 text-green-800',
+      published: 'bg-teal-100 text-teal-800',
       archived: 'bg-red-100 text-red-800',
     }
     return colors[status as keyof typeof colors] || colors.draft

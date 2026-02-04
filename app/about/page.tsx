@@ -3,6 +3,7 @@
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import WhatsAppFloat from '@/components/whatsapp-float';
+import PageHeader from '@/components/page-header';
 import { motion } from 'framer-motion';
 import { 
   Leaf, Heart, Award, Users, Target, Eye, Lightbulb, 
@@ -49,69 +50,79 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navigation />
+      <PageHeader 
+        title="Your Journey to Holistic Wellness"
+        subtitle="Empowering lives through authentic Ayurvedic wisdom and compassionate care since 2010"
+        badge="About Saptashwa"
+      />
       
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-amber-50 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/8 rounded-full blur-3xl"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="text-center max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
+      {/* Stats Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold text-primary">About Saptashwa</span>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Users className="w-5 h-5 text-primary" />
+                <span className="text-3xl font-bold text-gray-800">
+                  <AnimatedCounter end={5000} duration={2.5} suffix="+" />
+                </span>
+              </div>
+              <p className="text-sm text-gray-600">Happy Patients</p>
             </motion.div>
             
-            <h1 className="text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Your Journey to Holistic Wellness</span>
-            </h1>
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Award className="w-5 h-5 text-primary" />
+                <span className="text-3xl font-bold text-gray-800">
+                  <AnimatedCounter end={10} duration={2.5} suffix="+" />
+                </span>
+              </div>
+              <p className="text-sm text-gray-600">Years Experience</p>
+            </motion.div>
             
-            <p className="text-xl text-gray-700 leading-relaxed mb-8">
-              Empowering lives through authentic Ayurvedic wisdom and compassionate care since 2010
-            </p>
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <CheckCircle className="w-5 h-5 text-primary" />
+                <span className="text-3xl font-bold text-gray-800">
+                  <AnimatedCounter end={100} duration={2.5} suffix="%" />
+                </span>
+              </div>
+              <p className="text-sm text-gray-600">Natural Care</p>
+            </motion.div>
             
-            <div className="flex flex-wrap justify-center gap-4">
-              <motion.div 
-                className="flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Users className="w-5 h-5 text-primary" />
-                <span className="font-semibold text-gray-800">
-                  <AnimatedCounter end={5000} duration={2.5} suffix="+ Patients" />
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Star className="w-5 h-5 text-primary" />
+                <span className="text-3xl font-bold text-gray-800">
+                  <AnimatedCounter end={4.9} decimals={1} duration={2.5} suffix="/5" />
                 </span>
-              </motion.div>
-              <motion.div 
-                className="flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Award className="w-5 h-5 text-amber-600" />
-                <span className="font-semibold text-gray-800">
-                  <AnimatedCounter end={15} duration={2.5} suffix="+ Years" />
-                </span>
-              </motion.div>
-              <motion.div 
-                className="flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Star className="w-5 h-5 text-yellow-500" />
-                <span className="font-semibold text-gray-800">
-                  <AnimatedCounter end={4.9} decimals={1} duration={2.5} suffix="/5 Rating" />
-                </span>
-              </motion.div>
-            </div>
-          </motion.div>
+              </div>
+              <p className="text-sm text-gray-600">Rating</p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -124,7 +135,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-3 sm:mb-4">Meet Our Founder</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold heading-gradient mb-3 sm:mb-4">Meet Our Founder</h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">Pioneering holistic wellness with ancient wisdom</p>
           </motion.div>
 
@@ -214,14 +225,14 @@ export default function AboutPage() {
               {/* Expertise Cards */}
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <motion.div 
-                  className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl sm:rounded-2xl p-4 sm:p-6"
+                  className="bg-gradient-to-br from-primary/10 to-teal-50 rounded-xl sm:rounded-2xl p-4 sm:p-6"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                 >
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-lg sm:rounded-xl flex items-center justify-center">
                       <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
@@ -346,7 +357,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center">
                   <Target className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Our Mission</h3>
+                <h3 className="text-3xl font-bold heading-gradient">Our Mission</h3>
               </div>
               <p className="text-gray-700 text-lg leading-relaxed">
                 To provide accessible, authentic Ayurvedic healthcare that empowers individuals to achieve 
@@ -366,7 +377,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center">
                   <Eye className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Our Vision</h3>
+                <h3 className="text-3xl font-bold heading-gradient">Our Vision</h3>
               </div>
               <p className="text-gray-700 text-lg leading-relaxed">
                 To become the most trusted Ayurvedic wellness center, recognized for excellence in holistic 
@@ -387,7 +398,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl lg:text-5xl font-serif font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-4">Our Core Values</h2>
+            <h2 className="text-4xl lg:text-5xl font-serif font-bold heading-gradient mb-4">Our Core Values</h2>
             <p className="text-xl text-gray-600">The principles that guide everything we do</p>
           </motion.div>
           
@@ -418,7 +429,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Journey / Timeline */}
-      <section className="py-20 bg-gradient-to-b from-emerald-50 to-white">
+      <section className="py-20 bg-gradient-to-b from-primary/5 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
@@ -426,7 +437,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl lg:text-5xl font-serif font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-4">Our Journey</h2>
+            <h2 className="text-4xl lg:text-5xl font-serif font-bold heading-gradient mb-4">Our Journey</h2>
             <p className="text-xl text-gray-600">Milestones that shaped our growth</p>
           </motion.div>
           
@@ -495,7 +506,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gradient-to-b from-emerald-50 to-white">
+      <section className="py-20 bg-gradient-to-b from-primary/5 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
@@ -503,7 +514,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl lg:text-5xl font-serif font-bold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent mb-4">Why Choose Saptashwa?</h2>
+            <h2 className="text-4xl lg:text-5xl font-serif font-bold heading-gradient mb-4">Why Choose Saptashwa?</h2>
             <p className="text-xl text-gray-600">What makes us different</p>
           </motion.div>
           
@@ -526,7 +537,7 @@ export default function AboutPage() {
                 whileHover={{ y: -5 }}
               >
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                  <div className="w-14 h-14 bg-gradient-to-br from-primary to-teal-600 rounded-xl flex items-center justify-center">
                     <item.icon className="w-7 h-7 text-white" />
                   </div>
                 </div>
@@ -541,7 +552,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-500 to-emerald-600 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-primary to-teal-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
@@ -559,7 +570,7 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/appointment">
                 <motion.button
-                  className="px-8 py-4 bg-white text-emerald-500 rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition-shadow"
+                  className="px-8 py-4 bg-white text-primary rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition-shadow"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -568,7 +579,7 @@ export default function AboutPage() {
               </Link>
               <Link href="/services">
                 <motion.button
-                  className="px-8 py-4 border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white hover:text-emerald-500 transition-colors"
+                  className="px-8 py-4 border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white hover:text-primary transition-colors"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >

@@ -117,13 +117,13 @@ export default function Testimonials() {
           variants={staggerContainer}
         >
           <motion.span 
-            className="text-sm font-medium bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mb-2 inline-block"
+            className="text-sm font-medium heading-gradient mb-2 inline-block"
             variants={staggerItem}
           >
             Testimonials
           </motion.span>
           <motion.h2 
-            className="font-serif text-4xl lg:text-5xl font-light mb-4 text-pretty bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent"
+            className="font-serif text-4xl lg:text-5xl font-light mb-4 text-pretty heading-gradient"
             variants={staggerItem}
           >
             Trusted by thousands
@@ -145,7 +145,7 @@ export default function Testimonials() {
         >
           <motion.button
             onClick={() => setShowForm(!showForm)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-yellow-300 to-yellow-400 text-foreground rounded-lg font-medium hover:shadow-lg transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 hover:shadow-lg transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -162,9 +162,9 @@ export default function Testimonials() {
             exit={{ opacity: 0, height: 0 }}
             className="max-w-2xl mx-auto mb-12"
           >
-            <Card className="border-2 border-yellow-400/30">
+            <Card className="border-2 border-primary/30">
               <CardContent className="p-6">
-                <h3 className="font-serif text-2xl mb-4 bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
+                <h3 className="font-serif text-2xl mb-4 heading-gradient">
                   Share Your Experience
                 </h3>
                 <form onSubmit={handleSubmitTestimonial} className="space-y-4">

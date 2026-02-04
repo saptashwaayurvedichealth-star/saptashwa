@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import WhatsAppFloat from '@/components/whatsapp-float';
+import PageHeader from '@/components/page-header';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
@@ -42,17 +43,14 @@ export default function TreatmentsPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageHeader 
+        title="Our Treatments"
+        subtitle="Comprehensive wellness treatments combining traditional wisdom with modern science"
+        badge="Holistic Healing"
+      />
       
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-4">
-              <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Our Treatments</span>
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Comprehensive wellness treatments combining traditional wisdom with modern science
-            </p>
-          </div>
 
           {loading ? (
             <div className="text-center py-12">
@@ -99,7 +97,7 @@ export default function TreatmentsPage() {
                         </div>
                       )}
                       
-                      <Button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white border-0 mt-auto">
+                      <Button className="w-full bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white border-0 mt-auto">
                         Explore
                         <ArrowRight size={16} className="ml-2" />
                       </Button>

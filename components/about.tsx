@@ -26,7 +26,7 @@ export function About() {
             <div className="relative">
               {/* Main Card - Founder Image */}
               <motion.div 
-                className="bg-gradient-to-br from-primary/10 via-primary/8 to-amber-100 rounded-3xl h-[500px] flex items-center justify-center shadow-2xl overflow-hidden"
+                className="bg-gradient-to-br from-primary/10 via-primary/8 to-amber-100 rounded-3xl h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] flex items-center justify-center shadow-2xl overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
@@ -35,13 +35,13 @@ export function About() {
                     src="https://res.cloudinary.com/dshqxriwz/image/upload/v1769323171/samples/imagecon-group.jpg"
                     alt="Dr. Sudha - Founder & Managing Director"
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     priority
                   />
                   {/* Overlay with name */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
-                    <h3 className="text-2xl font-serif font-bold text-white mb-1">Dr. Sudha</h3>
-                    <p className="text-white/90 text-lg">Managing Director</p>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-6 md:p-8">
+                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-1">Dr. Sudha</h3>
+                    <p className="text-white/90 text-base sm:text-lg">Managing Director</p>
                   </div>
                 </div>
                 
@@ -128,8 +128,8 @@ export function About() {
                   className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
                   whileHover={{ y: -5 }}
                 >
-                  <div className="p-3 bg-green-100 rounded-xl mb-3 w-fit mx-auto">
-                    <Leaf className="w-8 h-8 text-green-600" />
+                  <div className="p-3 bg-teal-100 rounded-xl mb-3 w-fit mx-auto">
+                    <Leaf className="w-8 h-8 text-teal-600" />
                   </div>
                   <p className="text-3xl font-bold text-gray-800">
                     <AnimatedCounter end={100} duration={2.5} suffix="%" />
@@ -156,7 +156,7 @@ export function About() {
                 viewport={{ once: true }}
               >
                 <Heart className="w-4 h-4 text-emerald-600" />
-                <span className="text-sm font-semibold bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 bg-clip-text text-transparent">About Us</span>
+                <span className="text-sm font-semibold heading-gradient">About Us</span>
               </motion.div>
               <motion.h2 
                 className="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-4 leading-tight"
