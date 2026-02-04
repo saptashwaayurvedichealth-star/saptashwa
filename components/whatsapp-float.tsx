@@ -10,7 +10,7 @@ export default function WhatsAppFloat() {
       href={`https://wa.me/${phoneNumber}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-16 h-16 bg-teal-500 text-white rounded-full shadow-2xl group"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-16 h-16 bg-[#25D366] text-white rounded-full shadow-2xl group"
       aria-label="Chat on WhatsApp"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ 
@@ -30,7 +30,7 @@ export default function WhatsAppFloat() {
       }}
       whileHover={{ 
         scale: 1.15,
-        boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)"
+        boxShadow: "0 20px 40px rgba(37, 211, 102, 0.4)"
       }}
       whileTap={{ scale: 0.95 }}
     >
