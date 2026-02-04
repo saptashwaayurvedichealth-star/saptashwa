@@ -119,7 +119,7 @@ export default function Navigation() {
                       href={item.href}
                       className="relative text-base font-semibold transition-colors duration-200"
                     >
-                      <span className={`relative z-10 px-4 py-2 block ${isActive ? 'text-white' : 'text-gray-900 hover:text-primary'}`}>
+                      <span className={`relative z-10 px-4 py-2 block ${isActive ? 'text-white' : 'text-white hover:text-yellow-300'}`}>
                         {item.name}
                       </span>
                       {isActive && (
