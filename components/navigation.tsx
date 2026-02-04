@@ -34,7 +34,7 @@ export default function Navigation() {
     <>
       {/* Top Bar */}
       <motion.div 
-        className="bg-primary text-primary-foreground py-2"
+        className="bg-blue-600 text-white py-2"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -77,8 +77,8 @@ export default function Navigation() {
 
       {/* Main Navigation */}
       <motion.nav 
-        className={`sticky top-0 z-50 backdrop-blur-md border-b border-border transition-all duration-300 ${
-          scrolled ? 'bg-background shadow-lg' : 'bg-background/95'
+        className={`sticky top-0 z-50 backdrop-blur-md border-b-4 border-blue-600 transition-all duration-300 ${
+          scrolled ? 'bg-green-600 shadow-lg' : 'bg-green-600/95'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
