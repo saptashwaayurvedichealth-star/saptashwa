@@ -370,7 +370,7 @@ export default function TestimonialsPage() {
 
                   <div className="flex gap-2 flex-wrap">
                     {testimonial.isActive ? (
-                      <span className="px-2 py-1 bg-green-100 text-green-800 rounded inline-flex items-center gap-1">
+                      <span className="px-2 py-1 bg-teal-100 text-teal-800 rounded inline-flex items-center gap-1">
                         <Eye size={12} /> Active
                       </span>
                     ) : (
@@ -390,7 +390,7 @@ export default function TestimonialsPage() {
                   {!testimonial.isActive && (
                     <button
                       onClick={() => handleApprove(testimonial._id)}
-                      className="flex-1 px-3 py-2 text-xs text-white bg-green-600 rounded hover:bg-green-700 flex items-center justify-center gap-1"
+                      className="flex-1 px-3 py-2 text-xs text-white bg-teal-600 rounded hover:bg-teal-700 flex items-center justify-center gap-1"
                     >
                       ✓ Approve
                     </button>
@@ -479,7 +479,7 @@ export default function TestimonialsPage() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex flex-col gap-1">
                           {testimonial.isActive ? (
-                            <span className="px-2 py-1 text-xs bg-green-100 text-green-800 rounded flex items-center gap-1 w-fit">
+                            <span className="px-2 py-1 text-xs bg-teal-100 text-teal-800 rounded flex items-center gap-1 w-fit">
                               <Eye size={12} /> Active
                             </span>
                           ) : (
@@ -499,7 +499,7 @@ export default function TestimonialsPage() {
                         {!testimonial.isActive && (
                           <button
                             onClick={() => handleApprove(testimonial._id)}
-                            className="p-2 text-white bg-green-600 hover:bg-green-700 rounded"
+                            className="p-2 text-white bg-teal-600 hover:bg-teal-700 rounded"
                             title="Approve"
                           >
                             ✓

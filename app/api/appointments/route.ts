@@ -116,7 +116,7 @@ export async function POST(request: NextRequest) {
     })
 
     // Prepare WhatsApp message
-    const whatsappNumber = '919739991801'; // Your WhatsApp Business number
+    const whatsappNumber = '918722920862'; // Your WhatsApp Business number
     const formattedDate = new Date(date).toLocaleDateString('en-IN', { 
       weekday: 'long', 
       year: 'numeric', 

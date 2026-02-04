@@ -145,7 +145,7 @@ export default function ProductShowcase() {
             Premium Wellness
           </motion.span>
           <motion.h2 
-            className="font-serif text-4xl lg:text-5xl font-light mb-4 text-pretty bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent"
+            className="font-serif text-4xl lg:text-5xl font-light mb-4 text-pretty heading-gradient"
             variants={staggerItem}
           >
             Curated wellness products
@@ -273,7 +273,12 @@ export default function ProductShowcase() {
         {/* View All CTA */}
         {products.length > 0 && (
           <div className="text-center pt-12">
-            <Button variant="outline" size="lg" className="rounded-full">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="rounded-full"
+              onClick={() => window.location.href = '/products'}
+            >
               Browse Full Marketplace
             </Button>
           </div>
@@ -401,8 +406,8 @@ export default function ProductShowcase() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden animate-in fade-in zoom-in duration-300">
             <div className="p-8 text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 className="w-10 h-10 text-green-600" />
+              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle2 className="w-10 h-10 text-teal-600" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Enquiry Sent Successfully!</h3>
               <p className="text-gray-600 mb-6">

@@ -7,7 +7,7 @@ import { staggerContainer, staggerItem } from '@/lib/animations';
 
 export default function Footer() {
   return (
-    <footer className="bg-foreground text-background py-16 lg:py-20">
+    <footer className="bg-gradient-to-br from-teal-900 via-teal-800 to-teal-900 text-white py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Newsletter */}
         {/* <motion.div 
@@ -37,13 +37,13 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-background text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex-1 px-4 py-3 bg-white text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
               />
               <motion.button 
-                className=\"px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium whitespace-nowrap hover:opacity-90\"
+                className="px-6 py-3 bg-teal-500 text-white rounded-lg font-medium whitespace-nowrap hover:bg-teal-600"
                 whileHover={{ 
                   scale: 1.05,
-                  boxShadow: \"0 20px 40px rgba(var(--primary-rgb), 0.3)\"
+                  boxShadow: "0 20px 40px rgba(20, 184, 166, 0.3)"
                 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -61,11 +61,11 @@ export default function Footer() {
               <img 
                 src="/logo.png" 
                 alt="Sapthashwa Logo" 
-                className="w-32 sm:w-32 lg:w-48 h-32 sm:h-32 lg:h-48 object-contain mix-blend-screen"
+                className="w-32 sm:w-32 lg:w-48 h-32 sm:h-32 lg:h-48 object-contain"
               />
             </div>
-            <h4 className="font-serif text-xl font-bold text-background mb-2">Sapthashwa</h4>
-            <p className="text-background/70 text-sm leading-relaxed">
+            <h4 className="font-serif text-xl font-bold text-white mb-2">Sapthashwa</h4>
+            <p className="text-white/80 text-sm leading-relaxed">
               Premium wellness blending Ayurveda with modern medicine
             </p>
           </div>
@@ -84,23 +84,23 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-4">Quick links</h4>
-            <ul className="space-y-3 text-sm text-background/70">
-              <li><Link href="/about" className="hover:text-background transition">About Us</Link></li>
-              <li><Link href="/services" className="hover:text-background transition">Services</Link></li>
-              <li><Link href="/treatments" className="hover:text-background transition">Treatments</Link></li>
-              <li><Link href="/appointment" className="hover:text-background transition">Book Appointment</Link></li>
-              <li><Link href="/blogs" className="hover:text-background transition">Blog</Link></li>
+            <ul className="space-y-3 text-sm text-white/80">
+              <li><Link href="/about" className="hover:text-white transition">About Us</Link></li>
+              <li><Link href="/services" className="hover:text-white transition">Services</Link></li>
+              <li><Link href="/treatments" className="hover:text-white transition">Treatments</Link></li>
+              <li><Link href="/appointment" className="hover:text-white transition">Book Appointment</Link></li>
+              <li><Link href="/blogs" className="hover:text-white transition">Blog</Link></li>
             </ul>
           </div>
 
           {/* Support */}
           <div>
             <h4 className="font-semibold mb-4">Support</h4>
-            <ul className="space-y-3 text-sm text-background/70">
-              <li><Link href="/appointment" className="hover:text-background transition">Contact Us</Link></li>
-              <li><Link href="/testimonials" className="hover:text-background transition">Testimonials</Link></li>
-              <li><Link href="#" className="hover:text-background transition">Privacy Policy</Link></li>
-              <li><Link href="#" className="hover:text-background transition">Terms & Conditions</Link></li>
+            <ul className="space-y-3 text-sm text-white/80">
+              <li><Link href="/appointment" className="hover:text-white transition">Contact Us</Link></li>
+              <li><Link href="/testimonials" className="hover:text-white transition">Testimonials</Link></li>
+              <li><Link href="#" className="hover:text-white transition">Privacy Policy</Link></li>
+              <li><Link href="#" className="hover:text-white transition">Terms & Conditions</Link></li>
             </ul>
           </div>
 
@@ -129,12 +129,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-background/20 pt-8 text-sm text-background/60">
+        <div className="border-t border-white/20 pt-8 text-sm text-white/70">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-3">
             <p>&copy; 2026 Saptashwa Ayurveda. All rights reserved.</p>
             <div className="flex gap-6">
-              <Link href="https://www.facebook.com/share/18GhJLy6KE/" target="_blank" rel="noopener noreferrer" className="hover:text-background transition">Facebook</Link>
-              <Link href="https://www.instagram.com/dr.sudha5724?utm_source=qr&igsh=MWN0amozMGF1NXl0ZQ==" target="_blank" rel="noopener noreferrer" className="hover:text-background transition">Instagram</Link>
+              <Link href="https://www.facebook.com/share/18GhJLy6KE/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Facebook</Link>
+              <Link href="https://www.instagram.com/dr.sudha5724?utm_source=qr&igsh=MWN0amozMGF1NXl0ZQ==" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Instagram</Link>
             </div>
           </div>
           <p className="text-xs text-center">Powered by Techserve Nexus</p>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
@@ -10,6 +11,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
+  const pathname = usePathname();
 
   useEffect(() => {
     const unsubscribe = scrollY.on('change', (latest) => {
@@ -68,7 +70,7 @@ export default function Navigation() {
             </motion.a>
           </div>
           <div className="text-xs sm:text-sm whitespace-nowrap">
-            Mon - Fri: 9:00 AM - 6:00 PM
+            Mon - Sat: 8:30 AM - 7:00 PM
           </div>
         </div>
       </motion.div>
@@ -104,22 +106,38 @@ export default function Navigation() {
 
             {/* Desktop Menu - Centered */}
             <div className="hidden lg:flex items-center gap-6 flex-1 justify-center">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="text-base font-semibold text-gray-900 hover:text-primary transition-colors duration-200 relative group"
+              {navItems.map((item, index) => {
+                const isActive = pathname === item.href;
+                return (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
                   >
-                    {item.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={item.href}
+                      className="relative text-base font-semibold transition-colors duration-200"
+                    >
+                      <span className={`relative z-10 px-4 py-2 block ${isActive ? 'text-white' : 'text-gray-900 hover:text-primary'}`}>
+                        {item.name}
+                      </span>
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeBox"
+                          className="absolute inset-0 bg-primary rounded-lg"
+                          initial={false}
+                          transition={{
+                            type: "spring",
+                            stiffness: 380,
+                            damping: 30
+                          }}
+                        />
+                      )}
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* Action Buttons */}
@@ -134,7 +152,7 @@ export default function Navigation() {
                   </Button>
                 </motion.div>
               </Link>
-              <Link href="#enquiry">
+              <Link href="/#enquiry">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -189,22 +207,41 @@ export default function Navigation() {
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="block py-3 px-4 text-base font-semibold text-gray-900 hover:text-primary hover:bg-gray-50 transition-colors duration-200"
-                    onClick={() => setIsOpen(false)}
+              {navItems.map((item, index) => {
+                const isActive = pathname === item.href;
+                return (
+                  <motion.div
+                    key={item.name}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={item.href}
+                      className={`block py-3 px-4 text-base font-semibold transition-all duration-200 relative ${
+                        isActive 
+                          ? 'text-white bg-primary border-l-4 border-primary' 
+                          : 'text-gray-900 hover:text-primary hover:bg-gray-50'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeMobileBox"
+                          className="absolute inset-0 bg-primary -z-10 rounded-r-lg"
+                          initial={false}
+                          transition={{
+                            type: "spring",
+                            stiffness: 380,
+                            damping: 30
+                          }}
+                        />
+                      )}
+                    </Link>
+                  </motion.div>
+                );
+              })}
               <motion.div 
                 className="flex flex-col space-y-2 mt-4 px-4"
                 initial={{ y: 20, opacity: 0 }}
@@ -214,7 +251,7 @@ export default function Navigation() {
                 <Link href="/appointment">
                   <Button className="w-full">Book Appointment</Button>
                 </Link>
-                <Link href="#enquiry">
+                <Link href="/#enquiry">
                   <Button variant="outline" className="w-full">Enquiry</Button>
                 </Link>
               </motion.div>

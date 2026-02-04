@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import WhatsAppFloat from '@/components/whatsapp-float';
+import PageHeader from '@/components/page-header';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -101,17 +102,14 @@ export default function ProductsPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
+      <PageHeader 
+        title="Our Products"
+        subtitle="Premium Ayurvedic wellness products for your health and vitality"
+        badge="Natural Wellness"
+      />
       
-      <section className="py-20 bg-gradient-to-br from-primary/5 via-white to-primary/5">
+      <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-4">
-              <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Our Products</span>
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Premium Ayurvedic wellness products for your health and vitality
-            </p>
-          </div>
 
           {loading ? (
             <div className="text-center py-12">

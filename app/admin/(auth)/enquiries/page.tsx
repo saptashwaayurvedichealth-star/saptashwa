@@ -207,7 +207,7 @@ export default function EnquiriesPage() {
                     <span className={`inline-block px-2 py-1 text-xs font-medium rounded mt-1 ${
                       enquiry.status === 'new' ? 'bg-blue-100 text-blue-800' :
                       enquiry.status === 'read' ? 'bg-gray-100 text-gray-800' :
-                      'bg-green-100 text-green-800'
+                      'bg-teal-100 text-teal-800'
                     }`}>
                       {enquiry.status}
                     </span>
@@ -310,7 +310,7 @@ export default function EnquiriesPage() {
                           <span className={`px-2 py-1 text-xs font-medium rounded ${
                             enquiry.status === 'new' ? 'bg-blue-100 text-blue-800' :
                             enquiry.status === 'read' ? 'bg-gray-100 text-gray-800' :
-                            'bg-green-100 text-green-800'
+                            'bg-teal-100 text-teal-800'
                           }`}>
                             {enquiry.status}
                           </span>
@@ -455,7 +455,7 @@ export default function EnquiriesPage() {
                   <span className={`inline-block px-2 py-1 text-xs font-medium rounded ${
                     selectedEnquiryDetail.status === 'new' ? 'bg-blue-100 text-blue-800' :
                     selectedEnquiryDetail.status === 'read' ? 'bg-gray-100 text-gray-800' :
-                    'bg-green-100 text-green-800'
+                    'bg-teal-100 text-teal-800'
                   }`}>
                     {selectedEnquiryDetail.status}
                   </span>

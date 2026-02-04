@@ -77,10 +77,10 @@ export default function Services() {
             variants={staggerItem}
           >
             <Leaf className="w-4 h-4 text-primary flex-shrink-0" />
-            <span className="text-xs sm:text-sm font-semibold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">Our Specialties</span>
+            <span className="text-xs sm:text-sm font-semibold heading-gradient">Our Specialties</span>
           </motion.div>
           <motion.h2 
-            className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent"
+            className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 heading-gradient"
             variants={staggerItem}
           >
             Comprehensive Wellness Solutions
@@ -169,7 +169,7 @@ export default function Services() {
                                 </li>
                               ))}
                             </ul>
-                            <Button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white border-0">
+                            <Button className="w-full bg-primary hover:bg-primary/90 text-white border-0">
                               Explore
                               <ArrowRight size={16} className="ml-2" />
                             </Button>

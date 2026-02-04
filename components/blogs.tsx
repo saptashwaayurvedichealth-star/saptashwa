@@ -60,8 +60,8 @@ export function Blogs() {
     <section id="blogs" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <span className="bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent font-semibold">Our Blog</span>
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mt-2">
+          <span className="heading-gradient font-semibold">Our Blog</span>
+          <h2 className="text-4xl font-bold heading-gradient mt-2">
             Latest Health Tips & News
           </h2>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">

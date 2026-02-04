@@ -139,7 +139,7 @@ export default function Home() {
               whileHover={{ y: -5 }}
             >
               <motion.div
-                className="inline-flex items-center justify-center w-14 sm:w-16 lg:w-20 h-14 sm:h-16 lg:h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full mb-4 sm:mb-6"
+                className="inline-flex items-center justify-center w-14 sm:w-16 lg:w-20 h-14 sm:h-16 lg:h-20 bg-gradient-to-br from-teal-400 to-teal-500 rounded-full mb-4 sm:mb-6"
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
               >

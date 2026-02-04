@@ -382,7 +382,7 @@ export default function ProductsPage() {
 
                   <div>
                     {product.isActive ? (
-                      <span className="px-2 py-1 text-xs bg-green-100 text-green-800 rounded inline-flex items-center gap-1">
+                      <span className="px-2 py-1 text-xs bg-teal-100 text-teal-800 rounded inline-flex items-center gap-1">
                         <Eye size={12} /> Active
                       </span>
                     ) : (
@@ -456,7 +456,7 @@ export default function ProductsPage() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{product.stock}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {product.isActive ? (
-                        <span className="px-2 py-1 text-xs bg-green-100 text-green-800 rounded flex items-center gap-1 w-fit">
+                        <span className="px-2 py-1 text-xs bg-teal-100 text-teal-800 rounded flex items-center gap-1 w-fit">
                           <Eye size={12} /> Active
                         </span>
                       ) : (
