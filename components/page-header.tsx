@@ -13,7 +13,7 @@ export default function PageHeader({ title, subtitle, badge }: PageHeaderProps) 
   return (
     <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary via-teal-600 to-teal-700 overflow-hidden">
       {/* Geometric Pattern Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         {/* Diagonal Lines */}
         <div className="absolute inset-0 opacity-10">
           {[...Array(12)].map((_, i) => (
@@ -35,9 +35,9 @@ export default function PageHeader({ title, subtitle, badge }: PageHeaderProps) 
 
         {/* Circular Ripples */}
         <motion.div 
-          className="absolute top-1/4 right-1/4 w-96 h-96 border border-white/10 rounded-full"
+          className="absolute top-1/4 right-1/4 w-64 sm:w-96 h-64 sm:h-96 border border-white/10 rounded-full"
           animate={{ 
-            scale: [1, 1.5, 1],
+            scale: [1, 1.2, 1],
             opacity: [0.1, 0.2, 0.1]
           }}
           transition={{ 
@@ -47,9 +47,9 @@ export default function PageHeader({ title, subtitle, badge }: PageHeaderProps) 
           }}
         />
         <motion.div 
-          className="absolute bottom-1/3 left-1/3 w-72 h-72 border border-white/10 rounded-full"
+          className="absolute bottom-1/3 left-1/3 w-48 sm:w-72 h-48 sm:h-72 border border-white/10 rounded-full"
           animate={{ 
-            scale: [1, 1.6, 1],
+            scale: [1, 1.3, 1],
             opacity: [0.1, 0.25, 0.1]
           }}
           transition={{ 
